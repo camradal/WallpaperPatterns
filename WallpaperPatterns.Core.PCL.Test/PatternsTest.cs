@@ -9,7 +9,7 @@ namespace WallpaperPatterns.PCL.Test
         [TestMethod]
         public void PatternsGetNewestTest()
         {
-            var patterns = new Patterns();
+            var patterns = new PatternClient();
             var result = patterns.GetNewest().Result;
             Assert.IsTrue(result.Count > 0);
         }

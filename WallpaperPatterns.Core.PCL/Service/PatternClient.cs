@@ -6,7 +6,7 @@ using Newtonsoft.Json.Linq;
 
 namespace WallpaperPatterns.Core.PCL
 {
-    public class Patterns
+    public class PatternClient
     {
         private const string PatternsUrl = "http://www.colourlovers.com/api/patterns&format=json";
         private const string NewestPatternsUrl = "http://www.colourlovers.com/api/patterns/new&format=json";
