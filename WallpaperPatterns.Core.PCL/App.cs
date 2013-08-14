@@ -7,7 +7,7 @@ namespace WallpaperPatterns.Core.PCL
         public override void Initialize()
         {
             CreatableTypes()
-                .EndingWith("Service")
+                .EndingWith("Client")
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
 				

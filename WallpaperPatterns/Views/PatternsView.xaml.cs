@@ -11,8 +11,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
 // The Items Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234233
+using WallpaperPatterns.Core.PCL.ViewModels;
 
 namespace WallpaperPatterns.Views
 {
@@ -39,6 +39,11 @@ namespace WallpaperPatterns.Views
         protected override void LoadState(Object navigationParameter, Dictionary<String, Object> pageState)
         {
             // TODO: Assign a bindable collection of items to this.DefaultViewModel["Items"]
+        }
+
+        private void ItemView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ((PatternsViewModel)ViewModel).OpenDetailsCommand.Execute(e.ClickedItem);
         }
     }
 }

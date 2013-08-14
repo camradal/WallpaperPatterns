@@ -129,6 +129,9 @@
     <Compile Include="Views\PatternsView.xaml.cs">
       <DependentUpon>PatternsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PatternView.xaml.cs">
+      <DependentUpon>PatternView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -165,6 +168,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\PatternsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PatternView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

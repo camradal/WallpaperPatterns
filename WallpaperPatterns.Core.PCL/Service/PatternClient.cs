@@ -4,9 +4,9 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 
-namespace WallpaperPatterns.Core.PCL
+namespace WallpaperPatterns.Core.PCL.Service
 {
-    public class PatternClient
+    public class PatternClient : IPatternClient
     {
         private const string PatternsUrl = "http://www.colourlovers.com/api/patterns&format=json";
         private const string NewestPatternsUrl = "http://www.colourlovers.com/api/patterns/new&format=json";
@@ -14,17 +14,17 @@ namespace WallpaperPatterns.Core.PCL
         private const string RandomPatternsUrl = "http://www.colourlovers.com/api/patterns/random&format=json";
         private const string SinglePatternUrl = "http://www.colourlovers.com/api/pattern/{0}&format=json";
 
-        public async Task<List<Pattern>> GetNewest(int offset = 0)
+        public async Task<List<Pattern>> Newest(int offset = 0)
         {
             return await Load(NewestPatternsUrl, offset);
         }
 
-        public async Task<List<Pattern>> GetTop(int offset = 0)
+        public async Task<List<Pattern>> Top(int offset = 0)
         {
             return await Load(TopPatternsUrl, offset);
         }
 
-        public async Task<List<Pattern>> GetRandom(int offset = 0)
+        public async Task<List<Pattern>> Random(int offset = 0)
         {
             return await Load(RandomPatternsUrl, offset);
         }

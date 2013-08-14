@@ -69,6 +69,8 @@
             Padding="116,136,116,46"
             ItemsSource="{Binding Source={StaticResource itemsViewSource}}"
             ItemTemplate="{StaticResource Pattern250x250ItemTemplate}"
+            IsItemClickEnabled="True"
+            ItemClick="ItemView_ItemClick"
             SelectionMode="None"
             IsSwipeEnabled="false"/>
 
@@ -84,6 +86,8 @@
             Padding="10,0,0,60"
             ItemsSource="{Binding Source={StaticResource itemsViewSource}}"
             ItemTemplate="{StaticResource Pattern80ItemTemplate}"
+            IsItemClickEnabled="True"
+            ItemClick="ItemView_ItemClick"
             SelectionMode="None"
             IsSwipeEnabled="false"/>
 

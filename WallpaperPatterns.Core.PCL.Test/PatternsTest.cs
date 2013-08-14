@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using WallpaperPatterns.Core.PCL;
+using WallpaperPatterns.Core.PCL.Service;
 
 namespace WallpaperPatterns.PCL.Test
 {
@@ -10,7 +10,7 @@ namespace WallpaperPatterns.PCL.Test
         public void PatternsGetNewestTest()
         {
             var patterns = new PatternClient();
-            var result = patterns.GetNewest().Result;
+            var result = patterns.Newest().Result;
             Assert.IsTrue(result.Count > 0);
         }
     }
