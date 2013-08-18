@@ -1,21 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows.Input;
 using Cirrious.MvvmCross.ViewModels;
 using WallpaperPatterns.Core.PCL.Service;
 
 namespace WallpaperPatterns.Core.PCL.ViewModels
 {
-    public class PatternsViewModel : MvxViewModel
+    public class PatternSplitViewModel : MvxViewModel
     {
         private readonly IPatternClient _client;
         private List<Pattern> _patterns = new List<Pattern>();
         private int _selectedItemIndex;
+        private int _id;
 
-        public PatternsViewModel(IPatternClient client)
+        public PatternSplitViewModel(IPatternClient client)
         {
             _client = client;
             Load();
+        }
+
+        public void Init(int id)
+        {
+            _id = id;
         }
 
         public async void Load()
@@ -45,7 +50,7 @@ namespace WallpaperPatterns.Core.PCL.ViewModels
 
         private void DoNavigate(Pattern selectedItem)
         {
-            ShowViewModel<PatternSplitViewModel>(new { id = selectedItem.Id });
+            ShowViewModel<PatternViewModel>(new { id = selectedItem.Id });
         }
     }
 }

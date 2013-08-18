@@ -11,7 +11,7 @@ namespace WallpaperPatterns.Core.PCL
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
 				
-            RegisterAppStart<ViewModels.PatternsViewModel>();
+            RegisterAppStart<ViewModels.PatternGroupViewModel>();
         }
     }
 }

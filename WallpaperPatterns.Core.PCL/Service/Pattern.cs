@@ -20,5 +20,10 @@ namespace WallpaperPatterns.Core.PCL.Service
         public string ImageUrl { get; set; }
         public string BadgeUrl { get; set; }
         public string ApiUrl { get; set; }
+
+        public string ByUserName
+        {
+            get { return "By " + UserName; }
+        }
     }
 }

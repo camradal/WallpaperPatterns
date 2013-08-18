@@ -45,6 +45,8 @@
     <Compile Include="Service\Pattern.cs" />
     <Compile Include="Service\PatternClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\PatternGroupViewModel.cs" />
+    <Compile Include="ViewModels\PatternSplitViewModel.cs" />
     <Compile Include="ViewModels\PatternsViewModel.cs" />
     <Compile Include="ViewModels\PatternDetailViewModel.cs" />
     <Compile Include="ViewModels\PatternViewModel.cs" />
