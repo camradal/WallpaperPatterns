@@ -2,7 +2,7 @@
 using System.Windows.Input;
 using Cirrious.MvvmCross.ViewModels;
 
-namespace WallpaperPatterns.Core.PCL.ViewModels
+namespace WallpaperPatterns.Core.ViewModels
 {
     public class PatternGroup
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace WallpaperPatterns.Core.PCL.Service
+namespace WallpaperPatterns.Core.Service
 {
     public interface IPatternClient
     {

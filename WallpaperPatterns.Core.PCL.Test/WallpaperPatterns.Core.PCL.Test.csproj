@@ -51,13 +51,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WallpaperPatterns.Core.PCL\WallpaperPatterns.Core.PCL.csproj">
-      <Project>{ed006039-cae8-4844-be8f-9a4e61cbee82}</Project>
-      <Name>WallpaperPatterns.Core.PCL</Name>
-    </ProjectReference>
+    <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <ProjectReference Include="..\WallpaperPatterns.Core\WallpaperPatterns.Core.csproj">
+      <Project>{c10c544c-3c97-4041-b80f-d879ce61219f}</Project>
+      <Name>WallpaperPatterns.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

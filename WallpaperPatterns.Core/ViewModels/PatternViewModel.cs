@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Cirrious.MvvmCross.ViewModels;
-using WallpaperPatterns.Core.PCL.Service;
+using WallpaperPatterns.Core.Service;
 
-namespace WallpaperPatterns.Core.PCL.ViewModels
+namespace WallpaperPatterns.Core.ViewModels
 {
     public class PatternViewModel : MvxViewModel
     {

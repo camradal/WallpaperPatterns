@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 
-namespace WallpaperPatterns.Core.PCL.Service
+namespace WallpaperPatterns.Core.Service
 {
     public class PatternClient : IPatternClient
     {

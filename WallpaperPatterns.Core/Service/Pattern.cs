@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WallpaperPatterns.Core.PCL.Service
+namespace WallpaperPatterns.Core.Service
 {
     public class Pattern
     {

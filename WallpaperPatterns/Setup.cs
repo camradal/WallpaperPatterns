@@ -13,7 +13,7 @@ namespace WallpaperPatterns
 
         protected override IMvxApplication CreateApp()
         {
-            return new WallpaperPatterns.Core.PCL.App();
+            return new WallpaperPatterns.Core.App();
         }
 		
         protected override IMvxTrace CreateDebugTrace()

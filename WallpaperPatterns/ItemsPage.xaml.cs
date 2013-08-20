@@ -1,4 +1,4 @@
-﻿using WallpaperPatterns.Core.PCL;
+﻿using WallpaperPatterns.Core;
 using WallpaperPatterns.Data;
 
 using System;

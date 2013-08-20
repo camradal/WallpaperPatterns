@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using WallpaperPatterns.Core.PCL.Service;
+using WallpaperPatterns.Core.Service;
 
 namespace WallpaperPatterns.PCL.Test
 {

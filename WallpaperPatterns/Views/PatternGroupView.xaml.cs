@@ -12,7 +12,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 // The Items Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234233
-using WallpaperPatterns.Core.PCL.ViewModels;
+using WallpaperPatterns.Core.ViewModels;
 
 namespace WallpaperPatterns.Views
 {
