@@ -16,5 +16,15 @@ namespace WallpaperPatterns.WP7.Views
         {
             InitializeComponent();
         }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // TODO: dispatch command
+        }
+
+        private void NewListBox_Link(object sender, LinkUnlinkEventArgs e)
+        {
+            // TODO: load more
+        }
     }
 }
