@@ -21,7 +21,17 @@
         <DataTemplate x:Key="ItemTemplate">
             <StackPanel>
                 <TextBlock Text="{Binding Title}"></TextBlock>
-                <wp7:TileCanvas Height="100" Width="Auto" Margin="0,6,15,0" ImageSource="{Binding ImageUrl}"/>
+                <wp7:TileCanvas x:Name="TileCanvas" Height="100" Width="Auto" Margin="0,6,15,0" ImageSource="{Binding ImageUrl}" Opacity="0">
+                    <wp7:TileCanvas.Triggers>
+                        <EventTrigger RoutedEvent="Image.Loaded">
+                            <BeginStoryboard>
+                                <Storyboard x:Name="FadeIn">
+                                    <DoubleAnimation Storyboard.TargetName="TileCanvas" Storyboard.TargetProperty="Opacity" From="0.0" To="1.0" Duration="0:0:1" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </wp7:TileCanvas.Triggers>
+                </wp7:TileCanvas>
                 <toolkit:ContextMenuService.ContextMenu>
                     <toolkit:ContextMenu Name="mainMenu">
                         <!--<toolkit:MenuItem Header="share..." Click="MenuItem_OnClick"/>
