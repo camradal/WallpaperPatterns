@@ -9,6 +9,7 @@
     xmlns:views="clr-namespace:Cirrious.MvvmCross.WindowsPhone.Views;assembly=Cirrious.MvvmCross.WindowsPhone"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:wp7="clr-namespace:WallpaperPatterns.WP7"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -20,11 +21,7 @@
         <DataTemplate x:Key="ItemTemplate">
             <StackPanel>
                 <TextBlock Text="{Binding Title}"></TextBlock>
-                <Image Height="100" Width="Auto" Margin="0,6,15,0" Stretch="Fill" VerticalAlignment="Top">
-                    <Image.Source>
-                        <BitmapImage UriSource="{Binding ImageUrl}" CreateOptions="BackgroundCreation"/>
-                    </Image.Source>
-                </Image>
+                <wp7:TileCanvas Height="100" Width="Auto" Margin="0,6,15,0" ImageSource="{Binding ImageUrl}"/>
                 <toolkit:ContextMenuService.ContextMenu>
                     <toolkit:ContextMenu Name="mainMenu">
                         <!--<toolkit:MenuItem Header="share..." Click="MenuItem_OnClick"/>
