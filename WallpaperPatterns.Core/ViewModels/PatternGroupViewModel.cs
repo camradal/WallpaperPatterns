@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Input;
 using Cirrious.MvvmCross.ViewModels;
+using WallpaperPatterns.Core.Service;
 
 namespace WallpaperPatterns.Core.ViewModels
 {
@@ -12,7 +13,10 @@ namespace WallpaperPatterns.Core.ViewModels
 
     public class PatternGroupViewModel : MvxViewModel
     {
+        private readonly IPatternClient _client;
         private List<PatternGroup> _groups = new List<PatternGroup>();
+        private List<Pattern> _newest = new List<Pattern>();
+        private List<Pattern> _top = new List<Pattern>();
 
         public List<PatternGroup> Groups
         {
@@ -20,17 +24,32 @@ namespace WallpaperPatterns.Core.ViewModels
             set { _groups = value; RaisePropertyChanged(() => Groups); }
         }
 
-        public PatternGroupViewModel()
+        public List<Pattern> Newest
         {
+            get { return _newest; }
+            set { _newest = value; RaisePropertyChanged(() => Newest); }
+        }
+
+        public List<Pattern> Top
+        {
+            get { return _top; }
+            set { _top = value; RaisePropertyChanged(() => Top); }
+        }
+
+        public PatternGroupViewModel(IPatternClient client)
+        {
+            _client = client;
             Load();
         }
 
-        private void Load()
+        private async void Load()
         {
             _groups.Add(new PatternGroup { Id = 1, Title = "Newest" });
             _groups.Add(new PatternGroup { Id = 2, Title = "Top" });
-            _groups.Add(new PatternGroup { Id = 3, Title = "Random" });
-            _groups.Add(new PatternGroup { Id = 4, Title = "Popular" });
+            _groups.Add(new PatternGroup { Id = 2, Title = "Favorites" });
+
+            Newest = await _client.Newest();
+            Top = await _client.Top();
         }
 
         public ICommand NavigateToSplitViewCommand

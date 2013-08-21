@@ -20,7 +20,7 @@
         <DataTemplate x:Key="ItemTemplate">
             <StackPanel>
                 <TextBlock Text="{Binding Title}"></TextBlock>
-                <Image Margin="0,6,15,0" Stretch="Uniform" VerticalAlignment="Top">
+                <Image Height="100" Width="Auto" Margin="0,6,15,0" Stretch="Fill" VerticalAlignment="Top">
                     <Image.Source>
                         <BitmapImage UriSource="{Binding ImageUrl}" CreateOptions="BackgroundCreation"/>
                     </Image.Source>
@@ -46,10 +46,32 @@
             Title="{Binding Source={StaticResource Strings}, Path=Resources.AppTitleCapitalized}">
             <controls:PivotItem Header="new">
                 <toolkit:LongListSelector
-                    x:Name="AllListBox"
+                    x:Name="NewListBox"
                     IsFlatList="True" 
                     Margin="0,0,-12,0"
-                    ItemsSource="{Binding Groups}"
+                    ItemsSource="{Binding Newest}"
+                    ItemTemplate="{StaticResource ItemTemplate}"
+                    Link="NewListBox_Link"
+                    SelectionChanged="ListBox_SelectionChanged">
+                </toolkit:LongListSelector>
+            </controls:PivotItem>
+            <controls:PivotItem Header="top">
+                <toolkit:LongListSelector
+                    x:Name="TopListBox"
+                    IsFlatList="True" 
+                    Margin="0,0,-12,0"
+                    ItemsSource="{Binding Top}"
+                    ItemTemplate="{StaticResource ItemTemplate}"
+                    Link="NewListBox_Link"
+                    SelectionChanged="ListBox_SelectionChanged">
+                </toolkit:LongListSelector>
+            </controls:PivotItem>
+            <controls:PivotItem Header="favorites">
+                <toolkit:LongListSelector
+                    x:Name="FavoritesListBox"
+                    IsFlatList="True" 
+                    Margin="0,0,-12,0"
+                    ItemsSource="{Binding Favorites}"
                     ItemTemplate="{StaticResource ItemTemplate}"
                     Link="NewListBox_Link"
                     SelectionChanged="ListBox_SelectionChanged">
