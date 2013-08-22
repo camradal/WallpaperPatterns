@@ -43,7 +43,7 @@ namespace WallpaperPatterns.Views
 
         private void ItemView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            ((PatternGroupViewModel)ViewModel).NavigateToSplitViewCommand.Execute(e.ClickedItem);
+            ((PatternGroupViewModel)ViewModel).NavigateToDetail.Execute(e.ClickedItem);
         }
     }
 }

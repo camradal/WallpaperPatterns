@@ -7,6 +7,8 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using WallpaperPatterns.Core.Service;
+using WallpaperPatterns.Core.ViewModels;
 
 namespace WallpaperPatterns.WP7.Views
 {
@@ -19,7 +21,11 @@ namespace WallpaperPatterns.WP7.Views
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // TODO: dispatch command
+            var selectedItem = NewListBox.SelectedItem as Pattern;
+            if (selectedItem == null)
+                return;
+
+            ((PatternGroupViewModel)ViewModel).NavigateToDetail.Execute(selectedItem);
         }
 
         private void NewListBox_Link(object sender, LinkUnlinkEventArgs e)

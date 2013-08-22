@@ -52,17 +52,17 @@ namespace WallpaperPatterns.Core.ViewModels
             Top = await _client.Top();
         }
 
-        public ICommand NavigateToSplitViewCommand
+        public ICommand NavigateToDetail
         {
             get
             {
-                return new MvxCommand<PatternGroup>(DoNavigate);
+                return new MvxCommand<Pattern>(DoNavigate);
             }
         }
 
-        private void DoNavigate(PatternGroup selectedItem)
+        private void DoNavigate(Pattern selectedItem)
         {
-            ShowViewModel<PatternSplitViewModel>(new { id = selectedItem.Id });
+            ShowViewModel<PatternDetailViewModel>(new { id = selectedItem.Id });
         }
     }
 }

@@ -101,6 +101,9 @@
       <DependentUpon>PatternGroupView.xaml</DependentUpon>
     </Compile>
     <Compile Include="TileCanvas.cs" />
+    <Compile Include="Views\PatternDetailView.xaml.cs">
+      <DependentUpon>PatternDetailView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -121,6 +124,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\PatternGroupView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PatternDetailView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
