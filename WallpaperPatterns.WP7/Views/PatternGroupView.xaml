@@ -19,26 +19,19 @@
 
     <phone:PhoneApplicationPage.Resources>
         <DataTemplate x:Key="ItemTemplate">
-            <StackPanel>
-                <TextBlock Text="{Binding Title}"></TextBlock>
-                <wp7:TileCanvas x:Name="TileCanvas" Height="100" Width="Auto" Margin="0,6,15,0" ImageSource="{Binding ImageUrl}" Opacity="0">
-                    <wp7:TileCanvas.Triggers>
-                        <EventTrigger RoutedEvent="Image.Loaded">
-                            <BeginStoryboard>
-                                <Storyboard x:Name="FadeIn">
-                                    <DoubleAnimation Storyboard.TargetName="TileCanvas" Storyboard.TargetProperty="Opacity" From="0.0" To="1.0" Duration="0:0:1" />
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-                    </wp7:TileCanvas.Triggers>
-                </wp7:TileCanvas>
-                <toolkit:ContextMenuService.ContextMenu>
-                    <toolkit:ContextMenu Name="mainMenu">
-                        <!--<toolkit:MenuItem Header="share..." Click="MenuItem_OnClick"/>
-                        <toolkit:MenuItem Header="add to favorites" Click="MenuItem_OnClick"/>-->
-                    </toolkit:ContextMenu>
-                </toolkit:ContextMenuService.ContextMenu>
-            </StackPanel>
+            <wp7:TileCanvas x:Name="TileCanvas" Height="160" Width="Auto" Margin="12,0,12,12" ImageSource="{Binding ImageUrl}" Opacity="0">
+                <wp7:TileCanvas.Resources>
+                    <Storyboard x:Name="FadeIn">
+                        <DoubleAnimation Storyboard.TargetName="TileCanvas" Storyboard.TargetProperty="Opacity" From="0.0" To="1.0" Duration="0:0:1" />
+                    </Storyboard>
+                </wp7:TileCanvas.Resources>
+            </wp7:TileCanvas>
+            <toolkit:ContextMenuService.ContextMenu>
+                <toolkit:ContextMenu Name="mainMenu">
+                    <!--<toolkit:MenuItem Header="share..." Click="MenuItem_OnClick"/>
+                    <toolkit:MenuItem Header="add to favorites" Click="MenuItem_OnClick"/>-->
+                </toolkit:ContextMenu>
+            </toolkit:ContextMenuService.ContextMenu>
         </DataTemplate>
     </phone:PhoneApplicationPage.Resources>
 
@@ -55,7 +48,6 @@
                 <toolkit:LongListSelector
                     x:Name="NewListBox"
                     IsFlatList="True" 
-                    Margin="0,0,-12,0"
                     ItemsSource="{Binding Newest}"
                     ItemTemplate="{StaticResource ItemTemplate}"
                     Link="NewListBox_Link"
@@ -66,7 +58,6 @@
                 <toolkit:LongListSelector
                     x:Name="TopListBox"
                     IsFlatList="True" 
-                    Margin="0,0,-12,0"
                     ItemsSource="{Binding Top}"
                     ItemTemplate="{StaticResource ItemTemplate}"
                     Link="NewListBox_Link"
@@ -77,7 +68,6 @@
                 <toolkit:LongListSelector
                     x:Name="FavoritesListBox"
                     IsFlatList="True" 
-                    Margin="0,0,-12,0"
                     ItemsSource="{Binding Favorites}"
                     ItemTemplate="{StaticResource ItemTemplate}"
                     Link="NewListBox_Link"
