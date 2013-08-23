@@ -22,6 +22,7 @@ namespace WallpaperPatterns.WP7
             var src = self.ImageSource;
             if (src != null)
             {
+                self.Children.Clear();
                 self.Opacity = 0;
                 var image = new Image { Source = src };
                 image.ImageOpened += self.ImageOnImageOpened;
