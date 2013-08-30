@@ -21,7 +21,8 @@ namespace WallpaperPatterns.WP7.Views
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selectedItem = NewListBox.SelectedItem as Pattern;
+            var listBox = (LongListSelector)sender;
+            var selectedItem = listBox.SelectedItem as Pattern;
             if (selectedItem == null)
                 return;
 
