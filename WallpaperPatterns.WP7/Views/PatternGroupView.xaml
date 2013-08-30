@@ -68,6 +68,7 @@
                 <toolkit:LongListSelector
                     x:Name="FavoritesListBox"
                     IsFlatList="True" 
+                    DataContext="{Binding Favorites}"
                     ItemsSource="{Binding Favorites}"
                     ItemTemplate="{StaticResource ItemTemplate}"
                     Link="NewListBox_Link"

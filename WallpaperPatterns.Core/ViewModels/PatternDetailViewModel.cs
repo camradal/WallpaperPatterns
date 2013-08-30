@@ -1,4 +1,5 @@
-﻿using Cirrious.MvvmCross.ViewModels;
+﻿using System.Windows.Input;
+using Cirrious.MvvmCross.ViewModels;
 using WallpaperPatterns.Core.Service;
 
 namespace WallpaperPatterns.Core.ViewModels
@@ -6,7 +7,9 @@ namespace WallpaperPatterns.Core.ViewModels
     public class PatternDetailViewModel : MvxViewModel
     {
         private readonly IPatternClient _client;
+        private readonly IFavoritesService _favoritesService;
 
+        private Pattern _pattern;
         private string _title;
         private string _byUserName;
         private string _imageUrl;
@@ -29,9 +32,10 @@ namespace WallpaperPatterns.Core.ViewModels
             set { _imageUrl = value; RaisePropertyChanged(() => ImageUrl); }
         }
 
-        public PatternDetailViewModel(IPatternClient client)
+        public PatternDetailViewModel(IPatternClient client, IFavoritesService favoritesService)
         {
             _client = client;
+            _favoritesService = favoritesService;
         }
 
         public void Init(int id)
@@ -41,16 +45,24 @@ namespace WallpaperPatterns.Core.ViewModels
 
         public async void Load(int id)
         {
-            Pattern pattern = await _client.Get(id);
-            if (pattern != null)
+            _pattern = await _client.Get(id);
+            if (_pattern != null)
             {
-                Title = pattern.Title;
-                ByUserName = pattern.ByUserName;
-                ImageUrl = pattern.ImageUrl;
+                Title = _pattern.Title;
+                ByUserName = _pattern.ByUserName;
+                ImageUrl = _pattern.ImageUrl;
             }
             else
             {
                 // TODO: error?
+            }
+        }
+
+        public ICommand AddFavorite
+        {
+            get
+            {
+                return new MvxCommand(() => _favoritesService.Insert(_pattern));
             }
         }
     }

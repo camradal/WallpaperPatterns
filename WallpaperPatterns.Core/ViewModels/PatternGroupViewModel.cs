@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Input;
+using Cirrious.MvvmCross.Plugins.Messenger;
 using Cirrious.MvvmCross.ViewModels;
 using WallpaperPatterns.Core.Service;
 
@@ -14,9 +16,11 @@ namespace WallpaperPatterns.Core.ViewModels
     public class PatternGroupViewModel : MvxViewModel
     {
         private readonly IPatternClient _client;
+        private readonly IFavoritesService _favoritesService;
         private List<PatternGroup> _groups = new List<PatternGroup>();
         private List<Pattern> _newest = new List<Pattern>();
         private List<Pattern> _top = new List<Pattern>();
+        private List<Pattern> _favorites = new List<Pattern>();
 
         public List<PatternGroup> Groups
         {
@@ -36,10 +40,14 @@ namespace WallpaperPatterns.Core.ViewModels
             set { _top = value; RaisePropertyChanged(() => Top); }
         }
 
-        public PatternGroupViewModel(IPatternClient client)
+        public FavoritesViewModel Favorites { get; private set; }
+
+        public PatternGroupViewModel(IPatternClient client, IFavoritesService favoritesService, IMvxMessenger messenger)
         {
             _client = client;
+            _favoritesService = favoritesService;
             Load();
+            Favorites = new FavoritesViewModel(favoritesService, messenger);
         }
 
         private async void Load()

@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:wp7="clr-namespace:WallpaperPatterns.WP7"
     xmlns:views="clr-namespace:Cirrious.MvvmCross.WindowsPhone.Views;assembly=Cirrious.MvvmCross.WindowsPhone"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -38,5 +39,15 @@
             </wp7:TileCanvas>
         </Grid>
     </Grid>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/icons/appbar.share.rest.png" Text="share" Click="ApplicationBarIconButton_Click_Share"/>
+            <shell:ApplicationBarIconButton IconUri="/icons/appbar.favs.addto.rest.png" Text="favorite" Click="ApplicationBarIconButton_Click_Favorite"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="open in internet explorer..." Click="ApplicationBarMenuItem_OnClick_OpenInIE"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
 
 </views:MvxPhonePage>
