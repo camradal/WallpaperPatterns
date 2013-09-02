@@ -8,6 +8,7 @@ namespace WallpaperPatterns.Core.ViewModels
     {
         private readonly IPatternClient _client;
         private readonly IFavoritesService _favoritesService;
+        private readonly IImageService _imageService;
 
         private Pattern _pattern;
         private string _title;
@@ -32,10 +33,11 @@ namespace WallpaperPatterns.Core.ViewModels
             set { _imageUrl = value; RaisePropertyChanged(() => ImageUrl); }
         }
 
-        public PatternDetailViewModel(IPatternClient client, IFavoritesService favoritesService)
+        public PatternDetailViewModel(IPatternClient client, IFavoritesService favoritesService, IImageService imageService)
         {
             _client = client;
             _favoritesService = favoritesService;
+            _imageService = imageService;
         }
 
         public void Init(int id)
@@ -63,6 +65,14 @@ namespace WallpaperPatterns.Core.ViewModels
             get
             {
                 return new MvxCommand(() => _favoritesService.Insert(_pattern));
+            }
+        }
+        
+        public ICommand Download
+        {
+            get
+            {
+                return new MvxCommand(() => _imageService.Save("picture.jpg", new byte[] {}));
             }
         }
     }
