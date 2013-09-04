@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Input;
 using Cirrious.MvvmCross.Plugins.Messenger;
 using Cirrious.MvvmCross.ViewModels;
@@ -15,12 +14,7 @@ namespace WallpaperPatterns.Core.ViewModels
 
     public class PatternGroupViewModel : MvxViewModel
     {
-        private readonly IPatternClient _client;
-        private readonly IFavoritesService _favoritesService;
         private List<PatternGroup> _groups = new List<PatternGroup>();
-        private List<Pattern> _newest = new List<Pattern>();
-        private List<Pattern> _top = new List<Pattern>();
-        private List<Pattern> _favorites = new List<Pattern>();
 
         public List<PatternGroup> Groups
         {
@@ -28,36 +22,23 @@ namespace WallpaperPatterns.Core.ViewModels
             set { _groups = value; RaisePropertyChanged(() => Groups); }
         }
 
-        public List<Pattern> Newest
-        {
-            get { return _newest; }
-            set { _newest = value; RaisePropertyChanged(() => Newest); }
-        }
-
-        public List<Pattern> Top
-        {
-            get { return _top; }
-            set { _top = value; RaisePropertyChanged(() => Top); }
-        }
-
+        public NewestViewModel Newest { get; private set; }
+        public TopViewModel Top { get; private set; }
         public FavoritesViewModel Favorites { get; private set; }
 
         public PatternGroupViewModel(IPatternClient client, IFavoritesService favoritesService, IMvxMessenger messenger)
         {
-            _client = client;
-            _favoritesService = favoritesService;
-            Load();
+            Newest = new NewestViewModel(client, messenger);
+            Top = new TopViewModel(client, messenger);
             Favorites = new FavoritesViewModel(favoritesService, messenger);
+            
+            _groups.Add(new PatternGroup { Id = 1, Title = "Newest" });
+            _groups.Add(new PatternGroup { Id = 2, Title = "Top" });
+            _groups.Add(new PatternGroup { Id = 2, Title = "Favorites" });
         }
 
         private async void Load()
         {
-            _groups.Add(new PatternGroup { Id = 1, Title = "Newest" });
-            _groups.Add(new PatternGroup { Id = 2, Title = "Top" });
-            _groups.Add(new PatternGroup { Id = 2, Title = "Favorites" });
-
-            Newest = await _client.Newest();
-            Top = await _client.Top();
         }
 
         public ICommand NavigateToDetail

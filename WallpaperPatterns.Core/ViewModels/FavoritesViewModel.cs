@@ -7,18 +7,17 @@ using WallpaperPatterns.Core.Messages;
 using WallpaperPatterns.Core.Service;
 
 namespace WallpaperPatterns.Core.ViewModels
-
 {
     public class FavoritesViewModel: MvxViewModel
     {
         private readonly MvxSubscriptionToken _token;
         private readonly IFavoritesService _favoritesService;
-        private ObservableCollection<Pattern> _favorites = new ObservableCollection<Pattern>();
+        private ObservableCollection<Pattern> _items = new ObservableCollection<Pattern>();
 
-        public ObservableCollection<Pattern> Favorites
+        public ObservableCollection<Pattern> Items
         {
-            get { return _favorites; }
-            set { _favorites = value; RaisePropertyChanged(() => Favorites); }
+            get { return _items; }
+            set { _items = value; RaisePropertyChanged(() => Items); }
         }
         
         public FavoritesViewModel(IFavoritesService favoritesService, IMvxMessenger messenger)
@@ -26,21 +25,21 @@ namespace WallpaperPatterns.Core.ViewModels
             _favoritesService = favoritesService;
             _token = messenger.Subscribe<FavoritesChangedMessage>(ServiceOnFavoritesSessionsChanged);
 
-            PopulateFavorites();
+            Load();
         }
 
         private void ServiceOnFavoritesSessionsChanged(FavoritesChangedMessage message)
         {
-            Favorites.Clear();
-            PopulateFavorites();
+            Items.Clear();
+            Load();
         }
 
-        private void PopulateFavorites()
+        private void Load()
         {
             List<Pattern> favorites = _favoritesService.All();
             foreach (var favorite in favorites)
             {
-                Favorites.Add(favorite);
+                Items.Add(favorite);
             }
         }
 

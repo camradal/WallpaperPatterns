@@ -48,7 +48,8 @@
                 <toolkit:LongListSelector
                     x:Name="NewListBox"
                     IsFlatList="True" 
-                    ItemsSource="{Binding Newest}"
+                    DataContext="{Binding Newest}"
+                    ItemsSource="{Binding Items}"
                     ItemTemplate="{StaticResource ItemTemplate}"
                     Link="NewListBox_Link"
                     SelectionChanged="ListBox_SelectionChanged">
@@ -58,7 +59,8 @@
                 <toolkit:LongListSelector
                     x:Name="TopListBox"
                     IsFlatList="True" 
-                    ItemsSource="{Binding Top}"
+                    DataContext="{Binding Top}"
+                    ItemsSource="{Binding Items}"
                     ItemTemplate="{StaticResource ItemTemplate}"
                     Link="NewListBox_Link"
                     SelectionChanged="ListBox_SelectionChanged">
@@ -69,7 +71,7 @@
                     x:Name="FavoritesListBox"
                     IsFlatList="True" 
                     DataContext="{Binding Favorites}"
-                    ItemsSource="{Binding Favorites}"
+                    ItemsSource="{Binding Items}"
                     ItemTemplate="{StaticResource ItemTemplate}"
                     Link="NewListBox_Link"
                     SelectionChanged="ListBox_SelectionChanged">

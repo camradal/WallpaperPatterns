@@ -56,11 +56,13 @@
     <Compile Include="Service\PatternClient.cs" />
     <Compile Include="Trace.cs" />
     <Compile Include="ViewModels\FavoritesViewModel.cs" />
+    <Compile Include="ViewModels\NewestViewModel.cs" />
     <Compile Include="ViewModels\PatternDetailViewModel.cs" />
     <Compile Include="ViewModels\PatternGroupViewModel.cs" />
     <Compile Include="ViewModels\PatternSplitViewModel.cs" />
     <Compile Include="ViewModels\PatternsViewModel.cs" />
     <Compile Include="ViewModels\PatternViewModel.cs" />
+    <Compile Include="ViewModels\TopViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Cirrious.CrossCore">
