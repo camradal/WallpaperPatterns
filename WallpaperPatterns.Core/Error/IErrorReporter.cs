@@ -1,7 +1,9 @@
-﻿namespace WallpaperPatterns.Core.Error
+﻿using System;
+
+namespace WallpaperPatterns.Core.Error
 {
     public interface IErrorReporter
     {
-        void ReportError(string error);
+        void ReportError(string error, Exception exception);
     }
 }

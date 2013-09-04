@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Cirrious.CrossCore;
 using Newtonsoft.Json.Linq;
+using WallpaperPatterns.Core.Error;
 
 namespace WallpaperPatterns.Core.Service
 {
@@ -46,12 +49,20 @@ namespace WallpaperPatterns.Core.Service
 
         private async Task<List<Pattern>> Load(string baseUrl, int offset)
         {
-            var url = BuildUrl(baseUrl, 0);
-            var client = new HttpClient();
-            string result = await client.GetStringAsync(url);
-            JArray items = JArray.Parse(result);
-            List<Pattern> patterns = items.Select(item => item.ToObject<Pattern>()).ToList();
-            return patterns;
+            try
+            {
+                var url = BuildUrl(baseUrl, 0);
+                var client = new HttpClient();
+                string result = await client.GetStringAsync(url);
+                JArray items = JArray.Parse(result);
+                List<Pattern> patterns = items.Select(item => item.ToObject<Pattern>()).ToList();
+                return patterns;
+            }
+            catch (Exception e)
+            {
+                Mvx.Resolve<IErrorReporter>().ReportError("Could not load patterns", e);
+            }
+            return new List<Pattern>();
         }
     }
 }

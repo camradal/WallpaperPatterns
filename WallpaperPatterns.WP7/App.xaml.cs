@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
+﻿using System.Windows;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Cirrious.CrossCore;
+using WallpaperPatterns.Core.Error;
 
 namespace WallpaperPatterns.WP7
 {
@@ -59,6 +51,16 @@ namespace WallpaperPatterns.WP7
 
             var setup = new Setup(RootFrame);
             setup.Initialize();
+
+            var errorHandler = Mvx.Resolve<IErrorSource>();
+            errorHandler.ErrorReported += ErrorHandlerOnErrorReported;
+        }
+
+        private void ErrorHandlerOnErrorReported(object sender, ErrorEventArgs errorEventArgs)
+        {
+            // TODO: log this error
+            var ex = errorEventArgs.Exception;
+            MessageBox.Show(errorEventArgs.Message, "Sorry!", MessageBoxButton.OK);
         }
 
         // Code to execute when the application is launching (eg, from Start)
@@ -72,7 +74,7 @@ namespace WallpaperPatterns.WP7
         {
             args.Cancel = true;
             RootFrame.Navigating -= RootFrameOnNavigating;
-            RootFrame.Dispatcher.BeginInvoke(() => { Cirrious.CrossCore.Mvx.Resolve<Cirrious.MvvmCross.ViewModels.IMvxAppStart>().Start(); });
+            RootFrame.Dispatcher.BeginInvoke(() => { Mvx.Resolve<Cirrious.MvvmCross.ViewModels.IMvxAppStart>().Start(); });
         }
 
         // Code to execute when the application is activated (brought to foreground)

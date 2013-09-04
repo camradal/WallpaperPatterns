@@ -8,7 +8,7 @@ namespace WallpaperPatterns.Core.Error
             , IErrorReporter
             , IErrorSource
     {
-        public void ReportError(string error)
+        public void ReportError(string error, Exception exception)
         {
             if (ErrorReported == null)
                 return;
@@ -17,7 +17,7 @@ namespace WallpaperPatterns.Core.Error
             {
                 EventHandler<ErrorEventArgs> handler = ErrorReported;
                 if (handler != null)
-                    handler(this, new ErrorEventArgs(error));
+                    handler(this, new ErrorEventArgs(error, exception));
             });
         }
 
