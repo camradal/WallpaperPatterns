@@ -31,7 +31,7 @@
         <Hub Header="{StaticResource AppName}">
             <HubSection Width="780">
                 <HubSection.Background>
-                    <SolidColorBrush Color="Gray"/>
+                    <ImageBrush ImageSource="{Binding HighlightPattern.ImageUrl}"></ImageBrush>
                 </HubSection.Background>
             </HubSection>
 

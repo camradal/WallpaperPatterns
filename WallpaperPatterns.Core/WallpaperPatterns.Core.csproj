@@ -46,6 +46,7 @@
     <Compile Include="Error\IErrorReporter.cs" />
     <Compile Include="Error\IErrorSource.cs" />
     <Compile Include="Messages\FavoritesChangedMessage.cs" />
+    <Compile Include="Messages\HighlightChangedMessage.cs" />
     <Compile Include="Messages\LoadingChangedMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\FavoritesService.cs" />

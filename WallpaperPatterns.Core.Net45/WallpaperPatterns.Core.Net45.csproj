@@ -56,6 +56,9 @@
     <Compile Include="..\WallpaperPatterns.Core\Messages\FavoritesChangedMessage.cs">
       <Link>Messages\FavoritesChangedMessage.cs</Link>
     </Compile>
+    <Compile Include="..\WallpaperPatterns.Core\Messages\HighlightChangedMessage.cs">
+      <Link>Messages\HighlightChangedMessage.cs</Link>
+    </Compile>
     <Compile Include="..\WallpaperPatterns.Core\Messages\LoadingChangedMessage.cs">
       <Link>Messages\LoadingChangedMessage.cs</Link>
     </Compile>
