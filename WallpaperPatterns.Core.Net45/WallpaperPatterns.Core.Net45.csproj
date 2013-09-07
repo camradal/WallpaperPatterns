@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9FA864B4-5BEF-4099-B4AA-8F0B30732800}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WallpaperPatterns.Core.Net45</RootNamespace>
+    <AssemblyName>WallpaperPatterns.Core.Net45</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\WallpaperPatterns.Core\App.cs">
+      <Link>App.cs</Link>
+    </Compile>
+    <Compile Include="..\WallpaperPatterns.Core\Constants.cs">
+      <Link>Constants.cs</Link>
+    </Compile>
+    <Compile Include="..\WallpaperPatterns.Core\Error\ErrorApplicationObject.cs">
+      <Link>Error\ErrorApplicationObject.cs</Link>
+    </Compile>
+    <Compile Include="..\WallpaperPatterns.Core\Error\ErrorEventArgs.cs">
+      <Link>Error\ErrorEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\WallpaperPatterns.Core\Error\IErrorReporter.cs">
+      <Link>Error\IErrorReporter.cs</Link>
+    </Compile>
+    <Compile Include="..\WallpaperPatterns.Core\Error\IErrorSource.cs">
+      <Link>Error\IErrorSource.cs</Link>
+    </Compile>
+    <Compile Include="..\WallpaperPatterns.Core\Messages\FavoritesChangedMessage.cs">
+      <Link>Messages\FavoritesChangedMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\WallpaperPatterns.Core\Messages\LoadingChangedMessage.cs">
+      <Link>Messages\LoadingChangedMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\WallpaperPatterns.Core\Service\FavoritesService.cs">
+      <Link>Service\FavoritesService.cs</Link>
+    </Compile>
+    <Compile Include="..\WallpaperPatterns.Core\Service\IFavoritesService.cs">
+      <Link>Service\IFavoritesService.cs</Link>
+    </Compile>
+    <Compile Include="..\WallpaperPatterns.Core\Service\ImageService.cs">
+      <Link>Service\ImageService.cs</Link>
+    </Compile>
+    <Compile Include="..\WallpaperPatterns.Core\Service\IPatternClient.cs">
+      <Link>Service\IPatternClient.cs</Link>
+    </Compile>
+    <Compile Include="..\WallpaperPatterns.Core\Service\Pattern.cs">
+      <Link>Service\Pattern.cs</Link>
+    </Compile>
+    <Compile Include="..\WallpaperPatterns.Core\Service\PatternClient.cs">
+      <Link>Service\PatternClient.cs</Link>
+    </Compile>
+    <Compile Include="..\WallpaperPatterns.Core\Trace.cs">
+      <Link>Trace.cs</Link>
+    </Compile>
+    <Compile Include="..\WallpaperPatterns.Core\ViewModels\FavoritesViewModel.cs">
+      <Link>ViewModels\FavoritesViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\WallpaperPatterns.Core\ViewModels\NewestViewModel.cs">
+      <Link>ViewModels\NewestViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\WallpaperPatterns.Core\ViewModels\PatternDetailViewModel.cs">
+      <Link>ViewModels\PatternDetailViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\WallpaperPatterns.Core\ViewModels\PatternGroupViewModel.cs">
+      <Link>ViewModels\PatternGroupViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\WallpaperPatterns.Core\ViewModels\PatternSplitViewModel.cs">
+      <Link>ViewModels\PatternSplitViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\WallpaperPatterns.Core\ViewModels\PatternsViewModel.cs">
+      <Link>ViewModels\PatternsViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\WallpaperPatterns.Core\ViewModels\PatternViewModel.cs">
+      <Link>ViewModels\PatternViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\WallpaperPatterns.Core\ViewModels\TopViewModel.cs">
+      <Link>ViewModels\TopViewModel.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Cirrious.CrossCore">
+      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.0.10\lib\portable-win+net45+MonoAndroid16+MonoTouch40+sl40+wp71\Cirrious.CrossCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross">
+      <HintPath>..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.0.10\lib\portable-win+net45+MonoAndroid16+MonoTouch40+sl40+wp71\Cirrious.MvvmCross.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Localization">
+      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.0.10\lib\portable-win+net45+MonoAndroid16+MonoTouch40+sl40+wp71\Cirrious.MvvmCross.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Plugins.File">
+      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.File.3.0.10\lib\portable-win+net45+MonoAndroid16+MonoTouch40+sl40+wp71\Cirrious.MvvmCross.Plugins.File.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Plugins.Messenger">
+      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.Messenger.3.0.10\lib\portable-win+net45+MonoAndroid16+MonoTouch40+sl40+wp71\Cirrious.MvvmCross.Plugins.Messenger.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\portable-net45+wp80+win8\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.13\lib\portable-net40+sl4+win8+wp71\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.13\lib\portable-net40+sl4+win8+wp71\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.13\lib\portable-net40+sl4+win8+wp71\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
