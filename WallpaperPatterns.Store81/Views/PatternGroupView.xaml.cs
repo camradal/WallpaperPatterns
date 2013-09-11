@@ -57,5 +57,12 @@ namespace WallpaperPatterns.Store81.Views
         {
             // TODO: Assign a collection of bindable groups to this.DefaultViewModel["Groups"]
         }
+
+        private void Grid_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            var grid = (Grid)sender;
+            grid.Height = HighlightHubSection.ActualHeight;
+            grid.Width = HighlightHubSection.ActualWidth;
+        }
     }
 }

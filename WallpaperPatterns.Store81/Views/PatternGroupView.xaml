@@ -29,10 +29,12 @@
         </Grid.ChildrenTransitions>
         
         <Hub Header="{StaticResource AppName}">
-            <HubSection Width="780">
-                <HubSection.Background>
-                    <ImageBrush ImageSource="{Binding HighlightPattern.ImageUrl}"></ImageBrush>
-                </HubSection.Background>
+            <HubSection x:Name="HighlightHubSection" Width="780" Padding="0" Margin="0">
+                <DataTemplate>
+                    <Grid x:Name="HighlightContainerGrid" Loaded="Grid_OnLoaded" Margin="0,-115,0,0">
+                        <store81:TileCanvas ImageSource="{Binding HighlightPattern.ImageUrl}"/>
+                    </Grid>
+                </DataTemplate>
             </HubSection>
 
             <HubSection x:Uid="NewestHeader" DataContext="{Binding Newest}" Header="Top" Width="420">
