@@ -13,7 +13,13 @@
         <x:String x:Key="AppName">Wallpaper Patterns</x:String>
         <DataTemplate x:Key="Standard420x130ItemTemplate">
             <Grid Height="140" Width="420" Margin="10">
-                <store81:TileCanvas ImageSource="{Binding ImageUrl}"/>
+                <store81:TileCanvas x:Name="TileCanvas" ImageSource="{Binding ImageUrl}">
+                    <store81:TileCanvas.Resources>
+                        <Storyboard x:Name="FadeIn">
+                            <DoubleAnimation From="0" To="1" Storyboard.TargetName="TileCanvas" Storyboard.TargetProperty="Opacity" Duration="0:0:0.6" />
+                        </Storyboard>
+                    </store81:TileCanvas.Resources>
+                </store81:TileCanvas>
             </Grid>
         </DataTemplate>
     </Page.Resources>
@@ -24,15 +30,20 @@
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ChildrenTransitions>
             <TransitionCollection>
-                <EntranceThemeTransition/>
             </TransitionCollection>
         </Grid.ChildrenTransitions>
-        
+
         <Hub Header="{StaticResource AppName}">
             <HubSection x:Name="HighlightHubSection" Width="780" Padding="0" Margin="0">
                 <DataTemplate>
                     <Grid x:Name="HighlightContainerGrid" Loaded="Grid_OnLoaded" Margin="0,-115,0,0">
-                        <store81:TileCanvas ImageSource="{Binding HighlightPattern.ImageUrl}"/>
+                        <store81:TileCanvas x:Name="TileCanvas" ImageSource="{Binding HighlightPattern.ImageUrl}">
+                            <store81:TileCanvas.Resources>
+                                <Storyboard x:Name="FadeInLarge">
+                                    <DoubleAnimation From="0" To="1" Storyboard.TargetName="TileCanvas" Storyboard.TargetProperty="Opacity" Duration="0:0:0.6" />
+                                </Storyboard>
+                            </store81:TileCanvas.Resources>
+                        </store81:TileCanvas>
                     </Grid>
                 </DataTemplate>
             </HubSection>
@@ -64,7 +75,11 @@
                         SelectionMode="None">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <ItemsWrapGrid />
+                                <ItemsWrapGrid>
+                                    <ItemsWrapGrid.ChildrenTransitions>
+                                        <TransitionCollection/>
+                                    </ItemsWrapGrid.ChildrenTransitions>
+                                </ItemsWrapGrid>
                             </ItemsPanelTemplate>
                         </ListView.ItemsPanel>
                     </ListView>
@@ -97,7 +112,11 @@
                         SelectionMode="None">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <ItemsWrapGrid />
+                                <ItemsWrapGrid>
+                                    <ItemsWrapGrid.ChildrenTransitions>
+                                        <TransitionCollection/>
+                                    </ItemsWrapGrid.ChildrenTransitions>
+                                </ItemsWrapGrid>
                             </ItemsPanelTemplate>
                         </ListView.ItemsPanel>
                     </ListView>
@@ -130,7 +149,11 @@
                         SelectionMode="None">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <ItemsWrapGrid />
+                                <ItemsWrapGrid>
+                                    <ItemsWrapGrid.ChildrenTransitions>
+                                        <TransitionCollection/>
+                                    </ItemsWrapGrid.ChildrenTransitions>
+                                </ItemsWrapGrid>
                             </ItemsPanelTemplate>
                         </ListView.ItemsPanel>
                     </ListView>

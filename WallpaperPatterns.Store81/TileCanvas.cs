@@ -3,6 +3,7 @@ using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Media.Imaging;
 
 namespace WallpaperPatterns.Store81
@@ -52,6 +53,8 @@ namespace WallpaperPatterns.Store81
 
         private void Rebuild()
         {
+            Children.Clear();
+
             var bmp = ImageSource as BitmapSource;
             if (bmp == null)
             {
@@ -77,7 +80,24 @@ namespace WallpaperPatterns.Store81
                 }
             }
             Clip = new RectangleGeometry { Rect = new Rect(0, 0, ActualWidth, ActualHeight) };
-            Opacity = 1;
+
+            if (this.Resources.ContainsKey("FadeIn"))
+            {
+                var animation = this.Resources["FadeIn"] as Storyboard;
+                if (animation != null)
+                {
+                    animation.Begin();
+                }
+            }
+            
+            if (this.Resources.ContainsKey("FadeInLarge"))
+            {
+                var animation = this.Resources["FadeInLarge"] as Storyboard;
+                if (animation != null)
+                {
+                    animation.Begin();
+                }
+            }
         }
     }
 }
