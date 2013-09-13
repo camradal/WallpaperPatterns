@@ -11,9 +11,9 @@
     <Page.Resources>
         <x:String x:Key="ChevronGlyph">&#xE26B;</x:String>
         <x:String x:Key="AppName">Wallpaper Patterns</x:String>
-        <DataTemplate x:Key="Standard420x130ItemTemplate">
-            <Grid Height="140" Width="420" Margin="10">
-                <store81:TileCanvas x:Name="TileCanvas" ImageSource="{Binding ImageUrl}">
+        <DataTemplate x:Key="Standard420x120ItemTemplate">
+            <Grid Height="120" Width="420" Margin="2">
+                <store81:TileCanvas x:Name="TileCanvas" Margin="1" Width="340" HorizontalAlignment="Left" ImageSource="{Binding ImageUrl}">
                     <store81:TileCanvas.Resources>
                         <Storyboard x:Name="FadeIn">
                             <DoubleAnimation From="0" To="1" Storyboard.TargetName="TileCanvas" Storyboard.TargetProperty="Opacity" Duration="0:0:0.6" />
@@ -68,7 +68,7 @@
                         AutomationProperties.AutomationId="ItemListView"
                         AutomationProperties.Name="Grouped Items"
                         ItemsSource="{Binding Items}"
-                        ItemTemplate="{StaticResource Standard420x130ItemTemplate}"
+                        ItemTemplate="{StaticResource Standard420x120ItemTemplate}"
                         IsSwipeEnabled="False"
                         IsItemClickEnabled="True"
                         ScrollViewer.VerticalScrollBarVisibility="Hidden"
@@ -105,7 +105,7 @@
                         AutomationProperties.AutomationId="ItemListView"
                         AutomationProperties.Name="Grouped Items"
                         ItemsSource="{Binding Items}"
-                        ItemTemplate="{StaticResource Standard420x130ItemTemplate}"
+                        ItemTemplate="{StaticResource Standard420x120ItemTemplate}"
                         IsSwipeEnabled="False"
                         IsItemClickEnabled="True"
                         ScrollViewer.VerticalScrollBarVisibility="Hidden"
@@ -142,7 +142,7 @@
                         AutomationProperties.AutomationId="ItemListView"
                         AutomationProperties.Name="Grouped Items"
                         ItemsSource="{Binding Items}"
-                        ItemTemplate="{StaticResource Standard420x130ItemTemplate}"
+                        ItemTemplate="{StaticResource Standard420x120ItemTemplate}"
                         IsSwipeEnabled="False"
                         IsItemClickEnabled="True"
                         ScrollViewer.VerticalScrollBarVisibility="Hidden"
