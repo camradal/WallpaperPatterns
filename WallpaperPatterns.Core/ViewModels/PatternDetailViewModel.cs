@@ -1,5 +1,7 @@
 ﻿using System.Windows.Input;
+using Cirrious.MvvmCross.Plugins.Messenger;
 using Cirrious.MvvmCross.ViewModels;
+using WallpaperPatterns.Core.Messages;
 using WallpaperPatterns.Core.Service;
 
 namespace WallpaperPatterns.Core.ViewModels
@@ -9,6 +11,7 @@ namespace WallpaperPatterns.Core.ViewModels
         private readonly IPatternClient _client;
         private readonly IFavoritesService _favoritesService;
         private readonly IImageService _imageService;
+        private readonly IMvxMessenger _messenger;
 
         private Pattern _pattern;
         private string _title;
@@ -33,11 +36,12 @@ namespace WallpaperPatterns.Core.ViewModels
             set { _imageUrl = value; RaisePropertyChanged(() => ImageUrl); }
         }
 
-        public PatternDetailViewModel(IPatternClient client, IFavoritesService favoritesService, IImageService imageService)
+        public PatternDetailViewModel(IPatternClient client, IFavoritesService favoritesService, IImageService imageService, IMvxMessenger messenger)
         {
             _client = client;
             _favoritesService = favoritesService;
             _imageService = imageService;
+            _messenger = messenger;
         }
 
         public void Init(int id)
@@ -47,16 +51,24 @@ namespace WallpaperPatterns.Core.ViewModels
 
         public async void Load(int id)
         {
-            _pattern = await _client.Get(id);
-            if (_pattern != null)
+            _messenger.Publish(new LoadingChangedMessage(this, true));
+            try
             {
-                Title = _pattern.Title;
-                ByUserName = _pattern.ByUserName;
-                ImageUrl = _pattern.ImageUrl;
+                _pattern = await _client.Get(id);
+                if (_pattern != null)
+                {
+                    Title = _pattern.Title;
+                    ByUserName = _pattern.ByUserName;
+                    ImageUrl = _pattern.ImageUrl;
+                }
+                else
+                {
+                    // TODO: error?
+                }
             }
-            else
+            finally
             {
-                // TODO: error?
+                _messenger.Publish(new LoadingChangedMessage(this, false));                
             }
         }
 

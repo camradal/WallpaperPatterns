@@ -1,14 +1,19 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Navigation;
+using Cirrious.MvvmCross.Plugins.Messenger;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Cirrious.CrossCore;
 using WallpaperPatterns.Core.Error;
+using WallpaperPatterns.Core.Messages;
 
 namespace WallpaperPatterns.WP7
 {
     public partial class App : Application
     {
+        private MvxSubscriptionToken _token;
+
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
         /// </summary>
@@ -54,6 +59,14 @@ namespace WallpaperPatterns.WP7
 
             var errorHandler = Mvx.Resolve<IErrorSource>();
             errorHandler.ErrorReported += ErrorHandlerOnErrorReported;
+
+            var messenger = Mvx.Resolve<IMvxMessenger>();
+            _token = messenger.Subscribe<LoadingChangedMessage>(LoadingChanged);
+        }
+
+        private void LoadingChanged(LoadingChangedMessage loadingChangedMessage)
+        {
+            GlobalLoading.Instance.IsLoading = loadingChangedMessage.Loading;
         }
 
         private void ErrorHandlerOnErrorReported(object sender, ErrorEventArgs errorEventArgs)
@@ -133,6 +146,8 @@ namespace WallpaperPatterns.WP7
 
             // Handle navigation failures
             RootFrame.NavigationFailed += RootFrame_NavigationFailed;
+
+            GlobalLoading.Instance.Initialize(RootFrame);
 
             // Ensure we don't initialize again
             phoneApplicationInitialized = true;

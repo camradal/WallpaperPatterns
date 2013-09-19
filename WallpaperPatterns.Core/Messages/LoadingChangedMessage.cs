@@ -2,9 +2,12 @@
 {
     public class LoadingChangedMessage : Cirrious.MvvmCross.Plugins.Messenger.MvxMessage
     {
-        public LoadingChangedMessage(object sender)
+        public bool Loading { get; private set; }
+
+        public LoadingChangedMessage(object sender, bool loading)
             : base(sender)
         {
+            Loading = loading;
         }
     }
 }

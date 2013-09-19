@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading;
 using Cirrious.MvvmCross.Plugins.Messenger;
 using Cirrious.MvvmCross.ViewModels;
 using WallpaperPatterns.Core.Messages;
@@ -29,16 +30,25 @@ namespace WallpaperPatterns.Core.ViewModels
 
         public async void Load()
         {
-            bool updatedHighlights = false;
-            List<Pattern> items = await _client.Newest();
-            foreach (var pattern in items)
+            _messenger.Publish(new LoadingChangedMessage(this, true));
+
+            try
             {
-                Items.Add(pattern);
-                if (!updatedHighlights)
+                bool updatedHighlights = false;
+                List<Pattern> items = await _client.Newest();
+                foreach (var pattern in items)
                 {
-                    _messenger.Publish(new HighlightChangedMessage(this));
-                    updatedHighlights = true;
+                    Items.Add(pattern);
+                    if (!updatedHighlights)
+                    {
+                        _messenger.Publish(new HighlightChangedMessage(this));
+                        updatedHighlights = true;
+                    }
                 }
+            }
+            finally
+            {
+                _messenger.Publish(new LoadingChangedMessage(this, false));                
             }
         }
     }
