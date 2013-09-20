@@ -72,6 +72,7 @@
                         IsSwipeEnabled="False"
                         IsItemClickEnabled="True"
                         ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                        ItemClick="ItemListView_OnItemClick"
                         SelectionMode="None">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
@@ -109,6 +110,7 @@
                         IsSwipeEnabled="False"
                         IsItemClickEnabled="True"
                         ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                        ItemClick="ItemListView_OnItemClick"
                         SelectionMode="None">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
@@ -146,6 +148,7 @@
                         IsSwipeEnabled="False"
                         IsItemClickEnabled="True"
                         ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                        ItemClick="ItemListView_OnItemClick"
                         SelectionMode="None">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
