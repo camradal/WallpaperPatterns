@@ -24,17 +24,23 @@
     -->
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ChildrenTransitions>
-            <TransitionCollection>
-                <EntranceThemeTransition/>
-            </TransitionCollection>
+            <TransitionCollection/>
         </Grid.ChildrenTransitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <store81:TileCanvas Grid.RowSpan="2" x:Name="TileCanvas" ImageSource="{Binding ImageUrl}">
+            <store81:TileCanvas.Resources>
+                <Storyboard x:Name="FadeInLarge">
+                    <DoubleAnimation From="0" To="1" Storyboard.TargetName="TileCanvas" Storyboard.TargetProperty="Opacity" Duration="0:0:0.6" />
+                </Storyboard>
+            </store81:TileCanvas.Resources>
+        </store81:TileCanvas>
+        
         <!-- Back button and page title -->
-        <Grid>
+        <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="120"/>
                 <ColumnDefinition Width="*"/>
@@ -48,12 +54,5 @@
             <TextBlock x:Name="pageTitle" Text="{Binding Title}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
                        IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
         </Grid>
-        <store81:TileCanvas Grid.Row="1" x:Name="TileCanvas" ImageSource="{Binding ImageUrl}">
-            <store81:TileCanvas.Resources>
-                <Storyboard x:Name="FadeInLarge">
-                    <DoubleAnimation From="0" To="1" Storyboard.TargetName="TileCanvas" Storyboard.TargetProperty="Opacity" Duration="0:0:0.6" />
-                </Storyboard>
-            </store81:TileCanvas.Resources>
-        </store81:TileCanvas>
     </Grid>
 </views:MvxStorePage>
