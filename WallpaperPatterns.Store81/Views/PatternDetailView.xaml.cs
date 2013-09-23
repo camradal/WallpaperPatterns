@@ -103,10 +103,6 @@ namespace WallpaperPatterns.Store81.Views
         {
             var bitmap = new RenderTargetBitmap();
             await bitmap.RenderAsync(TileCanvas);
-            int width = (int)TileCanvas.ActualWidth;
-            int height = (int)TileCanvas.ActualHeight;
-            //var pixels = await bitmap.GetPixelsAsync();
-            //var stream = pixels.AsStream();
             var pictures = await Windows.Storage.StorageLibrary.GetLibraryAsync(KnownLibraryId.Pictures);
             var file = await pictures.SaveFolder.CreateFileAsync("downloaded.jpg");
             var writeStream = await file.OpenAsync(FileAccessMode.ReadWrite);
@@ -116,12 +112,15 @@ namespace WallpaperPatterns.Store81.Views
 
         private async Task WriteBitmapToStream(RenderTargetBitmap bitmap, IRandomAccessStream stream)
         {
-            var encoder = await
-                BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, stream);
+            var encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, stream);
+            encoder.BitmapTransform.Bounds = new BitmapBounds
+            {
+                Width = (uint)Window.Current.Bounds.Width,
+                Height = (uint)Window.Current.Bounds.Height
+            };
             var pixels = await bitmap.GetPixelsAsync();
             var bytes = pixels.ToArray();
-            var dpi = 96;
-            encoder.SetPixelData(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Premultiplied, (uint)bitmap.PixelWidth, (uint)bitmap.PixelHeight, dpi, dpi, bytes);
+            encoder.SetPixelData(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Premultiplied, (uint)bitmap.PixelWidth, (uint)bitmap.PixelHeight, 96, 96, bytes);
 
             await encoder.FlushAsync();
             await stream.FlushAsync();
