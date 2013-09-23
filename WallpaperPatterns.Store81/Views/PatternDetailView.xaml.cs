@@ -1,4 +1,10 @@
-﻿using Cirrious.MvvmCross.WindowsStore.Views;
+﻿using System.Threading.Tasks;
+using Windows.Graphics.Display;
+using Windows.Graphics.Imaging;
+using Windows.Storage;
+using Windows.Storage.Streams;
+using Windows.UI.Xaml.Media.Imaging;
+using Cirrious.MvvmCross.WindowsStore.Views;
 using WallpaperPatterns.Store81.Common;
 using System;
 using System.Collections.Generic;
@@ -92,5 +98,33 @@ namespace WallpaperPatterns.Store81.Views
         }
 
         #endregion
+
+        private async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            var bitmap = new RenderTargetBitmap();
+            await bitmap.RenderAsync(TileCanvas);
+            int width = (int)TileCanvas.ActualWidth;
+            int height = (int)TileCanvas.ActualHeight;
+            //var pixels = await bitmap.GetPixelsAsync();
+            //var stream = pixels.AsStream();
+            var pictures = await Windows.Storage.StorageLibrary.GetLibraryAsync(KnownLibraryId.Pictures);
+            var file = await pictures.SaveFolder.CreateFileAsync("downloaded.jpg");
+            var writeStream = await file.OpenAsync(FileAccessMode.ReadWrite);
+            await WriteBitmapToStream(bitmap, writeStream);
+            writeStream.Dispose();
+        }
+
+        private async Task WriteBitmapToStream(RenderTargetBitmap bitmap, IRandomAccessStream stream)
+        {
+            var encoder = await
+                BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, stream);
+            var pixels = await bitmap.GetPixelsAsync();
+            var bytes = pixels.ToArray();
+            var dpi = 96;
+            encoder.SetPixelData(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Premultiplied, (uint)bitmap.PixelWidth, (uint)bitmap.PixelHeight, dpi, dpi, bytes);
+
+            await encoder.FlushAsync();
+            await stream.FlushAsync();
+        }
     }
 }
