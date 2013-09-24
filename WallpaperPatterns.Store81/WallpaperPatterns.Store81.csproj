@@ -118,6 +118,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Setup.cs" />
     <Compile Include="TileCanvas.cs" />
+    <Compile Include="Views\NewestView.xaml.cs">
+      <DependentUpon>NewestView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PatternDetailView.xaml.cs">
       <DependentUpon>PatternDetailView.xaml</DependentUpon>
     </Compile>
@@ -147,6 +150,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\NewestView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\PatternDetailView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
