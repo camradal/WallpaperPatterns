@@ -30,7 +30,7 @@
                         <store81:TileCanvas x:Name="TileCanvas" ImageSource="{Binding HighlightPattern.ImageUrl}">
                             <store81:TileCanvas.Resources>
                                 <Storyboard x:Name="FadeInLarge">
-                                    <DoubleAnimation From="0" To="1" Storyboard.TargetName="TileCanvas" Storyboard.TargetProperty="Opacity" Duration="0:0:0.6" />
+                                    <DoubleAnimation From="0" To="1" Storyboard.TargetName="TileCanvas" Storyboard.TargetProperty="Opacity" Duration="0:0:0.4" />
                                 </Storyboard>
                             </store81:TileCanvas.Resources>
                         </store81:TileCanvas>

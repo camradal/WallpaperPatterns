@@ -24,9 +24,7 @@
     -->
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ChildrenTransitions>
-            <TransitionCollection>
-                <EntranceThemeTransition/>
-            </TransitionCollection>
+            <TransitionCollection/>
         </Grid.ChildrenTransitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
@@ -36,13 +34,18 @@
         <store81:TileCanvas Grid.RowSpan="2" x:Name="TileCanvas" ImageSource="{Binding ImageUrl}">
             <store81:TileCanvas.Resources>
                 <Storyboard x:Name="FadeInLarge">
-                    <DoubleAnimation From="0" To="1" Storyboard.TargetName="TileCanvas" Storyboard.TargetProperty="Opacity" Duration="0:0:0.6" />
+                    <DoubleAnimation From="0" To="1" Storyboard.TargetName="TileCanvas" Storyboard.TargetProperty="Opacity" Duration="0:0:0.4" />
                 </Storyboard>
             </store81:TileCanvas.Resources>
         </store81:TileCanvas>
         
         <!-- Back button and page title -->
         <Grid Grid.Row="0">
+            <Grid.ChildrenTransitions>
+                <TransitionCollection>
+                    <EntranceThemeTransition/>
+                </TransitionCollection>
+            </Grid.ChildrenTransitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="120"/>
                 <ColumnDefinition Width="*"/>

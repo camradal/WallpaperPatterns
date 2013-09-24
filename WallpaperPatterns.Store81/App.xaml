@@ -9,7 +9,7 @@
                 <local:TileCanvas x:Name="TileCanvas" Margin="1" Width="340" HorizontalAlignment="Left" ImageSource="{Binding ImageUrl}">
                     <local:TileCanvas.Resources>
                         <Storyboard x:Name="FadeIn">
-                            <DoubleAnimation From="0" To="1" Storyboard.TargetName="TileCanvas" Storyboard.TargetProperty="Opacity" Duration="0:0:0.6" />
+                            <DoubleAnimation From="0" To="1" Storyboard.TargetName="TileCanvas" Storyboard.TargetProperty="Opacity" Duration="0:0:0.4" />
                         </Storyboard>
                     </local:TileCanvas.Resources>
                 </local:TileCanvas>
