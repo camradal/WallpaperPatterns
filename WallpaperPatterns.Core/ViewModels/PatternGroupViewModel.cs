@@ -62,13 +62,32 @@ namespace WallpaperPatterns.Core.ViewModels
         {
             get
             {
-                return new MvxCommand<Pattern>(DoNavigate);
+                return new MvxCommand<Pattern>(item => ShowViewModel<PatternDetailViewModel>( new { id = item.Id }));
             }
         }
 
-        private void DoNavigate(Pattern selectedItem)
+        public ICommand NavigateToNewest
         {
-            ShowViewModel<PatternDetailViewModel>(new { id = selectedItem.Id });
+            get
+            {
+                return new MvxCommand<Pattern>(item => ShowViewModel<NewestViewModel>());
+            }
+        }
+
+        public ICommand NavigateToTop
+        {
+            get
+            {
+                return new MvxCommand<Pattern>(item => ShowViewModel<TopViewModel>());
+            }
+        }
+        
+        public ICommand NavigateToFavorites
+        {
+            get
+            {
+                return new MvxCommand<Pattern>(item => ShowViewModel<FavoritesViewModel>());
+            }
         }
     }
 }

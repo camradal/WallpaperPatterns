@@ -47,16 +47,12 @@
                     </Grid>
                 </DataTemplate>
             </HubSection>
-
-            <HubSection x:Uid="NewestHeader" DataContext="{Binding Newest}" Header="Top" Width="420">
+            <HubSection x:Uid="NewestHeader" DataContext="{Binding Newest}" Header="Top" Width="420" IsHeaderInteractive="True">
                 <HubSection.HeaderTemplate>
                     <DataTemplate>
                         <Grid Margin="1,0,0,6">
-                            <Button Foreground="{StaticResource ApplicationHeaderForegroundThemeBrush}" Style="{StaticResource TextBlockButtonStyle}" >
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Newest" Margin="3,-7,10,10" Style="{StaticResource SubheaderTextBlockStyle}" TextWrapping="NoWrap" />
-                                    <TextBlock Text="{StaticResource ChevronGlyph}" FontFamily="Segoe UI Symbol" Margin="0,-7,0,10" Style="{StaticResource SubheaderTextBlockStyle}" TextWrapping="NoWrap" />
-                                </StackPanel>
+                            <Button Foreground="{StaticResource ApplicationHeaderForegroundThemeBrush}" Style="{StaticResource TextBlockButtonStyle}" Click="NavigateToNewest">
+                                <TextBlock Text="Newest" Style="{StaticResource SubheaderTextBlockStyle}" TextWrapping="NoWrap" />
                             </Button>
                         </Grid>
                     </DataTemplate>
@@ -86,15 +82,12 @@
                     </ListView>
                 </DataTemplate>
             </HubSection>
-            <HubSection x:Uid="TopHeader" DataContext="{Binding Top}" Header="Top" Width="420">
+            <HubSection x:Uid="TopHeader" DataContext="{Binding Top}" Header="Top" Width="420" IsHeaderInteractive="True">
                 <HubSection.HeaderTemplate>
                     <DataTemplate>
                         <Grid Margin="1,0,0,6">
-                            <Button Foreground="{StaticResource ApplicationHeaderForegroundThemeBrush}" Style="{StaticResource TextBlockButtonStyle}" >
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Top" Margin="3,-7,10,10" Style="{StaticResource SubheaderTextBlockStyle}" TextWrapping="NoWrap" />
-                                    <TextBlock Text="{StaticResource ChevronGlyph}" FontFamily="Segoe UI Symbol" Margin="0,-7,0,10" Style="{StaticResource SubheaderTextBlockStyle}" TextWrapping="NoWrap" />
-                                </StackPanel>
+                            <Button Foreground="{StaticResource ApplicationHeaderForegroundThemeBrush}" Style="{StaticResource TextBlockButtonStyle}" Click="NavigateToTop">
+                                <TextBlock Text="Top" Style="{StaticResource SubheaderTextBlockStyle}" TextWrapping="NoWrap" />
                             </Button>
                         </Grid>
                     </DataTemplate>
@@ -124,15 +117,12 @@
                     </ListView>
                 </DataTemplate>
             </HubSection>
-            <HubSection x:Uid="FavoritesHeader" DataContext="{Binding Favorites}" Header="Top" Width="420">
+            <HubSection x:Uid="FavoritesHeader" DataContext="{Binding Favorites}" Header="Favorites" Width="420" IsHeaderInteractive="True">
                 <HubSection.HeaderTemplate>
                     <DataTemplate>
                         <Grid Margin="1,0,0,6">
-                            <Button Foreground="{StaticResource ApplicationHeaderForegroundThemeBrush}" Style="{StaticResource TextBlockButtonStyle}" >
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Favorites" Margin="3,-7,10,10" Style="{StaticResource SubheaderTextBlockStyle}" TextWrapping="NoWrap" />
-                                    <TextBlock Text="{StaticResource ChevronGlyph}" FontFamily="Segoe UI Symbol" Margin="0,-7,0,10" Style="{StaticResource SubheaderTextBlockStyle}" TextWrapping="NoWrap" />
-                                </StackPanel>
+                            <Button Foreground="{StaticResource ApplicationHeaderForegroundThemeBrush}" Style="{StaticResource TextBlockButtonStyle}"  Click="NavigateToFavorites">
+                                <TextBlock Text="Favorites" Style="{StaticResource SubheaderTextBlockStyle}" TextWrapping="NoWrap" />
                             </Button>
                         </Grid>
                     </DataTemplate>

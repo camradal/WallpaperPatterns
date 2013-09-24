@@ -1,11 +1,10 @@
 ﻿using Cirrious.MvvmCross.WindowsStore.Views;
-using WallpaperPatterns.Core.Service;
-using WallpaperPatterns.Core.ViewModels;
 using WallpaperPatterns.Store81.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -16,16 +15,26 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Hub Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=286574
+// The Items Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234233
 
 namespace WallpaperPatterns.Store81.Views
 {
     /// <summary>
-    /// A page that displays a grouped collection of items.
+    /// A page that displays a collection of item previews.  In the Split Application this page
+    /// is used to display and select one of the available groups.
     /// </summary>
-    public sealed partial class PatternGroupView : MvxStorePage
+    public sealed partial class TopView : MvxStorePage
     {
         private NavigationHelper navigationHelper;
+        private ObservableDictionary defaultViewModel = new ObservableDictionary();
+
+        /// <summary>
+        /// This can be changed to a strongly typed view model.
+        /// </summary>
+        public ObservableDictionary DefaultViewModel
+        {
+            get { return this.defaultViewModel; }
+        }
 
         /// <summary>
         /// NavigationHelper is used on each page to aid in navigation and 
@@ -36,13 +45,12 @@ namespace WallpaperPatterns.Store81.Views
             get { return this.navigationHelper; }
         }
 
-        public PatternGroupView()
+        public TopView()
         {
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
         }
-
 
         /// <summary>
         /// Populates the page with content passed during navigation.  Any saved state is also
@@ -57,38 +65,33 @@ namespace WallpaperPatterns.Store81.Views
         /// session.  The state will be null the first time a page is visited.</param>
         private void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            // TODO: Assign a collection of bindable groups to this.DefaultViewModel["Groups"]
+            // TODO: Assign a bindable collection of items to this.DefaultViewModel["Items"]
         }
 
-        private void Grid_OnLoaded(object sender, RoutedEventArgs e)
+        #region NavigationHelper registration
+
+        /// The methods provided in this section are simply used to allow
+        /// NavigationHelper to respond to the page's navigation methods.
+        /// 
+        /// Page specific logic should be placed in event handlers for the  
+        /// <see cref="GridCS.Common.NavigationHelper.LoadState"/>
+        /// and <see cref="GridCS.Common.NavigationHelper.SaveState"/>.
+        /// The navigation parameter is available in the LoadState method 
+        /// in addition to page state preserved during an earlier session.
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            var grid = (Grid)sender;
-            grid.Height = HighlightHubSection.ActualHeight;
-            grid.Width = HighlightHubSection.ActualWidth;
+            base.OnNavigatedTo(e);
+            navigationHelper.OnNavigatedTo(e);
         }
 
-        private void ItemListView_OnItemClick(object sender, ItemClickEventArgs e)
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            var selectedItem = (Pattern)e.ClickedItem;
-            if (selectedItem == null)
-                return;
-
-            ((PatternGroupViewModel)ViewModel).NavigateToDetail.Execute(selectedItem);
+            base.OnNavigatedFrom(e);
+            navigationHelper.OnNavigatedFrom(e);
         }
 
-        private void NavigateToNewest(object sender, RoutedEventArgs e)
-        {
-            ((PatternGroupViewModel)ViewModel).NavigateToNewest.Execute(null);
-        }
+        #endregion
 
-        private void NavigateToTop(object sender, RoutedEventArgs e)
-        {
-            ((PatternGroupViewModel)ViewModel).NavigateToTop.Execute(null);
-        }
-        
-        private void NavigateToFavorites(object sender, RoutedEventArgs e)
-        {
-            ((PatternGroupViewModel)ViewModel).NavigateToFavorites.Execute(null);
-        }
     }
 }
