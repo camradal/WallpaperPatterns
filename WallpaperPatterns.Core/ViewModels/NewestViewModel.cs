@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading;
+using System.Windows.Input;
 using Cirrious.MvvmCross.Plugins.Messenger;
 using Cirrious.MvvmCross.ViewModels;
 using WallpaperPatterns.Core.Messages;
@@ -49,6 +50,14 @@ namespace WallpaperPatterns.Core.ViewModels
             finally
             {
                 _messenger.Publish(new LoadingChangedMessage(this, false));                
+            }
+        }
+
+        public ICommand NavigateToDetail
+        {
+            get
+            {
+                return new MvxCommand<Pattern>(item => ShowViewModel<PatternDetailViewModel>(new { id = item.Id }));
             }
         }
     }

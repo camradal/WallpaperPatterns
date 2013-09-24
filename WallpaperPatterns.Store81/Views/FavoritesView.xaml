@@ -41,6 +41,7 @@
             Padding="116,136,116,46"
             ItemsSource="{Binding Items}"
             SelectionMode="None"
+            IsItemClickEnabled="True"
             ItemClick="ItemListView_OnItemClick"
             ItemTemplate="{StaticResource Standard420x120ItemTemplate}"
             IsSwipeEnabled="false">

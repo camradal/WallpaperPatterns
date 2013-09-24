@@ -68,5 +68,13 @@ namespace WallpaperPatterns.Core.ViewModels
                 return new MvxCommand<Pattern>(selectedItem => _favoritesService.Delete(selectedItem));
             }
         }
+
+        public ICommand NavigateToDetail
+        {
+            get
+            {
+                return new MvxCommand<Pattern>(item => ShowViewModel<PatternDetailViewModel>(new { id = item.Id }));
+            }
+        }
     }
 }

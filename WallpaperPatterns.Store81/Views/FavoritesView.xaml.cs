@@ -101,7 +101,7 @@ namespace WallpaperPatterns.Store81.Views
             if (selectedItem == null)
                 return;
 
-            ((TopViewModel)ViewModel).NavigateToDetail.Execute(selectedItem);
+            ((FavoritesViewModel)ViewModel).NavigateToDetail.Execute(selectedItem);
         }
     }
 }
