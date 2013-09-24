@@ -14,8 +14,11 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
+using Cirrious.CrossCore;
+using Cirrious.MvvmCross.Plugins.Messenger;
+using WallpaperPatterns.Core.Error;
+using WallpaperPatterns.Core.Messages;
 
 namespace WallpaperPatterns.Store81
 {
@@ -24,6 +27,8 @@ namespace WallpaperPatterns.Store81
     /// </summary>
     sealed partial class App : Application
     {
+        private MvxSubscriptionToken _token;
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -81,6 +86,20 @@ namespace WallpaperPatterns.Store81
             }
             // Ensure the current window is active
             Window.Current.Activate();
+
+            var errorHandler = Mvx.Resolve<IErrorSource>();
+            errorHandler.ErrorReported += ErrorHandlerOnErrorReported;
+
+            var messenger = Mvx.Resolve<IMvxMessenger>();
+            _token = messenger.Subscribe<LoadingChangedMessage>(LoadingChanged);
+        }
+
+        private void ErrorHandlerOnErrorReported(object sender, ErrorEventArgs e)
+        {
+        }
+
+        private void LoadingChanged(LoadingChangedMessage obj)
+        {
         }
 
         /// <summary>
