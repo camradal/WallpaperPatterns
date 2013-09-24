@@ -70,31 +70,6 @@ namespace WallpaperPatterns.Store81.Views
             // TODO: Assign a bindable collection of items to this.DefaultViewModel["Items"]
         }
 
-        #region NavigationHelper registration
-
-        /// The methods provided in this section are simply used to allow
-        /// NavigationHelper to respond to the page's navigation methods.
-        /// 
-        /// Page specific logic should be placed in event handlers for the  
-        /// <see cref="GridCS.Common.NavigationHelper.LoadState"/>
-        /// and <see cref="GridCS.Common.NavigationHelper.SaveState"/>.
-        /// The navigation parameter is available in the LoadState method 
-        /// in addition to page state preserved during an earlier session.
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-            navigationHelper.OnNavigatedTo(e);
-        }
-
-        protected override void OnNavigatedFrom(NavigationEventArgs e)
-        {
-            base.OnNavigatedFrom(e);
-            navigationHelper.OnNavigatedFrom(e);
-        }
-
-        #endregion
-
         private void ItemListView_OnItemClick(object sender, ItemClickEventArgs e)
         {
             var selectedItem = (Pattern)e.ClickedItem;
