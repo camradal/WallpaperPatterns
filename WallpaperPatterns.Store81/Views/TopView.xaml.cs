@@ -1,4 +1,6 @@
 ﻿using Cirrious.MvvmCross.WindowsStore.Views;
+using WallpaperPatterns.Core.Service;
+using WallpaperPatterns.Core.ViewModels;
 using WallpaperPatterns.Store81.Common;
 using System;
 using System.Collections.Generic;
@@ -93,5 +95,13 @@ namespace WallpaperPatterns.Store81.Views
 
         #endregion
 
+        private void ItemListView_OnItemClick(object sender, ItemClickEventArgs e)
+        {
+            var selectedItem = (Pattern)e.ClickedItem;
+            if (selectedItem == null)
+                return;
+
+            ((TopViewModel)ViewModel).NavigateToDetail.Execute(selectedItem);
+        }
     }
 }

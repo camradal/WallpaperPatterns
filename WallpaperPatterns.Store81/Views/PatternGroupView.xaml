@@ -11,17 +11,6 @@
     <Page.Resources>
         <x:String x:Key="ChevronGlyph">&#xE26B;</x:String>
         <x:String x:Key="AppName">Wallpaper Patterns</x:String>
-        <DataTemplate x:Key="Standard420x120ItemTemplate">
-            <Grid Height="120" Width="420" Margin="2">
-                <store81:TileCanvas x:Name="TileCanvas" Margin="1" Width="340" HorizontalAlignment="Left" ImageSource="{Binding ImageUrl}">
-                    <store81:TileCanvas.Resources>
-                        <Storyboard x:Name="FadeIn">
-                            <DoubleAnimation From="0" To="1" Storyboard.TargetName="TileCanvas" Storyboard.TargetProperty="Opacity" Duration="0:0:0.6" />
-                        </Storyboard>
-                    </store81:TileCanvas.Resources>
-                </store81:TileCanvas>
-            </Grid>
-        </DataTemplate>
     </Page.Resources>
 
     <!--

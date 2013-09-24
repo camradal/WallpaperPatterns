@@ -3,5 +3,17 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:WallpaperPatterns.Store81">
-
+    <Application.Resources>
+        <DataTemplate x:Key="Standard420x120ItemTemplate">
+            <Grid Height="120" Width="342" Margin="2">
+                <local:TileCanvas x:Name="TileCanvas" Margin="1" Width="340" HorizontalAlignment="Left" ImageSource="{Binding ImageUrl}">
+                    <local:TileCanvas.Resources>
+                        <Storyboard x:Name="FadeIn">
+                            <DoubleAnimation From="0" To="1" Storyboard.TargetName="TileCanvas" Storyboard.TargetProperty="Opacity" Duration="0:0:0.6" />
+                        </Storyboard>
+                    </local:TileCanvas.Resources>
+                </local:TileCanvas>
+            </Grid>
+        </DataTemplate>
+    </Application.Resources>
 </Application>
