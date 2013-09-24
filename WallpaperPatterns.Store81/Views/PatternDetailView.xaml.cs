@@ -5,6 +5,7 @@ using Windows.Storage;
 using Windows.Storage.Streams;
 using Windows.UI.Xaml.Media.Imaging;
 using Cirrious.MvvmCross.WindowsStore.Views;
+using WallpaperPatterns.Core.ViewModels;
 using WallpaperPatterns.Store81.Common;
 using System;
 using System.Collections.Generic;
@@ -98,6 +99,11 @@ namespace WallpaperPatterns.Store81.Views
         }
 
         #endregion
+
+        private void FavoriteButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            ((PatternDetailViewModel)ViewModel).AddFavorite.Execute(null);
+        }
 
         private async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {

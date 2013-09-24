@@ -57,7 +57,10 @@
     </Grid>
     <views:MvxStorePage.BottomAppBar>
         <AppBar>
-            <AppBarButton Icon="Download" Label="Download" Click="ButtonBase_OnClick" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <AppBarButton Icon="Favorite" Label="Favorite" Click="FavoriteButton_OnClick"/>
+                <AppBarButton Icon="Download" Label="Download" Click="ButtonBase_OnClick" />
+            </StackPanel>
         </AppBar>
     </views:MvxStorePage.BottomAppBar>
 </views:MvxStorePage>

@@ -75,6 +75,11 @@ namespace WallpaperPatterns.Core.Service
             lock (_locker)
             {
                 string serialized = JsonConvert.SerializeObject(_favorites);
+                // for some reason need to delete, revisit this sometime
+                if (_fileStore.Exists(FavoritesFile))
+                {
+                    _fileStore.DeleteFile(FavoritesFile);
+                }
                 _fileStore.WriteFile(FavoritesFile, serialized);
             }
         }
