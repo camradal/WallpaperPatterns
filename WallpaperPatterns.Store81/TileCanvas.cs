@@ -80,6 +80,7 @@ namespace WallpaperPatterns.Store81
                 }
             }
             Clip = new RectangleGeometry { Rect = new Rect(0, 0, ActualWidth, ActualHeight) };
+            CacheMode = new BitmapCache();
 
             if (this.Resources.ContainsKey("FadeIn"))
             {
