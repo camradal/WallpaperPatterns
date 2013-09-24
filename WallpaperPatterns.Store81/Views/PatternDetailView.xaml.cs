@@ -100,11 +100,6 @@ namespace WallpaperPatterns.Store81.Views
 
         #endregion
 
-        private void FavoriteButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            ((PatternDetailViewModel)ViewModel).AddFavorite.Execute(null);
-        }
-
         private async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
             var bitmap = new RenderTargetBitmap();
