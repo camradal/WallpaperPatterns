@@ -24,7 +24,9 @@
     -->
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ChildrenTransitions>
-            <TransitionCollection/>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
         </Grid.ChildrenTransitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
