@@ -77,8 +77,11 @@ namespace WallpaperPatterns.Store81.Views
 
         private async void ButtonDownload_OnClick(object sender, RoutedEventArgs e)
         {
+            string title = GetPictureTitle();
+
             StorageLibrary pictures = await StorageLibrary.GetLibraryAsync(KnownLibraryId.Pictures);
-            StorageFile file = await pictures.SaveFolder.CreateFileAsync("downloaded.jpg");
+            StorageFolder folder = await pictures.SaveFolder.CreateFolderAsync("Wallpaper Patterns", CreationCollisionOption.OpenIfExists);
+            StorageFile file = await folder.CreateFileAsync(title, CreationCollisionOption.ReplaceExisting);
             
             using (IRandomAccessStream stream = await file.OpenAsync(FileAccessMode.ReadWrite))
             {
@@ -93,6 +96,14 @@ namespace WallpaperPatterns.Store81.Views
                 await SaveImageToStream(stream);
                 await Windows.System.UserProfile.LockScreen.SetImageStreamAsync(stream);
             }
+        }
+
+        private string GetPictureTitle()
+        {
+            var model = (PatternDetailViewModel)this.ViewModel;
+            string invalid = new string(Path.GetInvalidFileNameChars()) + new string(Path.GetInvalidPathChars());
+            string title = invalid.Aggregate(model.Title, (current, c) => current.Replace(c.ToString(), ""));
+            return title + ".jpg";
         }
 
         private async Task SaveImageToStream(IRandomAccessStream stream)
