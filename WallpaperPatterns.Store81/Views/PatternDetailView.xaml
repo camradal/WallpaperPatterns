@@ -63,8 +63,9 @@
     <views:MvxStorePage.BottomAppBar>
         <AppBar>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <AppBarButton Icon="Favorite" Label="Favorite" Command="{Binding AddFavorite}"/>
-                <AppBarButton Icon="Download" Label="Download" Click="ButtonBase_OnClick" />
+                <AppBarButton Icon="favorite" Label="Favorite" Command="{Binding AddFavorite}"/>
+                <AppBarButton Icon="download" Label="Download" Click="ButtonDownload_OnClick" />
+                <AppBarButton Icon="setlockscreen" Label="Set Lockscreen" Click="ButtonSetLockScreen_OnClick" />
             </StackPanel>
         </AppBar>
     </views:MvxStorePage.BottomAppBar>

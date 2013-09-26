@@ -75,29 +75,42 @@ namespace WallpaperPatterns.Store81.Views
         {
         }
 
-        private async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        private async void ButtonDownload_OnClick(object sender, RoutedEventArgs e)
         {
-            var bitmap = new RenderTargetBitmap();
-            await bitmap.RenderAsync(TileCanvas);
-            var pictures = await Windows.Storage.StorageLibrary.GetLibraryAsync(KnownLibraryId.Pictures);
-            var file = await pictures.SaveFolder.CreateFileAsync("downloaded.jpg");
-            var writeStream = await file.OpenAsync(FileAccessMode.ReadWrite);
-            await WriteBitmapToStream(bitmap, writeStream);
-            writeStream.Dispose();
+            StorageLibrary pictures = await StorageLibrary.GetLibraryAsync(KnownLibraryId.Pictures);
+            StorageFile file = await pictures.SaveFolder.CreateFileAsync("downloaded.jpg");
+            
+            using (IRandomAccessStream stream = await file.OpenAsync(FileAccessMode.ReadWrite))
+            {
+                await SaveImageToStream(stream);
+            }
         }
 
-        private async Task WriteBitmapToStream(RenderTargetBitmap bitmap, IRandomAccessStream stream)
+        private async void ButtonSetLockScreen_OnClick(object sender, RoutedEventArgs e)
         {
+            using (var stream = new InMemoryRandomAccessStream())
+            {
+                await SaveImageToStream(stream);
+                await Windows.System.UserProfile.LockScreen.SetImageStreamAsync(stream);
+            }
+        }
+
+        private async Task SaveImageToStream(IRandomAccessStream stream)
+        {
+            // render bitmap
+            var bitmap = new RenderTargetBitmap();
+            await bitmap.RenderAsync(TileCanvas);
+            IBuffer pixels = await bitmap.GetPixelsAsync();
+            byte[] bytes = pixels.ToArray();
+
+            // encode bitmap
             var encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, stream);
             encoder.BitmapTransform.Bounds = new BitmapBounds
             {
                 Width = (uint)Window.Current.Bounds.Width,
                 Height = (uint)Window.Current.Bounds.Height
             };
-            var pixels = await bitmap.GetPixelsAsync();
-            var bytes = pixels.ToArray();
             encoder.SetPixelData(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Premultiplied, (uint)bitmap.PixelWidth, (uint)bitmap.PixelHeight, 96, 96, bytes);
-
             await encoder.FlushAsync();
             await stream.FlushAsync();
         }
