@@ -89,7 +89,7 @@ namespace WallpaperPatterns.Store81.Views
                 await SaveImageToStream(stream);
             }
 
-            string text = string.Format("Downloaded image {0} to Pictures gallery", title);
+            string text = string.Format("Downloaded pattern {0} to Pictures gallery", title);
             Notify(text);
 
         }
@@ -104,7 +104,16 @@ namespace WallpaperPatterns.Store81.Views
                 await Windows.System.UserProfile.LockScreen.SetImageStreamAsync(stream);
             }
 
-            string text = string.Format("Set image {0} as your lockscreen", title);
+            string text = string.Format("Pattern {0} has been set as your lockscreen", title);
+            Notify(text);
+        }
+
+        private void ButtonFavorite_OnClick(object sender, RoutedEventArgs e)
+        {
+            ((PatternDetailViewModel)ViewModel).AddFavorite.Execute(null);
+
+            string title = GetPictureTitle();
+            string text = string.Format("Pattern {0} has been added to your favorites", title);
             Notify(text);
         }
 
