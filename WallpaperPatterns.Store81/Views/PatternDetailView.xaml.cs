@@ -3,6 +3,7 @@ using Windows.Graphics.Display;
 using Windows.Graphics.Imaging;
 using Windows.Storage;
 using Windows.Storage.Streams;
+using Windows.UI.Notifications;
 using Windows.UI.Xaml.Media.Imaging;
 using Cirrious.MvvmCross.WindowsStore.Views;
 using WallpaperPatterns.Core.ViewModels;
@@ -87,15 +88,24 @@ namespace WallpaperPatterns.Store81.Views
             {
                 await SaveImageToStream(stream);
             }
+
+            string text = string.Format("Downloaded image {0} to Pictures gallery", title);
+            Notify(text);
+
         }
 
         private async void ButtonSetLockScreen_OnClick(object sender, RoutedEventArgs e)
         {
+            string title = GetPictureTitle();
+
             using (var stream = new InMemoryRandomAccessStream())
             {
                 await SaveImageToStream(stream);
                 await Windows.System.UserProfile.LockScreen.SetImageStreamAsync(stream);
             }
+
+            string text = string.Format("Set image {0} as your lockscreen", title);
+            Notify(text);
         }
 
         private string GetPictureTitle()
@@ -124,6 +134,18 @@ namespace WallpaperPatterns.Store81.Views
             encoder.SetPixelData(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Premultiplied, (uint)bitmap.PixelWidth, (uint)bitmap.PixelHeight, 96, 96, bytes);
             await encoder.FlushAsync();
             await stream.FlushAsync();
+        }
+
+        private void Notify(string text)
+        {
+            var notifier = ToastNotificationManager.CreateToastNotifier();
+            var template = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastText01);
+
+            var element = template.GetElementsByTagName("text")[0];
+            element.AppendChild(template.CreateTextNode(text));
+
+            var toast = new ToastNotification(template);
+            notifier.Show(toast);  
         }
     }
 }
