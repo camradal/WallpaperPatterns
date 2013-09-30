@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
 using System.Windows;
@@ -31,7 +32,40 @@ namespace WallpaperPatterns.WP7.Views
 
         private void NewListBox_Link(object sender, LinkUnlinkEventArgs e)
         {
-            // TODO: load more
+            var listBox = sender as LongListSelector;
+            if (listBox == null) return;
+
+            var items = listBox.ItemsSource as ObservableCollection<Pattern>;
+            if (items == null) return;
+
+            var currentItem = e.ContentPresenter.Content as Pattern;
+            if (currentItem == null) return;
+
+            NewestViewModel viewModel = ((PatternGroupViewModel)ViewModel).Newest;
+            if (currentItem.Equals(viewModel.Items.Last()))
+            {
+                int offset = viewModel.Items.Count;
+                viewModel.Load(offset);
+            }
+        }
+
+        private void TopListBox_Link(object sender, LinkUnlinkEventArgs e)
+        {
+            var listBox = sender as LongListSelector;
+            if (listBox == null) return;
+
+            var items = listBox.ItemsSource as ObservableCollection<Pattern>;
+            if (items == null) return;
+
+            var currentItem = e.ContentPresenter.Content as Pattern;
+            if (currentItem == null) return;
+
+            TopViewModel viewModel = ((PatternGroupViewModel)ViewModel).Top;
+            if (currentItem.Equals(viewModel.Items.Last()))
+            {
+                int offset = viewModel.Items.Count;
+                viewModel.Load(offset);
+            }
         }
     }
 }

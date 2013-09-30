@@ -15,6 +15,7 @@ namespace WallpaperPatterns.Core.ViewModels
         private readonly IPatternClient _client;
         private readonly IMvxMessenger _messenger;
         private ObservableCollection<Pattern> _items = new ObservableCollection<Pattern>();
+        private bool _updatedHighlights;
 
         public ObservableCollection<Pattern> Items
         {
@@ -29,21 +30,20 @@ namespace WallpaperPatterns.Core.ViewModels
             Load();
         }
 
-        public async void Load()
+        public async void Load(int offset = 0)
         {
             _messenger.Publish(new LoadingChangedMessage(this, true));
 
             try
             {
-                bool updatedHighlights = false;
-                List<Pattern> items = await _client.Newest();
+                List<Pattern> items = await _client.Newest(offset);
                 foreach (var pattern in items)
                 {
                     Items.Add(pattern);
-                    if (!updatedHighlights)
+                    if (!_updatedHighlights)
                     {
                         _messenger.Publish(new HighlightChangedMessage(this));
-                        updatedHighlights = true;
+                        _updatedHighlights = true;
                     }
                 }
             }

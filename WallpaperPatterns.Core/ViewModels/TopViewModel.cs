@@ -28,12 +28,12 @@ namespace WallpaperPatterns.Core.ViewModels
             Load();
         }
 
-        public async void Load()
+        public async void Load(int offset = 0)
         {
             _messenger.Publish(new LoadingChangedMessage(this, true));
             try
             {
-                List<Pattern> items = await _client.Top();
+                List<Pattern> items = await _client.Top(offset);
                 foreach (var pattern in items)
                 {
                     Items.Add(pattern);

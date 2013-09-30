@@ -51,7 +51,7 @@ namespace WallpaperPatterns.Core.Service
         {
             try
             {
-                var url = BuildUrl(baseUrl, 0);
+                var url = BuildUrl(baseUrl, offset);
                 var client = new HttpClient();
                 string result = await client.GetStringAsync(url);
                 JArray items = JArray.Parse(result);

@@ -62,7 +62,7 @@
                     DataContext="{Binding Top}"
                     ItemsSource="{Binding Items}"
                     ItemTemplate="{StaticResource ItemTemplate}"
-                    Link="NewListBox_Link"
+                    Link="TopListBox_Link"
                     SelectionChanged="ListBox_SelectionChanged">
                 </toolkit:LongListSelector>
             </controls:PivotItem>
@@ -73,7 +73,6 @@
                     DataContext="{Binding Favorites}"
                     ItemsSource="{Binding Items}"
                     ItemTemplate="{StaticResource ItemTemplate}"
-                    Link="NewListBox_Link"
                     SelectionChanged="ListBox_SelectionChanged">
                 </toolkit:LongListSelector>
             </controls:PivotItem>
