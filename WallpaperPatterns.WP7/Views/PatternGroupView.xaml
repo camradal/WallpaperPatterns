@@ -22,7 +22,7 @@
             <wp7:TileCanvas x:Name="TileCanvas" Height="160" Width="Auto" Margin="12,0,12,12" ImageSource="{Binding ImageUrl}" Opacity="0">
                 <wp7:TileCanvas.Resources>
                     <Storyboard x:Name="FadeIn">
-                        <DoubleAnimation Storyboard.TargetName="TileCanvas" Storyboard.TargetProperty="Opacity" From="0.0" To="1.0" Duration="0:0:1" />
+                        <DoubleAnimation Storyboard.TargetName="TileCanvas" Storyboard.TargetProperty="Opacity" From="0.0" To="1.0" Duration="0:0:0.6" />
                     </Storyboard>
                 </wp7:TileCanvas.Resources>
             </wp7:TileCanvas>
