@@ -1,4 +1,5 @@
-﻿using Cirrious.MvvmCross.WindowsStore.Views;
+﻿using Cirrious.MvvmCross.ViewModels;
+using Cirrious.MvvmCross.WindowsStore.Views;
 using WallpaperPatterns.Core.Service;
 using WallpaperPatterns.Core.ViewModels;
 using WallpaperPatterns.Store81.Common;
@@ -25,6 +26,7 @@ namespace WallpaperPatterns.Store81.Views
     /// A page that displays a collection of item previews.  In the Split Application this page
     /// is used to display and select one of the available groups.
     /// </summary>
+    [MvxViewFor(typeof(IncrementalLoadingTopViewModel))]
     public sealed partial class TopView : MvxStorePage
     {
         private NavigationHelper navigationHelper;
@@ -52,6 +54,7 @@ namespace WallpaperPatterns.Store81.Views
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
+            NavigationCacheMode = NavigationCacheMode.Enabled;
         }
 
         /// <summary>
@@ -76,7 +79,7 @@ namespace WallpaperPatterns.Store81.Views
             if (selectedItem == null)
                 return;
 
-            ((TopViewModel)ViewModel).NavigateToDetail.Execute(selectedItem);
+            ((IncrementalLoadingTopViewModel)ViewModel).NavigateToDetail.Execute(selectedItem);
         }
     }
 }

@@ -1,4 +1,7 @@
-﻿using Cirrious.MvvmCross.WindowsStore.Views;
+﻿using Cirrious.CrossCore;
+using Cirrious.MvvmCross.ViewModels;
+using Cirrious.MvvmCross.Views;
+using Cirrious.MvvmCross.WindowsStore.Views;
 using WallpaperPatterns.Core.Service;
 using WallpaperPatterns.Core.ViewModels;
 using WallpaperPatterns.Store81.Common;
@@ -78,12 +81,14 @@ namespace WallpaperPatterns.Store81.Views
 
         private void NavigateToNewest(object sender, RoutedEventArgs e)
         {
-            ((PatternGroupViewModel)ViewModel).NavigateToNewest.Execute(null);
+            var viewDispatcher = Mvx.Resolve<IMvxViewDispatcher>();
+            viewDispatcher.ShowViewModel(new MvxViewModelRequest(typeof(IncrementalLoadingNewestViewModel), null, null, null));
         }
 
         private void NavigateToTop(object sender, RoutedEventArgs e)
         {
-            ((PatternGroupViewModel)ViewModel).NavigateToTop.Execute(null);
+            var viewDispatcher = Mvx.Resolve<IMvxViewDispatcher>();
+            viewDispatcher.ShowViewModel(new MvxViewModelRequest(typeof(IncrementalLoadingTopViewModel), null, null, null));
         }
         
         private void NavigateToFavorites(object sender, RoutedEventArgs e)

@@ -115,9 +115,14 @@
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="DebugTrace.cs" />
+    <Compile Include="ViewModels\IncrementalLoadingBase.cs" />
+    <Compile Include="ViewModels\IncrementalLoadingNew.cs" />
+    <Compile Include="ViewModels\IncrementalLoadingNewestViewModel.cs" />
+    <Compile Include="ViewModels\IncrementalLoadingTop.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Setup.cs" />
     <Compile Include="TileCanvas.cs" />
+    <Compile Include="ViewModels\IncrementalLoadingTopViewModel.cs" />
     <Compile Include="Views\FavoritesView.xaml.cs">
       <DependentUpon>FavoritesView.xaml</DependentUpon>
     </Compile>
