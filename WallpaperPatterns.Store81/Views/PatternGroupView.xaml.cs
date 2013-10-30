@@ -95,5 +95,14 @@ namespace WallpaperPatterns.Store81.Views
         {
             ((PatternGroupViewModel)ViewModel).NavigateToFavorites.Execute(null);
         }
+
+        private void HighlightContainerGrid_OnTapped(object sender, TappedRoutedEventArgs e)
+        {
+            var viewModel = ((PatternGroupViewModel)ViewModel);
+            if (viewModel.HighlightPattern != null)
+            {
+                viewModel.NavigateToHighlight.Execute(null);
+            }
+        }
     }
 }

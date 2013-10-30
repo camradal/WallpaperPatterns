@@ -6,6 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:views="using:Cirrious.MvvmCross.WindowsStore.Views"
     xmlns:store81="using:WallpaperPatterns.Store81"
+    NavigationCacheMode="Required"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -26,7 +27,7 @@
         <Hub Header="{StaticResource AppName}">
             <HubSection x:Name="HighlightHubSection" Width="780" Padding="0" Margin="0">
                 <DataTemplate>
-                    <Grid x:Name="HighlightContainerGrid" Loaded="Grid_OnLoaded" Margin="0,-115,0,0">
+                    <Grid x:Name="HighlightContainerGrid" Loaded="Grid_OnLoaded" Margin="0,-115,0,0" Tapped="HighlightContainerGrid_OnTapped">
                         <store81:TileCanvas x:Name="TileCanvas" ImageSource="{Binding HighlightPattern.ImageUrl}">
                             <store81:TileCanvas.Resources>
                                 <Storyboard x:Name="FadeInLarge">
@@ -34,6 +35,10 @@
                                 </Storyboard>
                             </store81:TileCanvas.Resources>
                         </store81:TileCanvas>
+                        <StackPanel Orientation="Vertical" Margin="40,0,0,120" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+                            <TextBlock Text="{Binding HighlightPattern.Title}" FontSize="{ThemeResource HubHeaderThemeFontSize}"/>
+                            <TextBlock Text="{Binding HighlightPattern.ByUserName}" FontSize="{ThemeResource HubSectionHeaderThemeFontSize}"/>
+                        </StackPanel>
                     </Grid>
                 </DataTemplate>
             </HubSection>
