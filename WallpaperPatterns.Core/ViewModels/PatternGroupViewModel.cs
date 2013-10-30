@@ -66,6 +66,14 @@ namespace WallpaperPatterns.Core.ViewModels
             }
         }
 
+        public ICommand NavigateToHighlight
+        {
+            get
+            {
+                return new MvxCommand<Pattern>(item => ShowViewModel<PatternDetailViewModel>( new { id = HighlightPattern.Id }));
+            }
+        }
+
         public ICommand NavigateToNewest
         {
             get
