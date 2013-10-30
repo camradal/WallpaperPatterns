@@ -45,7 +45,6 @@ namespace WallpaperPatterns.Store81.Views
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
-            NavigationCacheMode = NavigationCacheMode.Enabled;
         }
 
         /// <summary>
