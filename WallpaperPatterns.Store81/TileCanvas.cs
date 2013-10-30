@@ -12,6 +12,11 @@ namespace WallpaperPatterns.Store81
     {
         public static readonly DependencyProperty ImageSourceProperty = DependencyProperty.Register("ImageSource", typeof(ImageSource), typeof(TileCanvas), new PropertyMetadata(null, ImageSourceChanged));
 
+        public TileCanvas()
+        {
+            CacheMode = new BitmapCache();
+        }
+
         public ImageSource ImageSource
         {
             get { return (ImageSource)GetValue(ImageSourceProperty); }
@@ -53,8 +58,6 @@ namespace WallpaperPatterns.Store81
 
         private void Rebuild()
         {
-            Children.Clear();
-
             var bmp = ImageSource as BitmapSource;
             if (bmp == null)
             {
@@ -69,14 +72,22 @@ namespace WallpaperPatterns.Store81
                 return;
             }
 
+            bool first = true;
             for (int x = 0; x < ActualWidth; x += width)
             {
                 for (int y = 0; y < ActualHeight; y += height)
                 {
-                    var image = new Image { Source = ImageSource };
-                    Canvas.SetLeft(image, x);
-                    Canvas.SetTop(image, y);
-                    Children.Add(image);
+                    if (!first)
+                    {
+                        var image = new Image { Source = ImageSource };
+                        Canvas.SetLeft(image, x);
+                        Canvas.SetTop(image, y);
+                        Children.Add(image);
+                    }
+                    else
+                    {
+                        first = false;
+                    }
                 }
             }
             Clip = new RectangleGeometry { Rect = new Rect(0, 0, ActualWidth, ActualHeight) };
