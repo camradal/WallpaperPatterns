@@ -3,6 +3,7 @@ using Windows.Graphics.Display;
 using Windows.Graphics.Imaging;
 using Windows.Storage;
 using Windows.Storage.Streams;
+using Windows.System.UserProfile;
 using Windows.UI.Notifications;
 using Windows.UI.Xaml.Media.Imaging;
 using Cirrious.MvvmCross.WindowsStore.Views;
@@ -32,6 +33,8 @@ namespace WallpaperPatterns.Store81.Views
     /// </summary>
     public sealed partial class PatternDetailView : MvxStorePage
     {
+        private volatile bool isSaving;
+        private volatile bool isSettingLockScreen;
 
         private NavigationHelper navigationHelper;
 
@@ -78,34 +81,54 @@ namespace WallpaperPatterns.Store81.Views
 
         private async void ButtonDownload_OnClick(object sender, RoutedEventArgs e)
         {
-            string title = GetPictureTitle();
+            if (isSaving)
+                return;
+            isSaving = true;
 
-            StorageLibrary pictures = await StorageLibrary.GetLibraryAsync(KnownLibraryId.Pictures);
-            StorageFolder folder = await pictures.SaveFolder.CreateFolderAsync("Wallpaper Patterns", CreationCollisionOption.OpenIfExists);
-            StorageFile file = await folder.CreateFileAsync(title, CreationCollisionOption.ReplaceExisting);
-            
-            using (IRandomAccessStream stream = await file.OpenAsync(FileAccessMode.ReadWrite))
+            try
             {
-                await SaveImageToStream(stream);
+                string title = GetPictureTitle();
+                StorageLibrary pictures = await StorageLibrary.GetLibraryAsync(KnownLibraryId.Pictures);
+                StorageFolder folder = await pictures.SaveFolder.CreateFolderAsync("Wallpaper Patterns", CreationCollisionOption.OpenIfExists);
+                StorageFile file = await folder.CreateFileAsync(title, CreationCollisionOption.ReplaceExisting);
+            
+                using (IRandomAccessStream stream = await file.OpenAsync(FileAccessMode.ReadWrite))
+                {
+                    await SaveImageToStream(stream);
+                }
+
+                string text = string.Format("Downloaded pattern {0} to Pictures gallery", title);
+                Notify(text);
             }
-
-            string text = string.Format("Downloaded pattern {0} to Pictures gallery", title);
-            Notify(text);
-
+            finally
+            {
+                isSaving = false;
+            }
         }
 
         private async void ButtonSetLockScreen_OnClick(object sender, RoutedEventArgs e)
         {
-            string title = GetPictureTitle();
+            if (isSettingLockScreen)
+                return;
+            isSettingLockScreen = true;
 
-            using (var stream = new InMemoryRandomAccessStream())
+            try
             {
-                await SaveImageToStream(stream);
-                await Windows.System.UserProfile.LockScreen.SetImageStreamAsync(stream);
-            }
+                string title = GetPictureTitle();
 
-            string text = string.Format("Pattern {0} has been set as your lockscreen", title);
-            Notify(text);
+                using (var stream = new InMemoryRandomAccessStream())
+                {
+                    await SaveImageToStream(stream);
+                    await LockScreen.SetImageStreamAsync(stream);
+                }
+
+                string text = string.Format("Pattern {0} has been set as your lockscreen", title);
+                Notify(text);
+            }
+            finally
+            {
+                isSettingLockScreen = false;
+            }
         }
 
         private void ButtonFavorite_OnClick(object sender, RoutedEventArgs e)

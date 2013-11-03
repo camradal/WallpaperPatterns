@@ -6,10 +6,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:views="using:Cirrious.MvvmCross.WindowsStore.Views"
     xmlns:store81="using:WallpaperPatterns.Store81"
+    xmlns:common="using:WallpaperPatterns.Store81.Common"
     NavigationCacheMode="Required"
     mc:Ignorable="d">
 
     <Page.Resources>
+        <common:NullToBoolConverter x:Key="NullToBoolConverter"/>
         <x:String x:Key="ChevronGlyph">&#xE26B;</x:String>
         <x:String x:Key="AppName">Wallpaper Patterns</x:String>
     </Page.Resources>
@@ -35,6 +37,7 @@
                                 </Storyboard>
                             </store81:TileCanvas.Resources>
                         </store81:TileCanvas>
+                        <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" IsActive="{Binding Path=HighlightPattern, Converter={StaticResource NullToBoolConverter}}" Width="50" Height="50"/>
                         <StackPanel Orientation="Vertical" Margin="40,0,0,120" VerticalAlignment="Bottom" HorizontalAlignment="Left">
                             <TextBlock Text="{Binding HighlightPattern.Title}" FontSize="{ThemeResource HubHeaderThemeFontSize}"/>
                             <TextBlock Text="{Binding HighlightPattern.ByUserName}" FontSize="{ThemeResource HubSectionHeaderThemeFontSize}"/>
