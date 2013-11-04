@@ -14,6 +14,13 @@ namespace WallpaperPatterns.Core.ViewModels
         private readonly IPatternClient _client;
         private readonly IMvxMessenger _messenger;
         private ObservableCollection<Pattern> _items = new ObservableCollection<Pattern>();
+        private bool _isLoading;
+
+        public bool IsLoading
+        {
+            get { return _isLoading; }
+            set { _isLoading = value; RaisePropertyChanged(() => IsLoading); }
+        }
 
         public ObservableCollection<Pattern> Items
         {
@@ -30,6 +37,7 @@ namespace WallpaperPatterns.Core.ViewModels
 
         public async void Load(int offset = 0)
         {
+            IsLoading = true;
             _messenger.Publish(new LoadingChangedMessage(this, true));
             try
             {
@@ -41,6 +49,7 @@ namespace WallpaperPatterns.Core.ViewModels
             }
             finally
             {
+                IsLoading = false;
                 _messenger.Publish(new LoadingChangedMessage(this, false));
             }
         }

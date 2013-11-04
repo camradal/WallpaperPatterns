@@ -2,23 +2,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
+using System.ComponentModel;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Data;
-using Cirrious.MvvmCross.Plugins.Messenger;
 using WallpaperPatterns.Core.Service;
-using WallpaperPatterns.Core.ViewModels;
-using WallpaperPatterns.Store81.Views;
 
 namespace WallpaperPatterns.Store81
 {
     // This class can used as a jumpstart for implementing ISupportIncrementalLoading. 
     // Implementing the ISupportIncrementalLoading interfaces allows you to create a list that loads
     //  more data automatically when the user scrolls to the end of of a GridView or ListView.
-    public abstract class IncrementalLoadingBase : IList, ISupportIncrementalLoading, INotifyCollectionChanged
+    public abstract class IncrementalLoadingBase : IList, ISupportIncrementalLoading, INotifyCollectionChanged, INotifyPropertyChanged
     {
+        #region Loading
+        
+        public bool IsLoading
+        {
+            get { return _busy; }
+            set { _busy = value; RaisePropertyChanged("IsLoading"); }
+        }
+
+        #endregion
+
+        #region INotifyPropertyChanged
+
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        #endregion
+
         #region IList
 
         public int Add(object value)
@@ -119,7 +137,7 @@ namespace WallpaperPatterns.Store81
                 throw new InvalidOperationException("Only one operation in flight at a time");
             }
 
-            _busy = true;
+            IsLoading = true;
 
             return AsyncInfo.Run((c) => LoadMoreItemsAsync(c, count));
         }
@@ -150,7 +168,7 @@ namespace WallpaperPatterns.Store81
             }
             finally
             {
-                _busy = false;
+                IsLoading = false;
             }
         }
 

@@ -12,6 +12,7 @@
 
     <Page.Resources>
         <common:NullToBoolConverter x:Key="NullToBoolConverter"/>
+        <common:BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter"/>
         <x:String x:Key="ChevronGlyph">&#xE26B;</x:String>
         <x:String x:Key="AppName">Wallpaper Patterns</x:String>
     </Page.Resources>
@@ -25,7 +26,7 @@
                 <EntranceThemeTransition/>
             </TransitionCollection>
         </Grid.ChildrenTransitions>
-
+        <ProgressBar Visibility="{Binding Path=IsLoading, Converter={StaticResource booleanToVisibilityConverter}}" IsIndeterminate="True" VerticalAlignment="Top" />
         <Hub Header="{StaticResource AppName}">
             <HubSection x:Name="HighlightHubSection" Width="780" Padding="0" Margin="0">
                 <DataTemplate>

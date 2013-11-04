@@ -35,6 +35,7 @@
         </Grid.RowDefinitions>
 
         <!-- Horizontal scrolling grid -->
+        <ProgressBar Visibility="{Binding Path=Items.IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" IsIndeterminate="True" VerticalAlignment="Top" />
         <GridView
             x:Name="itemGridView"
             AutomationProperties.AutomationId="ItemsGridView"

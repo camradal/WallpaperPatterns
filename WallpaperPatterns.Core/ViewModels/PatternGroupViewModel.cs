@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
 using Cirrious.MvvmCross.Plugins.Messenger;
@@ -18,7 +19,8 @@ namespace WallpaperPatterns.Core.ViewModels
     {
         private Pattern _highlightPattern;
         private List<PatternGroup> _groups = new List<PatternGroup>();
-        private MvxSubscriptionToken _token;
+        private MvxSubscriptionToken _highlightToken;
+        private MvxSubscriptionToken _loadingToken;
 
         public Pattern HighlightPattern
         {
@@ -36,13 +38,24 @@ namespace WallpaperPatterns.Core.ViewModels
         public TopViewModel Top { get; private set; }
         public FavoritesViewModel Favorites { get; private set; }
 
+        private bool _isLoading;
+
+        public bool IsLoading
+        {
+            get { return _isLoading; }
+            set { _isLoading = value; RaisePropertyChanged(() => IsLoading); }
+        }
+
         public PatternGroupViewModel(IPatternClient client, IFavoritesService favoritesService, IMvxMessenger messenger)
         {
+            IsLoading = true;
+
             Newest = new NewestViewModel(client, messenger);
             Top = new TopViewModel(client, messenger);
             Favorites = new FavoritesViewModel(favoritesService, messenger);
 
-            _token = messenger.Subscribe<HighlightChangedMessage>(ServiceOnHighlightChanged);
+            _highlightToken = messenger.Subscribe<HighlightChangedMessage>(ServiceOnHighlightChanged);
+            _loadingToken = messenger.Subscribe<LoadingChangedMessage>(LoadingChanged);
             
             _groups.Add(new PatternGroup { Id = 1, Title = "Newest" });
             _groups.Add(new PatternGroup { Id = 2, Title = "Top" });
@@ -52,6 +65,11 @@ namespace WallpaperPatterns.Core.ViewModels
         private void ServiceOnHighlightChanged(HighlightChangedMessage obj)
         {
             HighlightPattern = Newest.Items.FirstOrDefault();
+        }
+
+        private void LoadingChanged(LoadingChangedMessage loadingChangedMessage)
+        {
+            IsLoading = Top.IsLoading || Newest.IsLoading;
         }
 
         private async void Load()
