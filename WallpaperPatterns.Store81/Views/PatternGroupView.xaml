@@ -27,7 +27,7 @@
             </TransitionCollection>
         </Grid.ChildrenTransitions>
         <ProgressBar Visibility="{Binding Path=IsLoading, Converter={StaticResource booleanToVisibilityConverter}}" IsIndeterminate="True" VerticalAlignment="Top" />
-        <Hub Header="{StaticResource AppName}">
+        <Hub Header="{StaticResource AppName}" SectionHeaderClick="Hub_OnSectionHeaderClick">
             <HubSection x:Name="HighlightHubSection" Width="780" Padding="0" Margin="0">
                 <DataTemplate>
                     <Grid x:Name="HighlightContainerGrid" Loaded="Grid_OnLoaded" Margin="0,-115,0,0" Tapped="HighlightContainerGrid_OnTapped">
@@ -38,7 +38,6 @@
                                 </Storyboard>
                             </store81:TileCanvas.Resources>
                         </store81:TileCanvas>
-                        <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" IsActive="{Binding Path=HighlightPattern, Converter={StaticResource NullToBoolConverter}}" Width="50" Height="50"/>
                         <StackPanel Orientation="Vertical" Margin="40,0,0,120" VerticalAlignment="Bottom" HorizontalAlignment="Left">
                             <TextBlock Text="{Binding HighlightPattern.Title}" FontSize="{ThemeResource HubHeaderThemeFontSize}"/>
                             <TextBlock Text="{Binding HighlightPattern.ByUserName}" FontSize="{ThemeResource HubSectionHeaderThemeFontSize}"/>
@@ -46,14 +45,10 @@
                     </Grid>
                 </DataTemplate>
             </HubSection>
-            <HubSection x:Uid="NewestHeader" DataContext="{Binding Newest}" Header="Top" Width="420" IsHeaderInteractive="True">
+            <HubSection x:Name="NewestSection" DataContext="{Binding Newest}" Header="Top" Width="420" IsHeaderInteractive="True">
                 <HubSection.HeaderTemplate>
                     <DataTemplate>
-                        <Grid Margin="1,0,0,6">
-                            <Button Foreground="{StaticResource ApplicationHeaderForegroundThemeBrush}" Style="{StaticResource TextBlockButtonStyle}" Click="NavigateToNewest">
-                                <TextBlock Text="Newest" Style="{StaticResource SubheaderTextBlockStyle}" TextWrapping="NoWrap" />
-                            </Button>
-                        </Grid>
+                        <TextBlock Text="Newest" Style="{StaticResource SubheaderTextBlockStyle}" TextWrapping="NoWrap" />
                     </DataTemplate>
                 </HubSection.HeaderTemplate>
                 <DataTemplate>
@@ -81,14 +76,10 @@
                     </ListView>
                 </DataTemplate>
             </HubSection>
-            <HubSection x:Uid="TopHeader" DataContext="{Binding Top}" Header="Top" Width="420" IsHeaderInteractive="True">
+            <HubSection x:Name="TopSection" DataContext="{Binding Top}" Header="Top" Width="420" IsHeaderInteractive="True">
                 <HubSection.HeaderTemplate>
                     <DataTemplate>
-                        <Grid Margin="1,0,0,6">
-                            <Button Foreground="{StaticResource ApplicationHeaderForegroundThemeBrush}" Style="{StaticResource TextBlockButtonStyle}" Click="NavigateToTop">
-                                <TextBlock Text="Top" Style="{StaticResource SubheaderTextBlockStyle}" TextWrapping="NoWrap" />
-                            </Button>
-                        </Grid>
+                        <TextBlock Text="Top" Style="{StaticResource SubheaderTextBlockStyle}" TextWrapping="NoWrap" />
                     </DataTemplate>
                 </HubSection.HeaderTemplate>
                 <DataTemplate>
@@ -116,14 +107,10 @@
                     </ListView>
                 </DataTemplate>
             </HubSection>
-            <HubSection x:Uid="FavoritesHeader" DataContext="{Binding Favorites}" Header="Favorites" Width="420" IsHeaderInteractive="True">
+            <HubSection x:Name="FavoritesSection" DataContext="{Binding Favorites}" Header="Favorites" Width="420" IsHeaderInteractive="True">
                 <HubSection.HeaderTemplate>
                     <DataTemplate>
-                        <Grid Margin="1,0,0,6">
-                            <Button Foreground="{StaticResource ApplicationHeaderForegroundThemeBrush}" Style="{StaticResource TextBlockButtonStyle}"  Click="NavigateToFavorites">
-                                <TextBlock Text="Favorites" Style="{StaticResource SubheaderTextBlockStyle}" TextWrapping="NoWrap" />
-                            </Button>
-                        </Grid>
+                        <TextBlock Text="Favorites" Style="{StaticResource SubheaderTextBlockStyle}" TextWrapping="NoWrap" />
                     </DataTemplate>
                 </HubSection.HeaderTemplate>
                 <DataTemplate>

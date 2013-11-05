@@ -79,19 +79,29 @@ namespace WallpaperPatterns.Store81.Views
             ((PatternGroupViewModel)ViewModel).NavigateToDetail.Execute(selectedItem);
         }
 
-        private void NavigateToNewest(object sender, RoutedEventArgs e)
+        private void Hub_OnSectionHeaderClick(object sender, HubSectionHeaderClickEventArgs e)
+        {
+            if (e.Section == NewestSection)
+                NavigateToNewest();
+            else if (e.Section == TopSection)
+                NavigateToTop();
+            else if (e.Section == FavoritesSection)
+                NavigateToFavorites();
+        }
+
+        private void NavigateToNewest()
         {
             var viewDispatcher = Mvx.Resolve<IMvxViewDispatcher>();
             viewDispatcher.ShowViewModel(new MvxViewModelRequest(typeof(IncrementalLoadingNewestViewModel), null, null, null));
         }
 
-        private void NavigateToTop(object sender, RoutedEventArgs e)
+        private void NavigateToTop()
         {
             var viewDispatcher = Mvx.Resolve<IMvxViewDispatcher>();
             viewDispatcher.ShowViewModel(new MvxViewModelRequest(typeof(IncrementalLoadingTopViewModel), null, null, null));
         }
         
-        private void NavigateToFavorites(object sender, RoutedEventArgs e)
+        private void NavigateToFavorites()
         {
             ((PatternGroupViewModel)ViewModel).NavigateToFavorites.Execute(null);
         }
