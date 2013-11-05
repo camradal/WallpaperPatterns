@@ -23,7 +23,7 @@ namespace WallpaperPatterns.Core.Service
 
         public string ByUserName
         {
-            get { return "By " + UserName; }
+            get { return "by " + UserName.ToLower(); }
         }
 
         public bool Equals(Pattern other)

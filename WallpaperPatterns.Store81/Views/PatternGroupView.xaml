@@ -27,7 +27,7 @@
             </TransitionCollection>
         </Grid.ChildrenTransitions>
         <ProgressBar Visibility="{Binding Path=IsLoading, Converter={StaticResource booleanToVisibilityConverter}}" IsIndeterminate="True" VerticalAlignment="Top" />
-        <Hub Header="{StaticResource AppName}" SectionHeaderClick="Hub_OnSectionHeaderClick">
+        <Hub Header=" " SectionHeaderClick="Hub_OnSectionHeaderClick">
             <HubSection x:Name="HighlightHubSection" Width="780" Padding="0" Margin="0">
                 <DataTemplate>
                     <Grid x:Name="HighlightContainerGrid" Loaded="Grid_OnLoaded" Margin="0,-115,0,0" Tapped="HighlightContainerGrid_OnTapped">
@@ -38,9 +38,9 @@
                                 </Storyboard>
                             </store81:TileCanvas.Resources>
                         </store81:TileCanvas>
-                        <StackPanel Orientation="Vertical" Margin="40,0,0,120" VerticalAlignment="Bottom" HorizontalAlignment="Left">
-                            <TextBlock Text="{Binding HighlightPattern.Title}" FontSize="{ThemeResource HubHeaderThemeFontSize}"/>
-                            <TextBlock Text="{Binding HighlightPattern.ByUserName}" FontSize="{ThemeResource HubSectionHeaderThemeFontSize}"/>
+                        <StackPanel Orientation="Vertical" Margin="20,0,0,80" VerticalAlignment="Bottom" HorizontalAlignment="Left" Background="#7F000000">
+                            <TextBlock Text="{Binding HighlightPattern.Title}" Style="{StaticResource HeaderTextBlockStyle}" Margin="20,20,20,0"/>
+                            <TextBlock Text="{Binding HighlightPattern.ByUserName}" Style="{StaticResource SubheaderTextBlockStyle}" Margin="20,5,20,20"/>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
