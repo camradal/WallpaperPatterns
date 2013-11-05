@@ -162,6 +162,8 @@
     <Content Include="icons\appbar.favs.addto.rest.png" />
     <Content Include="icons\appbar.share.rest.png" />
     <Content Include="icons\appbar.download.png" />
+    <Content Include="icons\Application_Icon_159.png" />
+    <Content Include="icons\Application_Icon_336.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
