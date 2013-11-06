@@ -12,9 +12,11 @@ namespace WallpaperPatterns.Store81
     {
         public static readonly DependencyProperty ImageSourceProperty = DependencyProperty.Register("ImageSource", typeof(ImageSource), typeof(TileCanvas), new PropertyMetadata(null, ImageSourceChanged));
 
+        private Size lastActualSize;
+
         public TileCanvas()
         {
-            CacheMode = new BitmapCache();
+            LayoutUpdated += OnLayoutUpdated;
         }
 
         public ImageSource ImageSource
@@ -23,10 +25,20 @@ namespace WallpaperPatterns.Store81
             set { SetValue(ImageSourceProperty, value); }
         }
 
+        private void OnLayoutUpdated(object sender, object o)
+        {
+            var newSize = new Size(ActualWidth, ActualHeight);
+            if (lastActualSize != newSize)
+            {
+                lastActualSize = newSize;
+                Rebuild();
+            }
+        }
+
         private static void ImageSourceChanged(DependencyObject o, DependencyPropertyChangedEventArgs args)
         {
             TileCanvas self = (TileCanvas)o;
-            var src = self.ImageSource;
+            ImageSource src = self.ImageSource;
             if (src != null)
             {
                 self.Opacity = 0;
@@ -64,36 +76,36 @@ namespace WallpaperPatterns.Store81
                 return;
             }
 
-            var width = bmp.PixelWidth;
-            var height = bmp.PixelHeight;
+            int width = bmp.PixelWidth;
+            int height = bmp.PixelHeight;
 
             if (width == 0 || height == 0)
             {
                 return;
             }
 
+            // first image element has already been added
             bool first = true;
             for (int x = 0; x < ActualWidth; x += width)
             {
                 for (int y = 0; y < ActualHeight; y += height)
                 {
-                    if (!first)
-                    {
-                        var image = new Image { Source = ImageSource };
-                        Canvas.SetLeft(image, x);
-                        Canvas.SetTop(image, y);
-                        Children.Add(image);
-                    }
-                    else
+                    if (first)
                     {
                         first = false;
+                        continue;
                     }
+                    
+                    var image = new Image { Source = ImageSource };
+                    Canvas.SetLeft(image, x);
+                    Canvas.SetTop(image, y);
+                    Children.Add(image);
                 }
             }
             Clip = new RectangleGeometry { Rect = new Rect(0, 0, ActualWidth, ActualHeight) };
             CacheMode = new BitmapCache();
 
-            if (this.Resources.ContainsKey("FadeIn"))
+            if (Opacity < 1.0 && this.Resources.ContainsKey("FadeIn"))
             {
                 var animation = this.Resources["FadeIn"] as Storyboard;
                 if (animation != null)
@@ -101,8 +113,8 @@ namespace WallpaperPatterns.Store81
                     animation.Begin();
                 }
             }
-            
-            if (this.Resources.ContainsKey("FadeInLarge"))
+
+            if (Opacity < 1.0 && this.Resources.ContainsKey("FadeInLarge"))
             {
                 var animation = this.Resources["FadeInLarge"] as Storyboard;
                 if (animation != null)
