@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Graphics.Display;
 using Windows.Graphics.Imaging;
 using Windows.Storage;
@@ -7,6 +8,7 @@ using Windows.System.UserProfile;
 using Windows.UI.Notifications;
 using Windows.UI.Xaml.Media.Imaging;
 using Cirrious.MvvmCross.WindowsStore.Views;
+using WallpaperPatterns.Core.Service;
 using WallpaperPatterns.Core.ViewModels;
 using WallpaperPatterns.Store81.Common;
 using System;
@@ -54,6 +56,18 @@ namespace WallpaperPatterns.Store81.Views
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
             this.navigationHelper.SaveState += navigationHelper_SaveState;
+            DataTransferManager.GetForCurrentView().DataRequested += OnDataRequested;
+        }
+
+        private void OnDataRequested(DataTransferManager sender, DataRequestedEventArgs args)
+        {
+            var pattern = (PatternDetailViewModel)ViewModel;
+            if (pattern != null)
+            {
+                DataRequest request = args.Request;
+                request.Data.Properties.Title = pattern.Title + " Pattern";
+                request.Data.SetWebLink(new Uri(pattern.Url, UriKind.Absolute));
+            }
         }
 
         /// <summary>

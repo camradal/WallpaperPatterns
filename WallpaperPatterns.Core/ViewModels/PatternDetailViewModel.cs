@@ -17,6 +17,7 @@ namespace WallpaperPatterns.Core.ViewModels
         private string _title;
         private string _byUserName;
         private string _imageUrl;
+        private string _url;
 
         public string Title
         {
@@ -34,6 +35,12 @@ namespace WallpaperPatterns.Core.ViewModels
         {
             get { return _imageUrl; }
             set { _imageUrl = value; RaisePropertyChanged(() => ImageUrl); }
+        }
+
+        public string Url
+        {
+            get { return _url; }
+            set { _url = value; RaisePropertyChanged(() => Url); }
         }
 
         public PatternDetailViewModel(IPatternClient client, IFavoritesService favoritesService, IImageService imageService, IMvxMessenger messenger)
@@ -60,6 +67,7 @@ namespace WallpaperPatterns.Core.ViewModels
                     Title = _pattern.Title;
                     ByUserName = _pattern.ByUserName;
                     ImageUrl = _pattern.ImageUrl;
+                    Url = _pattern.Url;
                 }
                 else
                 {

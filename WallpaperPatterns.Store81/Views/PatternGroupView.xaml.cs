@@ -1,4 +1,5 @@
-﻿using Cirrious.CrossCore;
+﻿using Windows.ApplicationModel.DataTransfer;
+using Cirrious.CrossCore;
 using Cirrious.MvvmCross.ViewModels;
 using Cirrious.MvvmCross.Views;
 using Cirrious.MvvmCross.WindowsStore.Views;
@@ -44,8 +45,19 @@ namespace WallpaperPatterns.Store81.Views
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
+            DataTransferManager.GetForCurrentView().DataRequested += OnDataRequested;
         }
 
+        private void OnDataRequested(DataTransferManager sender, DataRequestedEventArgs args)
+        {
+            Pattern pattern = ((PatternGroupViewModel)ViewModel).HighlightPattern;
+            if (pattern != null)
+            {
+                DataRequest request = args.Request;
+                request.Data.Properties.Title = pattern.Title + " Pattern";
+                request.Data.SetWebLink(new Uri(pattern.Url, UriKind.Absolute));
+            }
+        }
 
         /// <summary>
         /// Populates the page with content passed during navigation.  Any saved state is also
