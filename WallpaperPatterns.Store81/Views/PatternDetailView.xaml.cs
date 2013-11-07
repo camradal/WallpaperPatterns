@@ -165,6 +165,12 @@ namespace WallpaperPatterns.Store81.Views
         private async Task SaveImageToStream(IRandomAccessStream stream)
         {
             // render bitmap
+            var desiredWidth = (uint)Window.Current.Bounds.Right;
+            var desiredHeight = (uint)Window.Current.Bounds.Bottom;
+
+            TileCanvas.Width = desiredWidth;
+            TileCanvas.Height = desiredHeight;
+
             var bitmap = new RenderTargetBitmap();
             await bitmap.RenderAsync(TileCanvas);
             IBuffer pixels = await bitmap.GetPixelsAsync();
@@ -174,8 +180,8 @@ namespace WallpaperPatterns.Store81.Views
             var encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, stream);
             encoder.BitmapTransform.Bounds = new BitmapBounds
             {
-                Width = (uint)Window.Current.Bounds.Width,
-                Height = (uint)Window.Current.Bounds.Height
+                Width = desiredWidth,
+                Height = desiredHeight
             };
             encoder.SetPixelData(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Premultiplied, (uint)bitmap.PixelWidth, (uint)bitmap.PixelHeight, 96, 96, bytes);
             await encoder.FlushAsync();
