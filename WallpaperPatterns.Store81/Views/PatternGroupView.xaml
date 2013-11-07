@@ -38,19 +38,15 @@
                                 </Storyboard>
                             </store81:TileCanvas.Resources>
                         </store81:TileCanvas>
-                        <StackPanel Orientation="Vertical" Margin="20,0,0,80" VerticalAlignment="Bottom" HorizontalAlignment="Left" Background="#7F000000">
-                            <TextBlock Text="{Binding HighlightPattern.Title}" Style="{StaticResource HeaderTextBlockStyle}" Margin="20,20,20,0"/>
-                            <TextBlock Text="{Binding HighlightPattern.ByUserName}" Style="{StaticResource SubheaderTextBlockStyle}" Margin="20,5,20,20"/>
+                        <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" IsActive="{Binding Path=HighlightPattern, Converter={StaticResource NullToBoolConverter}}" Width="50" Height="50"/>
+                        <StackPanel Orientation="Vertical" Margin="50,0,0,51" VerticalAlignment="Bottom" HorizontalAlignment="Left" Background="#7F000000">
+                            <TextBlock Text="{Binding HighlightPattern.Title}" Style="{StaticResource HeaderTextBlockStyle}" Margin="30,30,30,0"/>
+                            <TextBlock Text="{Binding HighlightPattern.ByUserName}" Style="{StaticResource SubheaderTextBlockStyle}" Margin="30,10,30,30"/>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
             </HubSection>
-            <HubSection x:Name="NewestSection" DataContext="{Binding Newest}" Header="Top" Width="420" IsHeaderInteractive="True">
-                <HubSection.HeaderTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="Newest" Style="{StaticResource SubheaderTextBlockStyle}" TextWrapping="NoWrap" />
-                    </DataTemplate>
-                </HubSection.HeaderTemplate>
+            <HubSection x:Name="NewestSection" DataContext="{Binding Newest}" Header="Newest" Width="420" IsHeaderInteractive="True">
                 <DataTemplate>
                     <ListView
                         x:Name="itemListView"
@@ -77,11 +73,6 @@
                 </DataTemplate>
             </HubSection>
             <HubSection x:Name="TopSection" DataContext="{Binding Top}" Header="Top" Width="420" IsHeaderInteractive="True">
-                <HubSection.HeaderTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="Top" Style="{StaticResource SubheaderTextBlockStyle}" TextWrapping="NoWrap" />
-                    </DataTemplate>
-                </HubSection.HeaderTemplate>
                 <DataTemplate>
                     <ListView
                         x:Name="itemListView"
@@ -108,11 +99,6 @@
                 </DataTemplate>
             </HubSection>
             <HubSection x:Name="FavoritesSection" DataContext="{Binding Favorites}" Header="Favorites" Width="420" IsHeaderInteractive="True">
-                <HubSection.HeaderTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="Favorites" Style="{StaticResource SubheaderTextBlockStyle}" TextWrapping="NoWrap" />
-                    </DataTemplate>
-                </HubSection.HeaderTemplate>
                 <DataTemplate>
                     <ListView
                         x:Name="itemListView"

@@ -148,6 +148,9 @@
     <None Include="WallpaperPatterns.Store81_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdSamplePage.xaml.txt">
+      <ConnectedServiceReference>Wallpaper Patterns</ConnectedServiceReference>
+    </Content>
     <Content Include="Assets\BadgeLogo.scale-100.png" />
     <Content Include="Assets\Logo.scale-100.png" />
     <Content Include="Assets\Logo.scale-140.png" />
