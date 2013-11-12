@@ -31,7 +31,7 @@
         <Hub Header=" " SectionHeaderClick="Hub_OnSectionHeaderClick">
             <HubSection x:Name="HighlightHubSection" Width="780" Padding="0" Margin="0">
                 <DataTemplate>
-                    <Grid x:Name="HighlightContainerGrid" Loaded="Grid_OnLoaded" Margin="0,-115,0,0" Tapped="HighlightContainerGrid_OnTapped">
+                    <Grid x:Name="HighlightContainerGrid" Loaded="Grid_OnLoaded" Margin="0,-100,0,0" Tapped="HighlightContainerGrid_OnTapped">
                         <store81:TileCanvas x:Name="HighlightTileCanvas" ImageSource="{Binding HighlightPattern.ImageUrl}">
                             <store81:TileCanvas.Resources>
                                 <Storyboard x:Name="FadeInLarge">
