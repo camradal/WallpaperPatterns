@@ -19,6 +19,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.Networking.Connectivity;
+using Windows.UI.Popups;
 
 // The Hub Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=286574
 
@@ -46,6 +48,19 @@ namespace WallpaperPatterns.Store81.Views
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
             DataTransferManager.GetForCurrentView().DataRequested += OnDataRequested;
+
+            CheckConnectivity();
+        }
+
+        private async System.Threading.Tasks.Task CheckConnectivity()
+        {
+            if (!IsInternet())
+            {
+                HighlightHubSection.Opacity = 0;
+                MessageDialog dialog = new MessageDialog("Please connect to the internet to use the app", "No internet connection");
+                var result = await dialog.ShowAsync();
+                App.Current.Exit();
+            }
         }
 
         private void OnDataRequested(DataTransferManager sender, DataRequestedEventArgs args)
@@ -57,6 +72,13 @@ namespace WallpaperPatterns.Store81.Views
                 request.Data.Properties.Title = pattern.Title + " Pattern";
                 request.Data.SetWebLink(new Uri(pattern.Url, UriKind.Absolute));
             }
+        }
+
+        public static bool IsInternet()
+        {
+            ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
+            bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
+            return internet;
         }
 
         /// <summary>
