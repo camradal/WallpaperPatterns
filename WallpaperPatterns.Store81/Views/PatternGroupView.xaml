@@ -13,6 +13,7 @@
     <Page.Resources>
         <common:NullToBoolConverter x:Key="NullToBoolConverter"/>
         <common:BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter"/>
+        <common:BooleanToInvisibilityConverter x:Key="booleanToInvisibilityConverter"/>
         <x:String x:Key="ChevronGlyph">&#xE26B;</x:String>
         <x:String x:Key="AppName">Wallpaper Patterns</x:String>
     </Page.Resources>
@@ -31,15 +32,21 @@
             <HubSection x:Name="HighlightHubSection" Width="780" Padding="0" Margin="0">
                 <DataTemplate>
                     <Grid x:Name="HighlightContainerGrid" Loaded="Grid_OnLoaded" Margin="0,-115,0,0" Tapped="HighlightContainerGrid_OnTapped">
-                        <store81:TileCanvas x:Name="TileCanvas" ImageSource="{Binding HighlightPattern.ImageUrl}">
+                        <store81:TileCanvas x:Name="HighlightTileCanvas" ImageSource="{Binding HighlightPattern.ImageUrl}">
                             <store81:TileCanvas.Resources>
                                 <Storyboard x:Name="FadeInLarge">
-                                    <DoubleAnimation From="0" To="1" Storyboard.TargetName="TileCanvas" Storyboard.TargetProperty="Opacity" Duration="0:0:0.4" />
+                                    <DoubleAnimation From="0" To="1" Storyboard.TargetName="HighlightTileCanvas" Storyboard.TargetProperty="Opacity" Duration="0:0:0.4" />
                                 </Storyboard>
                             </store81:TileCanvas.Resources>
                         </store81:TileCanvas>
-                        <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" IsActive="{Binding Path=HighlightPattern, Converter={StaticResource NullToBoolConverter}}" Width="50" Height="50"/>
-                        <StackPanel Orientation="Vertical" Margin="50,0,0,51" VerticalAlignment="Bottom" HorizontalAlignment="Left" Background="#7F000000">
+                        <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" IsActive="{Binding ElementName=HighlightTileCanvas, Path=Loading}" Width="50" Height="50"/>
+                        <StackPanel
+                            Visibility="{Binding Path=IsLoading, Converter={StaticResource booleanToInvisibilityConverter}}"
+                            Orientation="Vertical"
+                            Margin="50,0,0,51"
+                            VerticalAlignment="Bottom"
+                            HorizontalAlignment="Left"
+                            Background="#7F000000">
                             <TextBlock Text="{Binding HighlightPattern.Title}" Style="{StaticResource HeaderTextBlockStyle}" Margin="30,30,30,0"/>
                             <TextBlock Text="{Binding HighlightPattern.ByUserName}" Style="{StaticResource SubheaderTextBlockStyle}" Margin="30,10,30,30"/>
                         </StackPanel>

@@ -109,6 +109,7 @@
     </Compile>
     <Compile Include="Bootstrap\FilePluginBootstrap.cs" />
     <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
+    <Compile Include="Common\BooleanToInvisibilityConverter.cs" />
     <Compile Include="Common\BooleanToVisibilityConverter.cs" />
     <Compile Include="Common\NavigationHelper.cs" />
     <Compile Include="Common\NullToBoolConverter.cs" />

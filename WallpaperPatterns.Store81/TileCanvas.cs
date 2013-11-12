@@ -1,4 +1,5 @@
-﻿using Windows.Foundation;
+﻿using System.ComponentModel;
+using Windows.Foundation;
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -8,14 +9,16 @@ using Windows.UI.Xaml.Media.Imaging;
 
 namespace WallpaperPatterns.Store81
 {
-    public class TileCanvas : Canvas
+    public class TileCanvas : Canvas, INotifyPropertyChanged
     {
         public static readonly DependencyProperty ImageSourceProperty = DependencyProperty.Register("ImageSource", typeof(ImageSource), typeof(TileCanvas), new PropertyMetadata(null, ImageSourceChanged));
 
         private Size lastActualSize;
+        private bool loading;
 
         public TileCanvas()
         {
+            Loading = true;
             LayoutUpdated += OnLayoutUpdated;
         }
 
@@ -23,6 +26,19 @@ namespace WallpaperPatterns.Store81
         {
             get { return (ImageSource)GetValue(ImageSourceProperty); }
             set { SetValue(ImageSourceProperty, value); }
+        }
+
+        public bool Loading
+        {
+            get
+            {
+                return loading;
+            }
+            private set
+            {
+                loading = value;
+                RaisePropertyChanged("Loading");
+            }
         }
 
         private void OnLayoutUpdated(object sender, object o)
@@ -62,6 +78,7 @@ namespace WallpaperPatterns.Store81
 
         private void ImageOnImageOpened(object sender, RoutedEventArgs routedEventArgs)
         {
+            Loading = false;
             var image = (Image)sender;
             image.ImageOpened -= ImageOnImageOpened;
             image.ImageFailed -= ImageOnImageFailed;
@@ -123,5 +140,16 @@ namespace WallpaperPatterns.Store81
                 }
             }
         }
+
+        #region INotifyPropertyChanged
+
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        #endregion
     }
 }
