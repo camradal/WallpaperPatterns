@@ -65,10 +65,18 @@ namespace WallpaperPatterns.WP7
                 return;
             }
 
+            // first image element has already been added
+            bool first = true;
             for (int x = 0; x < ActualWidth; x += width)
             {
                 for (int y = 0; y < ActualHeight; y += height)
                 {
+                    if (first)
+                    {
+                        first = false;
+                        continue;
+                    }
+
                     var image = new Image { Source = ImageSource };
                     Canvas.SetLeft(image, x);
                     Canvas.SetTop(image, y);
