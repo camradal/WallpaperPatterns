@@ -84,11 +84,14 @@ namespace WallpaperPatterns.WP7
                 }
             }
             Clip = new RectangleGeometry { Rect = new Rect(0, 0, ActualWidth, ActualHeight) };
-            
-            var animation = this.Resources["FadeIn"] as Storyboard;
-            if (animation != null)
+
+            if (Opacity < 1.0 && this.Resources.Contains("FadeIn"))
             {
-                animation.Begin();
+                var animation = this.Resources["FadeIn"] as Storyboard;
+                if (animation != null)
+                {
+                    animation.Begin();
+                }
             }
         }
     }
