@@ -7,6 +7,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -96,6 +97,8 @@ namespace WallpaperPatterns.Store81
 
         private void ErrorHandlerOnErrorReported(object sender, ErrorEventArgs e)
         {
+            MessageDialog dialog = new MessageDialog("Sorry, we could not load the patterns, please try again later", "Error getting patterns");
+            dialog.ShowAsync();
         }
 
         private void LoadingChanged(LoadingChangedMessage obj)
