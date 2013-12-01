@@ -9,11 +9,17 @@ namespace WallpaperPatterns.WP7
     public class TileCanvas : Canvas
     {
         public static readonly DependencyProperty ImageSourceProperty = DependencyProperty.Register("ImageSource", typeof(ImageSource), typeof(TileCanvas), new PropertyMetadata(null, ImageSourceChanged));
+        private Size lastActualSize;
 
         public ImageSource ImageSource
         {
             get { return (ImageSource)GetValue(ImageSourceProperty); }
             set { SetValue(ImageSourceProperty, value); }
+        }
+
+        public TileCanvas()
+        {
+            LayoutUpdated += OnLayoutUpdated;
         }
 
         private static void ImageSourceChanged(DependencyObject o, DependencyPropertyChangedEventArgs args)
@@ -30,6 +36,16 @@ namespace WallpaperPatterns.WP7
 
                 //add it to the visual tree to kick off ImageOpened
                 self.Children.Add(image);
+            }
+        }
+
+        private void OnLayoutUpdated(object sender, object o)
+        {
+            var newSize = new Size(ActualWidth, ActualHeight);
+            if (lastActualSize != newSize)
+            {
+                lastActualSize = newSize;
+                Rebuild();
             }
         }
 
@@ -84,6 +100,7 @@ namespace WallpaperPatterns.WP7
                 }
             }
             Clip = new RectangleGeometry { Rect = new Rect(0, 0, ActualWidth, ActualHeight) };
+            CacheMode = new BitmapCache();
 
             if (Opacity < 1.0 && this.Resources.Contains("FadeIn"))
             {

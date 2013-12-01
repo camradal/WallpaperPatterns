@@ -16,6 +16,7 @@ namespace WallpaperPatterns.Core.ViewModels
         private ObservableCollection<Pattern> _items = new ObservableCollection<Pattern>();
         private bool _updatedHighlights;
         private bool _isLoading;
+        private volatile int _lastOffset = -1;
 
         public bool IsLoading
         {
@@ -38,6 +39,10 @@ namespace WallpaperPatterns.Core.ViewModels
 
         public async void Load(int offset = 0)
         {
+            if (_lastOffset == offset)
+                return;
+            _lastOffset = offset;
+
             IsLoading = true;
             _messenger.Publish(new LoadingChangedMessage(this, true));
             try
