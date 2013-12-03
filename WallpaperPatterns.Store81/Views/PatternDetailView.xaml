@@ -13,6 +13,7 @@
 
     <Page.Resources>
         <common:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <common:BooleanToInvisibilityConverter x:Key="BooleanToInvisibilityConverter"/>
         <!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
         <x:String x:Key="AppName">My Application</x:String>
     </Page.Resources>
@@ -63,7 +64,8 @@
     <views:MvxStorePage.BottomAppBar>
         <AppBar>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <AppBarButton Icon="favorite" Label="Favorite" Click="ButtonFavorite_OnClick"/>
+                <AppBarButton Icon="favorite" Label="Favorite" Click="ButtonFavorite_OnClick" Visibility="{Binding IsFavorite, Converter={StaticResource BooleanToInvisibilityConverter}}"/>
+                <AppBarButton Icon="unfavorite" Label="Unfavorite" Click="ButtonUnfavorite_OnClick" Visibility="{Binding IsFavorite, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                 <AppBarButton Icon="download" Label="Download" Click="ButtonDownload_OnClick" />
                 <AppBarButton Icon="setlockscreen" Label="Set Lockscreen" Click="ButtonSetLockScreen_OnClick" />
             </StackPanel>

@@ -43,6 +43,11 @@ namespace WallpaperPatterns.Core.ViewModels
             set { _url = value; RaisePropertyChanged(() => Url); }
         }
 
+        public bool IsFavorite
+        {
+            get { return _favoritesService.Contains(_pattern); }
+        }
+
         public PatternDetailViewModel(IPatternClient client, IFavoritesService favoritesService, IImageService imageService, IMvxMessenger messenger)
         {
             _client = client;
@@ -84,15 +89,23 @@ namespace WallpaperPatterns.Core.ViewModels
         {
             get
             {
-                return new MvxCommand(() => _favoritesService.Insert(_pattern));
+                return new MvxCommand(() =>
+                {
+                    _favoritesService.Insert(_pattern);
+                    RaisePropertyChanged(() => IsFavorite);
+                });
             }
         }
-        
-        public ICommand Download
+
+        public ICommand RemoveFavorite
         {
             get
             {
-                return new MvxCommand(() => _imageService.Save("picture.jpg", new byte[] {}));
+                return new MvxCommand(() =>
+                {
+                    _favoritesService.Delete(_pattern);
+                    RaisePropertyChanged(() => IsFavorite);
+                });
             }
         }
     }

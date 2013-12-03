@@ -6,6 +6,7 @@ namespace WallpaperPatterns.Core.Service
     {
         void Insert(Pattern pattern);
         void Delete(Pattern pattern);
+        bool Contains(Pattern pattern);
         List<Pattern> All();
     }
 }

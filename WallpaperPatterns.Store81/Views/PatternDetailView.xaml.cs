@@ -154,6 +154,15 @@ namespace WallpaperPatterns.Store81.Views
             Notify(text);
         }
 
+        private void ButtonUnfavorite_OnClick(object sender, RoutedEventArgs e)
+        {
+            ((PatternDetailViewModel)ViewModel).RemoveFavorite.Execute(null);
+
+            string title = GetPictureTitle();
+            string text = string.Format("Pattern {0} has been removed from your favorites", title);
+            Notify(text);
+        }
+
         private string GetPictureTitle()
         {
             var model = (PatternDetailViewModel)this.ViewModel;

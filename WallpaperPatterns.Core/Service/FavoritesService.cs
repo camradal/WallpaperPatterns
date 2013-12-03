@@ -56,6 +56,11 @@ namespace WallpaperPatterns.Core.Service
             }
         }
 
+        public bool Contains(Pattern pattern)
+        {
+            return _favorites.Any(p => p.Id == pattern.Id);
+        }
+
         public List<Pattern> All()
         {
             return new List<Pattern>(_favorites);
