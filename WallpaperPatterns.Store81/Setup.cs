@@ -1,4 +1,3 @@
-using Cirrious.CrossCore.IoC;
 using Cirrious.CrossCore.Platform;
 using Cirrious.MvvmCross.ViewModels;
 using Cirrious.MvvmCross.WindowsStore.Platform;
@@ -14,11 +13,6 @@ namespace WallpaperPatterns.Store81
 
         protected override IMvxApplication CreateApp()
         {
-            CreatableTypes()
-                .EndingWith("ViewModel")
-                .AsInterfaces()
-                .RegisterAsLazySingleton();
-
             return new Core.App();
         }
 		

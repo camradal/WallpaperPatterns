@@ -148,5 +148,10 @@ namespace WallpaperPatterns.Store81.Views
                 viewModel.NavigateToHighlight.Execute(null);
             }
         }
+
+        private void ButtonRefresh_OnClick(object sender, RoutedEventArgs e)
+        {
+            ((PatternGroupViewModel)ViewModel).Refresh.Execute(null);
+        }
     }
 }

@@ -70,6 +70,7 @@ namespace WallpaperPatterns.Store81
 
         private void ImageOnImageFailed(object sender, ExceptionRoutedEventArgs exceptionRoutedEventArgs)
         {
+            Loading = false;
             var image = (Image)sender;
             image.ImageOpened -= ImageOnImageOpened;
             image.ImageFailed -= ImageOnImageFailed;

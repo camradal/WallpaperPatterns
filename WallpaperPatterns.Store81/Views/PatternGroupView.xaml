@@ -144,4 +144,11 @@
             </HubSection>
         </Hub>
     </Grid>
+    <views:MvxStorePage.BottomAppBar>
+        <AppBar>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <AppBarButton Icon="refresh" Label="Refresh" Click="ButtonRefresh_OnClick" />
+            </StackPanel>
+        </AppBar>
+    </views:MvxStorePage.BottomAppBar>
 </views:MvxStorePage>

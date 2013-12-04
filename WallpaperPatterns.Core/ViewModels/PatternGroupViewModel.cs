@@ -115,5 +115,17 @@ namespace WallpaperPatterns.Core.ViewModels
                 return new MvxCommand<Pattern>(item => ShowViewModel<FavoritesViewModel>());
             }
         }
+
+        public ICommand Refresh
+        {
+            get
+            {
+                return new MvxCommand<Pattern>(item =>
+                {
+                    Newest.Refresh();
+                    Top.Refresh();
+                });
+            }
+        }
     }
 }

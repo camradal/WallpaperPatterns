@@ -65,6 +65,16 @@ namespace WallpaperPatterns.Core.ViewModels
             }
         }
 
+        public void Refresh()
+        {
+            if (!IsLoading)
+            {
+                _lastOffset = -1;
+                Items.Clear();
+                Load();
+            }
+        }
+
         public ICommand NavigateToDetail
         {
             get
