@@ -126,7 +126,7 @@ namespace WallpaperPatterns.Store81
             if (Opacity < 1.0 && this.Resources.ContainsKey("FadeIn"))
             {
                 var animation = this.Resources["FadeIn"] as Storyboard;
-                if (animation != null)
+                if (animation != null && animation.GetCurrentState() != ClockState.Active)
                 {
                     animation.Begin();
                 }
@@ -135,7 +135,7 @@ namespace WallpaperPatterns.Store81
             if (Opacity < 1.0 && this.Resources.ContainsKey("FadeInLarge"))
             {
                 var animation = this.Resources["FadeInLarge"] as Storyboard;
-                if (animation != null)
+                if (animation != null && animation.GetCurrentState() != ClockState.Active)
                 {
                     animation.Begin();
                 }
