@@ -28,11 +28,11 @@
                 <EntranceThemeTransition/>
             </TransitionCollection>
         </Grid.ChildrenTransitions>
-        <ProgressBar Visibility="{Binding Path=IsLoading, Converter={StaticResource booleanToVisibilityConverter}}" IsIndeterminate="True" VerticalAlignment="Top" />
         <Hub Header=" " SectionHeaderClick="Hub_OnSectionHeaderClick">
             <HubSection x:Name="HighlightHubSection" Width="780" Padding="0" Margin="0">
                 <DataTemplate>
                     <Grid x:Name="HighlightContainerGrid" Loaded="Grid_OnLoaded" Margin="0,-100,0,0" Tapped="HighlightContainerGrid_OnTapped">
+                        <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" IsActive="{Binding ElementName=HighlightTileCanvas, Path=Loading}" Width="50" Height="50"/>
                         <store81:TileCanvas x:Name="HighlightTileCanvas" ImageSource="{Binding HighlightPattern.ImageUrl}">
                             <store81:TileCanvas.Resources>
                                 <Storyboard x:Name="FadeInLarge">
@@ -40,7 +40,6 @@
                                 </Storyboard>
                             </store81:TileCanvas.Resources>
                         </store81:TileCanvas>
-                        <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" IsActive="{Binding ElementName=HighlightTileCanvas, Path=Loading}" Width="50" Height="50"/>
                         <StackPanel
                             Visibility="{Binding Path=IsLoading, Converter={StaticResource booleanToInvisibilityConverter}}"
                             Orientation="Vertical"
@@ -143,6 +142,7 @@
                 </DataTemplate>
             </HubSection>
         </Hub>
+        <ProgressBar Visibility="{Binding Path=IsLoading, Converter={StaticResource booleanToVisibilityConverter}}" IsIndeterminate="True" VerticalAlignment="Top" />
     </Grid>
     <views:MvxStorePage.BottomAppBar>
         <AppBar>
