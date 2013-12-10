@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
-  <Identity Name="136caabf-d7fa-4912-9aaa-8262a6f0a1df" Publisher="CN=Alexey" Version="1.0.0.0" />
+  <Identity Name="28215DapperPanda.WallpaperPatterns" Publisher="CN=C9842E92-0D29-4A42-9002-901063F12D1A" Version="1.1.0.3" />
   <Properties>
-    <DisplayName>WallpaperPatterns.Store81</DisplayName>
+    <DisplayName>Wallpaper Patterns</DisplayName>
     <PublisherDisplayName>Dapper Panda</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>

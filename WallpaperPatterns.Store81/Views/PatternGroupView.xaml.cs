@@ -1,4 +1,5 @@
 ﻿using Windows.ApplicationModel.DataTransfer;
+using Windows.UI.ApplicationSettings;
 using Cirrious.CrossCore;
 using Cirrious.MvvmCross.ViewModels;
 using Cirrious.MvvmCross.Views;
@@ -48,6 +49,7 @@ namespace WallpaperPatterns.Store81.Views
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
             DataTransferManager.GetForCurrentView().DataRequested += OnDataRequested;
+            SettingsPane.GetForCurrentView().CommandsRequested += OnCommandsRequested;
 
             CheckConnectivity();
         }
@@ -72,6 +74,17 @@ namespace WallpaperPatterns.Store81.Views
                 request.Data.Properties.Title = pattern.Title + " Pattern";
                 request.Data.SetWebLink(new Uri(pattern.Url, UriKind.Absolute));
             }
+        }
+
+        private void OnCommandsRequested(SettingsPane sender, SettingsPaneCommandsRequestedEventArgs args)
+        {
+            var cmd = new SettingsCommand("Privacy Policy", "Privacy Policy", async command =>
+            {
+
+                var url = new Uri("http://www.dapperpanda.com/privacy-policy");
+                await Windows.System.Launcher.LaunchUriAsync(url);
+            });
+            args.Request.ApplicationCommands.Add(cmd);
         }
 
         public static bool IsInternet()
