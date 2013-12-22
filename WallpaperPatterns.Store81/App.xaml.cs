@@ -97,8 +97,9 @@ namespace WallpaperPatterns.Store81
 
         private void ErrorHandlerOnErrorReported(object sender, ErrorEventArgs e)
         {
-            MessageDialog dialog = new MessageDialog("Sorry, we could not load the patterns, please try again later", "Error getting patterns");
-            dialog.ShowAsync();
+            // Showing the dialog twice basically kills the app
+            // MessageDialog dialog = new MessageDialog("Sorry, we could not load the patterns, please try again later", "Error getting patterns");
+            // dialog.ShowAsync();
         }
 
         private void LoadingChanged(LoadingChangedMessage obj)
