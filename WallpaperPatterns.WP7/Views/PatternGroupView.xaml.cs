@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
 using WallpaperPatterns.Core.Service;
 using WallpaperPatterns.Core.ViewModels;
+using GestureEventArgs = System.Windows.Input.GestureEventArgs;
 
 namespace WallpaperPatterns.WP7.Views
 {
@@ -20,8 +14,9 @@ namespace WallpaperPatterns.WP7.Views
             InitializeComponent();
         }
 
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ListBox_OnTap(object sender, GestureEventArgs e)
         {
+            
             var listBox = (LongListSelector)sender;
             var selectedItem = listBox.SelectedItem as Pattern;
             if (selectedItem == null)

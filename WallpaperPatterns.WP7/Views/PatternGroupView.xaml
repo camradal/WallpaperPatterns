@@ -51,7 +51,7 @@
                     ItemsSource="{Binding Items}"
                     ItemTemplate="{StaticResource ItemTemplate}"
                     ItemRealized="NewListBox_OnItemRealized"
-                    SelectionChanged="ListBox_SelectionChanged">
+                    Tap="ListBox_OnTap">
                 </phone:LongListSelector>
             </controls:PivotItem>
             <controls:PivotItem Header="top">
@@ -61,7 +61,7 @@
                     ItemsSource="{Binding Items}"
                     ItemTemplate="{StaticResource ItemTemplate}"
                     ItemRealized="TopListBox_OnItemRealized"
-                    SelectionChanged="ListBox_SelectionChanged">
+                    Tap="ListBox_OnTap">
                 </phone:LongListSelector>
             </controls:PivotItem>
             <controls:PivotItem Header="favorites">
@@ -70,7 +70,7 @@
                     DataContext="{Binding Favorites}"
                     ItemsSource="{Binding Items}"
                     ItemTemplate="{StaticResource ItemTemplate}"
-                    SelectionChanged="ListBox_SelectionChanged">
+                    Tap="ListBox_OnTap">
                 </phone:LongListSelector>
             </controls:PivotItem>
         </controls:Pivot>
