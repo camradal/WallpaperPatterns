@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2009/deployment" AppPlatformVersion="7.1">
-  <App xmlns="" ProductID="{474d82d7-dd44-4971-a98f-65f9282946e5}" Title="WallpaperPatterns.WP7" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="WallpaperPatterns.WP7 author" Description="Sample description" Publisher="WallpaperPatterns.WP7">
+  <App xmlns="" ProductID="{474d82d7-dd44-4971-a98f-65f9282946e5}" Title="Wallpaper Patterns" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Dapper Panda" Description="Download thousands of beautiful patterns for your lock screen or wallpaper from COLOURlovers community. The app is meticulously designed to look great on all Windows devices. Many new patterns added every day. More features coming soon. Don't hesitate to c" Publisher="Dapper Panda">
     <IconPath IsRelative="true" IsResource="false">icons\Application_Icon_159.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
