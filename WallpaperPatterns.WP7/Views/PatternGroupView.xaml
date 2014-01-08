@@ -19,7 +19,7 @@
 
     <phone:PhoneApplicationPage.Resources>
         <DataTemplate x:Key="ItemTemplate">
-            <wp7:TileCanvas x:Name="TileCanvas" Height="160" Width="Auto" Margin="12,0,12,12" ImageSource="{Binding ImageUrl}" Opacity="0">
+            <wp7:TileCanvas x:Name="TileCanvas" Height="160" Width="Auto" Margin="12,0,0,12" ImageSource="{Binding ImageUrl}" Opacity="0">
                 <wp7:TileCanvas.Resources>
                     <Storyboard x:Name="FadeIn">
                         <DoubleAnimation Storyboard.TargetName="TileCanvas" Storyboard.TargetProperty="Opacity" From="0.0" To="1.0" Duration="0:0:0.4" />
@@ -45,36 +45,33 @@
             Grid.Row="0"
             Title="{Binding Source={StaticResource Strings}, Path=Resources.AppTitleCapitalized}">
             <controls:PivotItem Header="new">
-                <toolkit:LongListSelector
+                <phone:LongListSelector
                     x:Name="NewListBox"
-                    IsFlatList="True" 
                     DataContext="{Binding Newest}"
                     ItemsSource="{Binding Items}"
                     ItemTemplate="{StaticResource ItemTemplate}"
-                    Link="NewListBox_Link"
+                    ItemRealized="NewListBox_OnItemRealized"
                     SelectionChanged="ListBox_SelectionChanged">
-                </toolkit:LongListSelector>
+                </phone:LongListSelector>
             </controls:PivotItem>
             <controls:PivotItem Header="top">
-                <toolkit:LongListSelector
+                <phone:LongListSelector
                     x:Name="TopListBox"
-                    IsFlatList="True" 
                     DataContext="{Binding Top}"
                     ItemsSource="{Binding Items}"
                     ItemTemplate="{StaticResource ItemTemplate}"
-                    Link="TopListBox_Link"
+                    ItemRealized="TopListBox_OnItemRealized"
                     SelectionChanged="ListBox_SelectionChanged">
-                </toolkit:LongListSelector>
+                </phone:LongListSelector>
             </controls:PivotItem>
             <controls:PivotItem Header="favorites">
-                <toolkit:LongListSelector
+                <phone:LongListSelector
                     x:Name="FavoritesListBox"
-                    IsFlatList="True" 
                     DataContext="{Binding Favorites}"
                     ItemsSource="{Binding Items}"
                     ItemTemplate="{StaticResource ItemTemplate}"
                     SelectionChanged="ListBox_SelectionChanged">
-                </toolkit:LongListSelector>
+                </phone:LongListSelector>
             </controls:PivotItem>
         </controls:Pivot>
         <!-- Ad Control -->

@@ -30,7 +30,7 @@ namespace WallpaperPatterns.WP7.Views
             ((PatternGroupViewModel)ViewModel).NavigateToDetail.Execute(selectedItem);
         }
 
-        private void NewListBox_Link(object sender, LinkUnlinkEventArgs e)
+        private void NewListBox_OnItemRealized(object sender, ItemRealizationEventArgs e)
         {
             var listBox = sender as LongListSelector;
             if (listBox == null) return;
@@ -38,7 +38,7 @@ namespace WallpaperPatterns.WP7.Views
             var items = listBox.ItemsSource as ObservableCollection<Pattern>;
             if (items == null) return;
 
-            var currentItem = e.ContentPresenter.Content as Pattern;
+            var currentItem = e.Container.Content as Pattern;
             if (currentItem == null) return;
 
             NewestViewModel viewModel = ((PatternGroupViewModel)ViewModel).Newest;
@@ -49,7 +49,7 @@ namespace WallpaperPatterns.WP7.Views
             }
         }
 
-        private void TopListBox_Link(object sender, LinkUnlinkEventArgs e)
+        private void TopListBox_OnItemRealized(object sender, ItemRealizationEventArgs e)
         {
             var listBox = sender as LongListSelector;
             if (listBox == null) return;
@@ -57,7 +57,7 @@ namespace WallpaperPatterns.WP7.Views
             var items = listBox.ItemsSource as ObservableCollection<Pattern>;
             if (items == null) return;
 
-            var currentItem = e.ContentPresenter.Content as Pattern;
+            var currentItem = e.Container.Content as Pattern;
             if (currentItem == null) return;
 
             TopViewModel viewModel = ((PatternGroupViewModel)ViewModel).Top;
