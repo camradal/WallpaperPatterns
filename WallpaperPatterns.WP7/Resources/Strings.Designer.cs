@@ -322,7 +322,7 @@ namespace WallpaperPatterns.WP7.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pattern saved.
+        ///   Looks up a localized string similar to Pattern saved....
         /// </summary>
         public static string MessagePatternDownloaded {
             get {
@@ -331,7 +331,7 @@ namespace WallpaperPatterns.WP7.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Added to favorites.
+        ///   Looks up a localized string similar to Added to favorites....
         /// </summary>
         public static string MessagePatternFavorite {
             get {
@@ -340,7 +340,7 @@ namespace WallpaperPatterns.WP7.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lockscreen updated.
+        ///   Looks up a localized string similar to Wallpaper updated....
         /// </summary>
         public static string MessagePatternOnLockscreen {
             get {
@@ -349,7 +349,7 @@ namespace WallpaperPatterns.WP7.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removed from favorites.
+        ///   Looks up a localized string similar to Removed from favorites....
         /// </summary>
         public static string MessagePatternUnfavorite {
             get {

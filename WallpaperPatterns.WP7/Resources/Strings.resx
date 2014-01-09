@@ -205,16 +205,16 @@
     <value>Rate or review this app?</value>
   </data>
   <data name="MessagePatternDownloaded" xml:space="preserve">
-    <value>Pattern saved</value>
+    <value>Pattern saved...</value>
   </data>
   <data name="MessagePatternFavorite" xml:space="preserve">
-    <value>Added to favorites</value>
+    <value>Added to favorites...</value>
   </data>
   <data name="MessagePatternOnLockscreen" xml:space="preserve">
-    <value>Lockscreen updated</value>
+    <value>Wallpaper updated...</value>
   </data>
   <data name="MessagePatternUnfavorite" xml:space="preserve">
-    <value>Removed from favorites</value>
+    <value>Removed from favorites...</value>
   </data>
   <data name="PageTitleAbout" xml:space="preserve">
     <value>about</value>
