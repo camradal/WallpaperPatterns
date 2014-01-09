@@ -21,7 +21,9 @@ namespace WallpaperPatterns.WP7.Views
 
         private void ApplicationBarIconButton_Click_Share(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var viewModel = (PatternDetailViewModel)ViewModel;
+            var pattern = viewModel.Pattern;
+            ((PatternDetailViewModel)ViewModel).NavigateToShare.Execute(pattern);
         }
 
         private void ApplicationBarIconButton_Click_Favorite(object sender, EventArgs e)
@@ -37,7 +39,7 @@ namespace WallpaperPatterns.WP7.Views
 
         private void ApplicationBarIconButton_Click_Download(object sender, EventArgs e)
         {
-            var viewModel = (PatternDetailViewModel) ViewModel;
+            var viewModel = (PatternDetailViewModel)ViewModel;
             string title = viewModel.Title;
             string uriString = viewModel.ImageUrl;
 

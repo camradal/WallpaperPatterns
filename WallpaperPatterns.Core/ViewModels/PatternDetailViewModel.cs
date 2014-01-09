@@ -48,6 +48,11 @@ namespace WallpaperPatterns.Core.ViewModels
             get { return _favoritesService.Contains(_pattern); }
         }
 
+        public Pattern Pattern
+        {
+            get { return _pattern; }
+        }
+
         public PatternDetailViewModel(IPatternClient client, IFavoritesService favoritesService, IImageService imageService, IMvxMessenger messenger)
         {
             _client = client;
@@ -106,6 +111,14 @@ namespace WallpaperPatterns.Core.ViewModels
                     _favoritesService.Delete(_pattern);
                     RaisePropertyChanged(() => IsFavorite);
                 });
+            }
+        }
+
+        public ICommand NavigateToShare
+        {
+            get
+            {
+                return new MvxCommand<Pattern>(item => ShowViewModel<ShareViewModel>(new { id = item.Id }));
             }
         }
     }
