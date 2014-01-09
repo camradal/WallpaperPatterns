@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.Phone.Controls;
 using WallpaperPatterns.Core.Service;
 using WallpaperPatterns.Core.ViewModels;
+using WallpaperPatterns.WP7.Utilities;
 
 namespace WallpaperPatterns.WP7.Views
 {
@@ -11,6 +12,15 @@ namespace WallpaperPatterns.WP7.Views
         public PatternGroupView()
         {
             InitializeComponent();
+            
+            AppSettings.NumberOfStarts++;
+            ShowReviewPane();
+        }
+
+        private void ShowReviewPane()
+        {
+            var rate = new ReviewThisAppTask();
+            rate.ShowAfterThreshold();
         }
 
         private void ListBox_OnTap(object sender, System.Windows.Input.GestureEventArgs e)

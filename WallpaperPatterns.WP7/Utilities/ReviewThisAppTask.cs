@@ -11,20 +11,19 @@ namespace WallpaperPatterns.WP7.Utilities
 
         public void ShowAfterThreshold()
         {
-            // TODO: fill out
-            //int starts = AppSettings.NumberOfStarts;
-            //if ((starts == numberOfStartsThreshold || starts % numberOfStartsModulo == 0) &&
-            //    GetMessageBoxResult() == MessageBoxResult.OK)
-            //{
-            //    try
-            //    {
-            //        var task = new MarketplaceReviewTask();
-            //        task.Show();
-            //    }
-            //    catch
-            //    {
-            //    }
-            //}
+            int starts = AppSettings.NumberOfStarts;
+            if ((starts == numberOfStartsThreshold || starts % numberOfStartsModulo == 0) &&
+                GetMessageBoxResult() == MessageBoxResult.OK)
+            {
+                try
+                {
+                    var task = new MarketplaceReviewTask();
+                    task.Show();
+                }
+                catch
+                {
+                }
+            }
         }
 
         private MessageBoxResult GetMessageBoxResult()
