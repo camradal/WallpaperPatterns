@@ -205,24 +205,6 @@ namespace WallpaperPatterns.WP7.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Welcome! Setting up now.
-        /// </summary>
-        public static string InitialLoadLowMemoryDevice {
-            get {
-                return ResourceManager.GetString("InitialLoadLowMemoryDevice", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Welcome! Setting up the live tile now.
-        /// </summary>
-        public static string InitialLoadRegularDevice {
-            get {
-                return ResourceManager.GetString("InitialLoadRegularDevice", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Loading....
         /// </summary>
         public static string Loading {
@@ -354,6 +336,15 @@ namespace WallpaperPatterns.WP7.Resources {
         public static string MessagePatternUnfavorite {
             get {
                 return ResourceManager.GetString("MessagePatternUnfavorite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please wait while we set up....
+        /// </summary>
+        public static string MessagePleaseWait {
+            get {
+                return ResourceManager.GetString("MessagePleaseWait", resourceCulture);
             }
         }
         

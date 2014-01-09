@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.Phone.Controls;
 using WallpaperPatterns.Core.Service;
 using WallpaperPatterns.Core.ViewModels;
+using WallpaperPatterns.WP7.Resources;
 using WallpaperPatterns.WP7.Utilities;
 
 namespace WallpaperPatterns.WP7.Views
@@ -13,8 +14,19 @@ namespace WallpaperPatterns.WP7.Views
         {
             InitializeComponent();
             
-            AppSettings.NumberOfStarts++;
+            int numberOfStarts = AppSettings.NumberOfStarts;
+            AppSettings.NumberOfStarts = numberOfStarts + 1;
+
+            ShowLoading(numberOfStarts);
             ShowReviewPane();
+        }
+
+        private void ShowLoading(int numberOfStarts)
+        {
+            if (numberOfStarts == 1)
+            {
+                GlobalLoading.Instance.LoadingText = Strings.MessagePleaseWait;
+            }
         }
 
         private void ShowReviewPane()
