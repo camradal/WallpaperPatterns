@@ -322,6 +322,42 @@ namespace WallpaperPatterns.WP7.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pattern saved.
+        /// </summary>
+        public static string MessagePatternDownloaded {
+            get {
+                return ResourceManager.GetString("MessagePatternDownloaded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Added to favorites.
+        /// </summary>
+        public static string MessagePatternFavorite {
+            get {
+                return ResourceManager.GetString("MessagePatternFavorite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lockscreen updated.
+        /// </summary>
+        public static string MessagePatternOnLockscreen {
+            get {
+                return ResourceManager.GetString("MessagePatternOnLockscreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removed from favorites.
+        /// </summary>
+        public static string MessagePatternUnfavorite {
+            get {
+                return ResourceManager.GetString("MessagePatternUnfavorite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to about.
         /// </summary>
         public static string PageTitleAbout {

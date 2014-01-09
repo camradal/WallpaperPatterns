@@ -8,6 +8,7 @@ using System.Windows.Media.Imaging;
 using Microsoft.Xna.Framework.Media;
 using Windows.Phone.System.UserProfile;
 using WallpaperPatterns.Core.ViewModels;
+using WallpaperPatterns.WP7.Resources;
 
 namespace WallpaperPatterns.WP7.Views
 {
@@ -26,6 +27,7 @@ namespace WallpaperPatterns.WP7.Views
         private void ApplicationBarIconButton_Click_Favorite(object sender, EventArgs e)
         {
             ((PatternDetailViewModel)ViewModel).AddFavorite.Execute(null);
+            GlobalLoading.Instance.SetTimedText(Strings.MessagePatternFavorite);
         }
 
         private void ApplicationBarMenuItem_OnClick_OpenInIE(object sender, EventArgs e)
@@ -44,6 +46,7 @@ namespace WallpaperPatterns.WP7.Views
             
             WriteableBitmap writeableBitmap = GetBitmap(uriString, targetWidth, targetHeight);
             SaveImageToMediaLibrary(writeableBitmap, targetWidth, targetHeight, title);
+            GlobalLoading.Instance.SetTimedText(Strings.MessagePatternDownloaded);
         }
 
         private async void ApplicationBarIconButton_Click_Wallpaper(object sender, EventArgs e)
@@ -77,6 +80,7 @@ namespace WallpaperPatterns.WP7.Views
         {
             string realPath = "ms-appdata:///local/" + filename;
             LockScreen.SetImageUri(new Uri(realPath, UriKind.Absolute));
+            GlobalLoading.Instance.SetTimedText(Strings.MessagePatternOnLockscreen);
         }
 
         private WriteableBitmap GetBitmap(string uriString, int targetWidth, int targetHeight)

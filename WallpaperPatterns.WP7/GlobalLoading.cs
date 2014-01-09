@@ -61,7 +61,7 @@ namespace WallpaperPatterns.WP7
         {
             IsLoading = true;
             LoadingText = text;
-            var timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
+            var timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1.5) };
             timer.Tick += (o, args) =>
             {
                 IsLoading = false;
