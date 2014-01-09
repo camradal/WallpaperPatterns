@@ -45,7 +45,7 @@
             <shell:ApplicationBarIconButton IconUri="/icons/appbar.share.rest.png" Text="share" Click="ApplicationBarIconButton_Click_Share"/>
             <shell:ApplicationBarIconButton IconUri="/icons/appbar.favs.addto.rest.png" Text="favorite" Click="ApplicationBarIconButton_Click_Favorite"/>
             <shell:ApplicationBarIconButton IconUri="/icons/appbar.download.png" Text="download" Click="ApplicationBarIconButton_Click_Download"/>
-            <shell:ApplicationBarIconButton IconUri="/icons/appbar.download.png" Text="wallpaper" Click="ApplicationBarIconButton_Click_Wallpaper"/>
+            <shell:ApplicationBarIconButton IconUri="/icons/appbar.lockscreen.png" Text="wallpaper" Click="ApplicationBarIconButton_Click_Wallpaper"/>
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Text="open in internet explorer..." Click="ApplicationBarMenuItem_OnClick_OpenInIE"/>
             </shell:ApplicationBar.MenuItems>
