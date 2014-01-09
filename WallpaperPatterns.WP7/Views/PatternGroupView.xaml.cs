@@ -3,7 +3,6 @@ using System.Linq;
 using Microsoft.Phone.Controls;
 using WallpaperPatterns.Core.Service;
 using WallpaperPatterns.Core.ViewModels;
-using GestureEventArgs = System.Windows.Input.GestureEventArgs;
 
 namespace WallpaperPatterns.WP7.Views
 {
@@ -14,9 +13,8 @@ namespace WallpaperPatterns.WP7.Views
             InitializeComponent();
         }
 
-        private void ListBox_OnTap(object sender, GestureEventArgs e)
+        private void ListBox_OnTap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            
             var listBox = (LongListSelector)sender;
             var selectedItem = listBox.SelectedItem as Pattern;
             if (selectedItem == null)
