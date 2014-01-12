@@ -136,13 +136,13 @@
     <value>dapperpanda@gmail.com</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Trivia Buff is a perfect app for trivia &amp; random fact lovers.</value>
+    <value>Download thousands of beautiful patterns for your lock screen from COLOURlovers community.</value>
   </data>
   <data name="Disclaimer" xml:space="preserve">
-    <value>The content is provided by reddit. If you would like to use a full featured reddit client, check out Baconit</value>
+    <value>Wallpaper Patterns is an independent app, not affiliated with COLOURlovers.</value>
   </data>
   <data name="ErrorCouldNotEnableLiveTileDescription" xml:space="preserve">
-    <value>Please check Trivia Buff task under Settings &gt;Applications &gt;Background Tasks  Then restart the app and enable the live tile from the settings page.</value>
+    <value>Please check Wallpaper Patterns task under Settings &gt;Applications &gt;Background Tasks  Then restart the app and enable the live tile from the settings page.</value>
   </data>
   <data name="ErrorCouldNotEnableLiveTileTitle" xml:space="preserve">
     <value>Could not enable the live tile</value>
@@ -157,13 +157,13 @@
     <value>Server is not available</value>
   </data>
   <data name="Feedback" xml:space="preserve">
-    <value>We would love to hear your comments about Trivia Buff. Send us your thoughts</value>
+    <value>We would love to hear your comments about Wallpaper Patterns. Send us your thoughts</value>
   </data>
   <data name="FeedbackOn" xml:space="preserve">
-    <value>Feedback for Trivia Buff</value>
+    <value>Feedback for Wallpaper Patterns</value>
   </data>
   <data name="FeedbackTemplate" xml:space="preserve">
-    <value>Hello, I've been using Trivia Buff app and I have the following feedback...</value>
+    <value>Hello, I've been using Wallpaper Patterns app and I have the following feedback...</value>
   </data>
   <data name="Loading" xml:space="preserve">
     <value>Loading...</value>
@@ -187,7 +187,7 @@
     <value>settings</value>
   </data>
   <data name="MessageBoxBuyThisAppSummary" xml:space="preserve">
-    <value>Please buy an ad-free version to support the developers. Thank you for using Trivia Buff</value>
+    <value>Please buy an ad-free version to support the developers. Thank you for using Wallpaper Patterns</value>
   </data>
   <data name="MessageBoxBuyThisAppTitle" xml:space="preserve">
     <value>Ad-free version is available</value>

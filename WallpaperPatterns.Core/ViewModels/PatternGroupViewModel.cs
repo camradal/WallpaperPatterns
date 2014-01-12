@@ -5,6 +5,7 @@ using System.Windows.Input;
 using Cirrious.MvvmCross.Plugins.Messenger;
 using Cirrious.MvvmCross.ViewModels;
 using WallpaperPatterns.Core.Messages;
+using WallpaperPatterns.Core.Net45.ViewModels;
 using WallpaperPatterns.Core.Service;
 
 namespace WallpaperPatterns.Core.ViewModels
@@ -113,6 +114,14 @@ namespace WallpaperPatterns.Core.ViewModels
             get
             {
                 return new MvxCommand<Pattern>(item => ShowViewModel<FavoritesViewModel>());
+            }
+        }
+
+        public ICommand NavigateToAbout
+        {
+            get
+            {
+                return new MvxCommand<Pattern>(item => ShowViewModel<AboutViewModel>());
             }
         }
 

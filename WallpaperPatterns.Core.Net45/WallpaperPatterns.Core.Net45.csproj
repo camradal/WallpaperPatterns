@@ -83,6 +83,9 @@
     <Compile Include="..\WallpaperPatterns.Core\Trace.cs">
       <Link>Trace.cs</Link>
     </Compile>
+    <Compile Include="..\WallpaperPatterns.Core\ViewModels\AboutViewModel.cs">
+      <Link>ViewModels\AboutViewModel.cs</Link>
+    </Compile>
     <Compile Include="..\WallpaperPatterns.Core\ViewModels\FavoritesViewModel.cs">
       <Link>ViewModels\FavoritesViewModel.cs</Link>
     </Compile>

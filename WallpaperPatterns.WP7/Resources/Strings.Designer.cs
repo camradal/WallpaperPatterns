@@ -115,7 +115,7 @@ namespace WallpaperPatterns.WP7.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Trivia Buff is a perfect app for trivia &amp; random fact lovers..
+        ///   Looks up a localized string similar to Download thousands of beautiful patterns for your lock screen from COLOURlovers community..
         /// </summary>
         public static string Description {
             get {
@@ -124,7 +124,7 @@ namespace WallpaperPatterns.WP7.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The content is provided by reddit. If you would like to use a full featured reddit client, check out Baconit.
+        ///   Looks up a localized string similar to Wallpaper Patterns is an independent app, not affiliated with COLOURlovers..
         /// </summary>
         public static string Disclaimer {
             get {
@@ -133,7 +133,7 @@ namespace WallpaperPatterns.WP7.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please check Trivia Buff task under Settings &gt;Applications &gt;Background Tasks  Then restart the app and enable the live tile from the settings page..
+        ///   Looks up a localized string similar to Please check Wallpaper Patterns task under Settings &gt;Applications &gt;Background Tasks  Then restart the app and enable the live tile from the settings page..
         /// </summary>
         public static string ErrorCouldNotEnableLiveTileDescription {
             get {
@@ -178,7 +178,7 @@ namespace WallpaperPatterns.WP7.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to We would love to hear your comments about Trivia Buff. Send us your thoughts.
+        ///   Looks up a localized string similar to We would love to hear your comments about Wallpaper Patterns. Send us your thoughts.
         /// </summary>
         public static string Feedback {
             get {
@@ -187,7 +187,7 @@ namespace WallpaperPatterns.WP7.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Feedback for Trivia Buff.
+        ///   Looks up a localized string similar to Feedback for Wallpaper Patterns.
         /// </summary>
         public static string FeedbackOn {
             get {
@@ -196,7 +196,7 @@ namespace WallpaperPatterns.WP7.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hello, I&apos;ve been using Trivia Buff app and I have the following feedback....
+        ///   Looks up a localized string similar to Hello, I&apos;ve been using Wallpaper Patterns app and I have the following feedback....
         /// </summary>
         public static string FeedbackTemplate {
             get {
@@ -268,7 +268,7 @@ namespace WallpaperPatterns.WP7.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please buy an ad-free version to support the developers. Thank you for using Trivia Buff.
+        ///   Looks up a localized string similar to Please buy an ad-free version to support the developers. Thank you for using Wallpaper Patterns.
         /// </summary>
         public static string MessageBoxBuyThisAppSummary {
             get {
