@@ -32,11 +32,6 @@ namespace WallpaperPatterns.WP7.Views
             GlobalLoading.Instance.SetTimedText(Strings.MessagePatternFavorite);
         }
 
-        private void ApplicationBarMenuItem_OnClick_OpenInIE(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
         private void ApplicationBarIconButton_Click_Download(object sender, EventArgs e)
         {
             var viewModel = (PatternDetailViewModel)ViewModel;

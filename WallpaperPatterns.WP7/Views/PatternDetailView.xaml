@@ -13,6 +13,7 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
+    Style="{StaticResource TransitionPageStyle}"
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
@@ -46,9 +47,6 @@
             <shell:ApplicationBarIconButton IconUri="/icons/appbar.favs.addto.rest.png" Text="favorite" Click="ApplicationBarIconButton_Click_Favorite"/>
             <shell:ApplicationBarIconButton IconUri="/icons/appbar.download.png" Text="download" Click="ApplicationBarIconButton_Click_Download"/>
             <shell:ApplicationBarIconButton IconUri="/icons/appbar.lockscreen.png" Text="wallpaper" Click="ApplicationBarIconButton_Click_Wallpaper"/>
-            <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="open in internet explorer..." Click="ApplicationBarMenuItem_OnClick_OpenInIE"/>
-            </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
 
