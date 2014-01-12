@@ -1,6 +1,10 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Controls;
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Tasks;
 using WallpaperPatterns.Core.Service;
 using WallpaperPatterns.Core.ViewModels;
 using WallpaperPatterns.WP7.Resources;
@@ -10,6 +14,14 @@ namespace WallpaperPatterns.WP7.Views
 {
     public partial class PatternGroupView
     {
+        public List<string> MenuSources = new List<string>
+        {
+            Strings.MenuItemBuyAdFreeVersion,
+            Strings.MenuItemRateThisApp,
+            Strings.MenuItemMoreApps,
+            Strings.MenuItemAbout
+        };
+
         public PatternGroupView()
         {
             InitializeComponent();
@@ -19,13 +31,15 @@ namespace WallpaperPatterns.WP7.Views
 
             ShowLoading(numberOfStarts);
             ShowReviewPane();
+
+            MenuListBox.ItemsSource = MenuSources;
         }
 
         private void ShowLoading(int numberOfStarts)
         {
             if (numberOfStarts == 1)
             {
-                GlobalLoading.Instance.LoadingText = Strings.MessagePleaseWait;
+                GlobalLoading.Instance.SetTimedText(Strings.MessagePleaseWait);
             }
         }
 
@@ -80,6 +94,53 @@ namespace WallpaperPatterns.WP7.Views
             {
                 int offset = viewModel.Items.Count;
                 viewModel.Load(offset);
+            }
+        }
+
+        private void MenuListBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedItem = MenuListBox.SelectedItem as string;
+
+            if (selectedItem == null)
+                return;
+
+            if (selectedItem == Strings.MenuItemBuyAdFreeVersion)
+            {
+                // TODO
+            }
+            else if (selectedItem == Strings.MenuItemRateThisApp)
+                RateThisApp();
+            else if (selectedItem == Strings.MenuItemMoreApps)
+                MoreApps();
+            else if (selectedItem == Strings.MenuItemAbout)
+                ((PatternGroupViewModel) ViewModel).NavigateToAbout.Execute(null);
+        }
+
+        private void MoreApps()
+        {
+            try
+            {
+                var task = new MarketplaceSearchTask();
+                task.ContentType = MarketplaceContentType.Applications;
+                task.SearchTerms = "Dapper Panda";
+                task.Show();
+            }
+            catch
+            {
+                // prevent exceptions from double-click
+            }
+        }
+
+        private void RateThisApp()
+        {
+            try
+            {
+                var task = new MarketplaceReviewTask();
+                task.Show();
+            }
+            catch
+            {
+                // prevent exceptions from double-click
             }
         }
     }

@@ -223,7 +223,7 @@ namespace WallpaperPatterns.WP7.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to buy ad-free version.
+        ///   Looks up a localized string similar to disable the ads.
         /// </summary>
         public static string MenuItemBuyAdFreeVersion {
             get {
@@ -246,6 +246,15 @@ namespace WallpaperPatterns.WP7.Resources {
         public static string MenuItemEnableLiveTile {
             get {
                 return ResourceManager.GetString("MenuItemEnableLiveTile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to more apps.
+        /// </summary>
+        public static string MenuItemMoreApps {
+            get {
+                return ResourceManager.GetString("MenuItemMoreApps", resourceCulture);
             }
         }
         
