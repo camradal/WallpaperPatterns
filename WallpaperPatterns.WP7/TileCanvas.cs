@@ -28,7 +28,8 @@ namespace WallpaperPatterns.WP7
             var src = self.ImageSource;
             if (src != null)
             {
-                self.Opacity = 0;
+                // seems to be visual glitch here
+                // self.Opacity = 0;
                 self.Children.Clear();
                 var image = new Image { Source = src };
                 image.ImageOpened += self.ImageOnImageOpened;
