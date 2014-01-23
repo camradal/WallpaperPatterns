@@ -78,6 +78,7 @@ namespace WallpaperPatterns.Core.ViewModels
                     ByUserName = _pattern.ByUserName;
                     ImageUrl = _pattern.ImageUrl;
                     Url = _pattern.Url;
+                    RaisePropertyChanged(() => IsFavorite);
                 }
                 else
                 {

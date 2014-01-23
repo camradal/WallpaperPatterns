@@ -5,6 +5,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using Microsoft.Phone.Shell;
 using Microsoft.Xna.Framework.Media;
 using Windows.Phone.System.UserProfile;
 using WallpaperPatterns.Core.ViewModels;
@@ -19,11 +21,30 @@ namespace WallpaperPatterns.WP7.Views
             InitializeComponent();
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            var viewModel = (PatternDetailViewModel)ViewModel;
+            viewModel.PropertyChanged += (sender, args) =>
+            {
+                if (args.PropertyName == "IsFavorite")
+                {
+                    EnableDisableFavoriteButton();
+                }
+            };
+        }
+
         private void ApplicationBarIconButton_Click_Share(object sender, EventArgs e)
         {
             var viewModel = (PatternDetailViewModel)ViewModel;
             var pattern = viewModel.Pattern;
             ((PatternDetailViewModel)ViewModel).NavigateToShare.Execute(pattern);
+        }
+        
+        private void ApplicationBarIconButton_Click_Unfavorite(object sender, EventArgs e)
+        {
+            ((PatternDetailViewModel)ViewModel).RemoveFavorite.Execute(null);
+            GlobalLoading.Instance.SetTimedText(Strings.MessagePatternUnfavorite);
         }
 
         private void ApplicationBarIconButton_Click_Favorite(object sender, EventArgs e)
@@ -70,6 +91,35 @@ namespace WallpaperPatterns.WP7.Views
             else
             {
                 SetAsWallpaper(fileName);
+            }
+        }
+
+        private void EnableDisableFavoriteButton()
+        {
+            var viewModel = (PatternDetailViewModel) ViewModel;
+            if (viewModel.IsFavorite)
+            {
+                var button = new ApplicationBarIconButton
+                {
+                    IconUri = new Uri("/icons/appbar.star.minus.png", UriKind.Relative),
+                    Text = "Unfavorite"
+                };
+                button.Click += ApplicationBarIconButton_Click_Unfavorite;
+
+                ApplicationBar.Buttons.RemoveAt(3);
+                ApplicationBar.Buttons.Add(button);
+            }
+            else
+            {
+                var button = new ApplicationBarIconButton
+                {
+                    IconUri = new Uri("/icons/appbar.favs.addto.rest.png", UriKind.Relative),
+                    Text = "Favorite",
+                };
+                button.Click += ApplicationBarIconButton_Click_Favorite;
+
+                ApplicationBar.Buttons.RemoveAt(3);
+                ApplicationBar.Buttons.Add(button);
             }
         }
 
