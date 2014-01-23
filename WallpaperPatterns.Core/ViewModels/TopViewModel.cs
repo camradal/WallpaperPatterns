@@ -38,11 +38,12 @@ namespace WallpaperPatterns.Core.ViewModels
 
         public async void Load(int offset = 0)
         {
-            if (_lastOffset == offset)
+            if (_lastOffset == offset || IsLoading)
                 return;
+            
             _lastOffset = offset;
-
             IsLoading = true;
+
             _messenger.Publish(new LoadingChangedMessage(this, true));
             try
             {
