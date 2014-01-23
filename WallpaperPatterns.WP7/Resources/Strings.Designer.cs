@@ -61,6 +61,24 @@ namespace WallpaperPatterns.WP7.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to favorite.
+        /// </summary>
+        public static string ApplicationButtonFavorite {
+            get {
+                return ResourceManager.GetString("ApplicationButtonFavorite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to unfavorite.
+        /// </summary>
+        public static string ApplicationButtonUnfavorite {
+            get {
+                return ResourceManager.GetString("ApplicationButtonUnfavorite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wallpaper Patterns.
         /// </summary>
         public static string AppTitle {

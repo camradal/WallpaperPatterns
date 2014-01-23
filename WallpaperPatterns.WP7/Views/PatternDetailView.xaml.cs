@@ -96,31 +96,41 @@ namespace WallpaperPatterns.WP7.Views
 
         private void EnableDisableFavoriteButton()
         {
-            var viewModel = (PatternDetailViewModel) ViewModel;
+            var viewModel = (PatternDetailViewModel)ViewModel;
             if (viewModel.IsFavorite)
             {
-                var button = new ApplicationBarIconButton
-                {
-                    IconUri = new Uri("/icons/appbar.star.minus.png", UriKind.Relative),
-                    Text = "Unfavorite"
-                };
-                button.Click += ApplicationBarIconButton_Click_Unfavorite;
-
-                ApplicationBar.Buttons.RemoveAt(3);
-                ApplicationBar.Buttons.Add(button);
+                AddUnfavoriteButton();
             }
-            else
+            else if (((ApplicationBarIconButton)ApplicationBar.Buttons[3]).Text == Strings.ApplicationButtonUnfavorite)
             {
-                var button = new ApplicationBarIconButton
-                {
-                    IconUri = new Uri("/icons/appbar.favs.addto.rest.png", UriKind.Relative),
-                    Text = "Favorite",
-                };
-                button.Click += ApplicationBarIconButton_Click_Favorite;
-
-                ApplicationBar.Buttons.RemoveAt(3);
-                ApplicationBar.Buttons.Add(button);
+                AddFavoriteButton();
             }
+        }
+
+        private void AddFavoriteButton()
+        {
+            var button = new ApplicationBarIconButton
+            {
+                IconUri = new Uri("/icons/appbar.favs.addto.rest.png", UriKind.Relative),
+                Text = Strings.ApplicationButtonFavorite,
+            };
+            button.Click += ApplicationBarIconButton_Click_Favorite;
+
+            ApplicationBar.Buttons.RemoveAt(3);
+            ApplicationBar.Buttons.Add(button);
+        }
+
+        private void AddUnfavoriteButton()
+        {
+            var button = new ApplicationBarIconButton
+            {
+                IconUri = new Uri("/icons/appbar.star.minus.png", UriKind.Relative),
+                Text = Strings.ApplicationButtonUnfavorite
+            };
+            button.Click += ApplicationBarIconButton_Click_Unfavorite;
+
+            ApplicationBar.Buttons.RemoveAt(3);
+            ApplicationBar.Buttons.Add(button);
         }
 
         private void SetAsWallpaper(string filename)
