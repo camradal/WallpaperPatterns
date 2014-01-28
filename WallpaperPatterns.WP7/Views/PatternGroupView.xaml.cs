@@ -17,7 +17,7 @@ namespace WallpaperPatterns.WP7.Views
     {
         public List<string> MenuSources = new List<string>
         {
-            Strings.MenuItemBuyAdFreeVersion,
+            //Strings.MenuItemBuyAdFreeVersion,
             Strings.MenuItemRateThisApp,
             Strings.MenuItemMoreApps,
             Strings.MenuItemAbout
