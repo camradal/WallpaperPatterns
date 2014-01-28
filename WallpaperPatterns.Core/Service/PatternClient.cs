@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Cirrious.CrossCore;
@@ -52,11 +53,21 @@ namespace WallpaperPatterns.Core.Service
             try
             {
                 var url = BuildUrl(baseUrl, offset);
-                var client = new HttpClient();
-                string result = await client.GetStringAsync(url);
-                JArray items = JArray.Parse(result);
-                List<Pattern> patterns = items.Select(item => item.ToObject<Pattern>()).ToList();
-                return patterns;
+                using (var handler = new HttpClientHandler())
+                {
+                    if (handler.SupportsAutomaticDecompression)
+                    {
+                        handler.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+                    }
+
+                    using (var client = new HttpClient(handler))
+                    {
+                        string result = await client.GetStringAsync(url);
+                        JArray items = JArray.Parse(result);
+                        List<Pattern> patterns = items.Select(item => item.ToObject<Pattern>()).ToList();
+                        return patterns;
+                    }
+                }
             }
             catch (Exception e)
             {
