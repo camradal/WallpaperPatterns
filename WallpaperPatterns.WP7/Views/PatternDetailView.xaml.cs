@@ -16,6 +16,9 @@ namespace WallpaperPatterns.WP7.Views
 {
     public partial class PatternDetailView
     {
+        private readonly object locker = new object();
+        private readonly AwaitableCriticalSection critSection = new AwaitableCriticalSection();
+
         public PatternDetailView()
         {
             InitializeComponent();
@@ -43,28 +46,37 @@ namespace WallpaperPatterns.WP7.Views
         
         private void ApplicationBarIconButton_Click_Unfavorite(object sender, EventArgs e)
         {
-            ((PatternDetailViewModel)ViewModel).RemoveFavorite.Execute(null);
-            GlobalLoading.Instance.SetTimedText(Strings.MessagePatternUnfavorite);
+            lock (locker)
+            {
+                ((PatternDetailViewModel) ViewModel).RemoveFavorite.Execute(null);
+                GlobalLoading.Instance.SetTimedText(Strings.MessagePatternUnfavorite);
+            }
         }
 
         private void ApplicationBarIconButton_Click_Favorite(object sender, EventArgs e)
         {
-            ((PatternDetailViewModel)ViewModel).AddFavorite.Execute(null);
-            GlobalLoading.Instance.SetTimedText(Strings.MessagePatternFavorite);
+            lock (locker)
+            {
+                ((PatternDetailViewModel) ViewModel).AddFavorite.Execute(null);
+                GlobalLoading.Instance.SetTimedText(Strings.MessagePatternFavorite);
+            }
         }
 
         private void ApplicationBarIconButton_Click_Download(object sender, EventArgs e)
         {
-            var viewModel = (PatternDetailViewModel)ViewModel;
-            string title = viewModel.Title;
-            string uriString = viewModel.ImageUrl;
+            lock (locker)
+            {
+                var viewModel = (PatternDetailViewModel) ViewModel;
+                string title = viewModel.Title;
+                string uriString = viewModel.ImageUrl;
 
-            int targetWidth = 480;
-            int targetHeight = 800;
-            
-            WriteableBitmap writeableBitmap = GetBitmap(uriString, targetWidth, targetHeight);
-            SaveImageToMediaLibrary(writeableBitmap, targetWidth, targetHeight, title);
-            GlobalLoading.Instance.SetTimedText(Strings.MessagePatternDownloaded);
+                int targetWidth = 480;
+                int targetHeight = 800;
+
+                WriteableBitmap writeableBitmap = GetBitmap(uriString, targetWidth, targetHeight);
+                SaveImageToMediaLibrary(writeableBitmap, targetWidth, targetHeight, title);
+                GlobalLoading.Instance.SetTimedText(Strings.MessagePatternDownloaded);
+            }
         }
 
         private async void ApplicationBarIconButton_Click_Wallpaper(object sender, EventArgs e)
@@ -77,20 +89,32 @@ namespace WallpaperPatterns.WP7.Views
             int targetWidth = 480;
             int targetHeight = 800;
 
-            WriteableBitmap writeableBitmap = GetBitmap(uriString, targetWidth, targetHeight);
-            SaveImageToIsolatedStorage(writeableBitmap, targetWidth, targetHeight, fileName);
-
-            if (!LockScreenManager.IsProvidedByCurrentApplication)
+            lock (locker)
             {
-                LockScreenRequestResult result = await LockScreenManager.RequestAccessAsync();
-                if (result == LockScreenRequestResult.Granted)
-                {
-                    SetAsWallpaper(fileName);
-                }
+                WriteableBitmap writeableBitmap = GetBitmap(uriString, targetWidth, targetHeight);
+                SaveImageToIsolatedStorage(writeableBitmap, targetWidth, targetHeight, fileName);
             }
-            else
+
+            using (var section = await critSection.EnterAsync())
             {
-                SetAsWallpaper(fileName);
+                if (!LockScreenManager.IsProvidedByCurrentApplication)
+                {
+                    LockScreenRequestResult result = await LockScreenManager.RequestAccessAsync();
+                    if (result == LockScreenRequestResult.Granted)
+                    {
+                        lock (locker)
+                        {
+                            SetAsWallpaper(fileName);
+                        }
+                    }
+                }
+                else
+                {
+                    lock (locker)
+                    {
+                        SetAsWallpaper(fileName);
+                    }
+                }
             }
         }
 
