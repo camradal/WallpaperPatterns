@@ -72,7 +72,7 @@ namespace WallpaperPatterns.WP7.Views
             var viewModel = (PatternDetailViewModel)ViewModel;
             string title = viewModel.Title;
             string uriString = viewModel.ImageUrl;
-            string fileName = title + ".jpeg";
+            string fileName = StripInvalidChars(title) + ".jpeg";
 
             int targetWidth = 480;
             int targetHeight = 800;
@@ -197,6 +197,16 @@ namespace WallpaperPatterns.WP7.Views
                     bitmap.SaveJpeg(stream, targetWidth, targetHeight, 0, 100);
                 }
             }
+        }
+
+        private string StripInvalidChars(string str)
+        {
+            string invalid = new string(Path.GetInvalidFileNameChars()) + new string(Path.GetInvalidPathChars());
+            foreach (var c in invalid)
+            {
+                str = str.Replace(c.ToString(), "");
+            }
+            return str;
         }
     }
 }
