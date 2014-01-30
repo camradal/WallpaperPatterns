@@ -86,7 +86,7 @@
         <!-- Ad Control -->
         <!--<Image Grid.Row="1" Source="/icons/ad.png" Width="480" Height="80"/>-->
         <StackPanel x:Name="AdPanel" Grid.Row="1" Height="80">
-            <pubcenter:AdControl x:Name="AdBox" AdUnitId="160347" ApplicationId="4fef47ad-7f9e-4ecf-9aac-84f7b45076a7" Margin="0" Width="480" Height="80"  Style="{StaticResource BorderlessAdControlStyle}"/>
+            <pubcenter:AdControl x:Name="AdBox" AdUnitId="160347" ApplicationId="4fef47ad-7f9e-4ecf-9aac-84f7b45076a7" Margin="0" Width="480" Height="80" IsAutoRefreshEnabled="True"/>
             <adDuplex:AdControl x:Name="AdDuplexAdControl" AppId="81899" Margin="0" Width="480" Height="80" Visibility="Collapsed"/>
         </StackPanel>
     </Grid>
