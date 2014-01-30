@@ -76,6 +76,8 @@ namespace WallpaperPatterns.WP7.Views
                 WriteableBitmap writeableBitmap = GetBitmap(uriString, targetWidth, targetHeight);
                 SaveImageToMediaLibrary(writeableBitmap, targetWidth, targetHeight, title);
                 GlobalLoading.Instance.SetTimedText(Strings.MessagePatternDownloaded);
+
+                FlurryWP8SDK.Api.LogEvent("Wallpaper.Download");
             }
         }
 
@@ -142,6 +144,7 @@ namespace WallpaperPatterns.WP7.Views
 
             ApplicationBar.Buttons.RemoveAt(3);
             ApplicationBar.Buttons.Add(button);
+            FlurryWP8SDK.Api.LogEvent("Wallpaper.AddFavorite");
         }
 
         private void AddUnfavoriteButton()
@@ -155,6 +158,7 @@ namespace WallpaperPatterns.WP7.Views
 
             ApplicationBar.Buttons.RemoveAt(3);
             ApplicationBar.Buttons.Add(button);
+            FlurryWP8SDK.Api.LogEvent("Wallpaper.RemoveFavorite");
         }
 
         private void SetAsWallpaper(string filename)
@@ -162,6 +166,7 @@ namespace WallpaperPatterns.WP7.Views
             string realPath = "ms-appdata:///local/" + filename;
             LockScreen.SetImageUri(new Uri(realPath, UriKind.Absolute));
             GlobalLoading.Instance.SetTimedText(Strings.MessagePatternOnLockscreen);
+            FlurryWP8SDK.Api.LogEvent("Wallpaper.SetLockscreen");
         }
 
         private WriteableBitmap GetBitmap(string uriString, int targetWidth, int targetHeight)

@@ -79,12 +79,14 @@ namespace WallpaperPatterns.WP7
             message = ex.ToString();
 #endif
             MessageBox.Show(message, "Sorry!", MessageBoxButton.OK);
+            FlurryWP8SDK.Api.LogError(message, ex);
         }
 
         // Code to execute when the application is launching (eg, from Start)
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            FlurryWP8SDK.Api.StartSession("44K73MRFTC8VYKX2RBDG");
             RootFrame.Navigating += RootFrameOnNavigating;
         }
 
@@ -99,6 +101,7 @@ namespace WallpaperPatterns.WP7
         // This code will not execute when the application is first launched
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
+            FlurryWP8SDK.Api.StartSession("44K73MRFTC8VYKX2RBDG");
         }
 
         // Code to execute when the application is deactivated (sent to background)
