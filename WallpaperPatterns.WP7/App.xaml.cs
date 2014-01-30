@@ -73,7 +73,11 @@ namespace WallpaperPatterns.WP7
         {
             // TODO: log this error
             var ex = errorEventArgs.Exception;
-            MessageBox.Show(errorEventArgs.Message, "Sorry!", MessageBoxButton.OK);
+            string message = errorEventArgs.Message;
+#if DEBUG
+            message = ex.ToString();
+#endif
+            MessageBox.Show(message, "Sorry!", MessageBoxButton.OK);
         }
 
         // Code to execute when the application is launching (eg, from Start)
