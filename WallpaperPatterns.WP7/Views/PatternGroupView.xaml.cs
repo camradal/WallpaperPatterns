@@ -119,6 +119,8 @@ namespace WallpaperPatterns.WP7.Views
                 MoreApps();
             else if (selectedItem == Strings.MenuItemAbout)
                 ((PatternGroupViewModel) ViewModel).NavigateToAbout.Execute(null);
+
+            MenuListBox.SelectedIndex = -1;
         }
 
         private void MoreApps()
