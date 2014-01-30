@@ -28,6 +28,8 @@ namespace WallpaperPatterns.WP7.Views
             if (selectedItem == null)
                 return;
 
+            FlurryWP8SDK.Api.LogEvent("Wallpaper.Share");
+
             var item = (ShareViewModel)ViewModel;
             if (selectedItem == Strings.ShareEmail)
                 ShareHelper.ShareViaEmail(item);
