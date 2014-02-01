@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en-US" />
-  <App xmlns="" ProductID="{05c5b8a9-a85b-4942-94b7-07ee09f5216f}" Title="Wallpaper Patterns" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Dapper Panda" Description="Download thousands of beautiful patterns for your lock screen from COLOURlovers community." Publisher="Dapper Panda" PublisherID="{a1d8b01a-ce1a-4f71-9cf3-4c809af60567}">
+  <App xmlns="" ProductID="{859e5423-9c8b-4490-a37d-e19fe526314b}" Title="Wallpaper Patterns Pro" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Dapper Panda" Description="Download thousands of beautiful patterns for your lock screen from COLOURlovers community." Publisher="Dapper Panda" PublisherID="{a1d8b01a-ce1a-4f71-9cf3-4c809af60567}">
     <IconPath IsRelative="true" IsResource="false">icons\Application_Icon_159.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
