@@ -42,7 +42,7 @@ namespace WallpaperPatterns.WP7.Views
 
         private void ShowLoading(int numberOfStarts)
         {
-            if (numberOfStarts == 1)
+            if (numberOfStarts == 0)
             {
                 GlobalLoading.Instance.SetTimedText(Strings.MessagePleaseWait);
             }
