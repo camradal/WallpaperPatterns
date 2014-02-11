@@ -22,6 +22,13 @@ namespace WallpaperPatterns.WP7.Views
                     },
                     new NewItem
                     {
+                        Version = "1.1",
+                        Description =
+                            "- Tap a pattern to view it in fullscreen\n" + 
+                            "- Bug fixes"
+                    },
+                    new NewItem
+                    {
                         Version = "1.0",
                         Description =
                             "- Initial release"

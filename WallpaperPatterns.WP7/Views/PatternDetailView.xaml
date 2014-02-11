@@ -21,7 +21,7 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Margin="0">
-            <wp7:TileCanvas x:Name="TileCanvas" Height="Auto" Width="Auto" Margin="0" ImageSource="{Binding ImageUrl}" Opacity="0">
+            <wp7:TileCanvas x:Name="TileCanvas" Height="Auto" Width="Auto" Margin="0" ImageSource="{Binding ImageUrl}" Opacity="0" Tap="TileCanvas_Tap">
                 <wp7:TileCanvas.Resources>
                     <Storyboard x:Name="FadeIn">
                         <DoubleAnimation Storyboard.TargetName="TileCanvas" Storyboard.TargetProperty="Opacity" From="0.0" To="1.0" Duration="0:0:0.4" />
@@ -32,6 +32,7 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel
+            x:Name="TitlePanel"
             Margin="0"
             VerticalAlignment="Top"
             Background="{StaticResource PhoneBackgroundBrush}"

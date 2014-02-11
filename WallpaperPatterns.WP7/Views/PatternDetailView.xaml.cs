@@ -37,6 +37,21 @@ namespace WallpaperPatterns.WP7.Views
             };
         }
 
+        private void TileCanvas_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            bool currentlyVisible = ApplicationBar.IsVisible;
+            if (currentlyVisible)
+            {
+                ApplicationBar.IsVisible = false;
+                TitlePanel.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                ApplicationBar.IsVisible = true;
+                TitlePanel.Visibility = Visibility.Visible;
+            }
+        }
+
         private void ApplicationBarIconButton_Click_Share(object sender, EventArgs e)
         {
             var viewModel = (PatternDetailViewModel)ViewModel;
