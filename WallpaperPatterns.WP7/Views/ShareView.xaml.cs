@@ -9,10 +9,10 @@ namespace WallpaperPatterns.WP7.Views
     {
         public List<string> ShareSources = new List<string>
         {
-            Strings.ShareEmail,
-            Strings.ShareSocialNetwork,
-            Strings.ShareTextMessaging,
-            Strings.ShareClipboard
+            AppResources.ShareEmail,
+            AppResources.ShareSocialNetwork,
+            AppResources.ShareTextMessaging,
+            AppResources.ShareClipboard
         };
 
         public ShareView()
@@ -31,13 +31,13 @@ namespace WallpaperPatterns.WP7.Views
             FlurryWP8SDK.Api.LogEvent("Wallpaper.Share");
 
             var item = (ShareViewModel)ViewModel;
-            if (selectedItem == Strings.ShareEmail)
+            if (selectedItem == AppResources.ShareEmail)
                 ShareHelper.ShareViaEmail(item);
-            else if (selectedItem == Strings.ShareSocialNetwork)
+            else if (selectedItem == AppResources.ShareSocialNetwork)
                 ShareHelper.ShareViaSocial(item);
-            else if (selectedItem == Strings.ShareTextMessaging)
+            else if (selectedItem == AppResources.ShareTextMessaging)
                 ShareHelper.ShareViaSms(item);
-            else if (selectedItem == Strings.ShareClipboard)
+            else if (selectedItem == AppResources.ShareClipboard)
                 ShareHelper.ShareViaClipBoard(item);
 
             ShareListBox.SelectedIndex = -1;

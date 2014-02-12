@@ -29,8 +29,8 @@ namespace WallpaperPatterns.WP7.Utilities
         private MessageBoxResult GetMessageBoxResult()
         {
             return MessageBox.Show(
-                Strings.MessageBoxRateThisAppSummary,
-                Strings.MessageBoxRateThisAppTitle,
+                AppResources.MessageBoxRateThisAppSummary,
+                AppResources.MessageBoxRateThisAppTitle,
                 MessageBoxButton.OKCancel);
         }
     }

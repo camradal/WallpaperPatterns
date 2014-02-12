@@ -80,8 +80,8 @@ namespace WallpaperPatterns.WP7.Utilities
             catch (InvalidOperationException)
             {
                 MessageBox.Show(
-                    Strings.ErrorCouldNotEnableLiveTileDescription,
-                    Strings.ErrorCouldNotEnableLiveTileTitle,
+                    AppResources.ErrorCouldNotEnableLiveTileDescription,
+                    AppResources.ErrorCouldNotEnableLiveTileTitle,
                     MessageBoxButton.OK);
             }
             catch (Exception)

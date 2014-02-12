@@ -7,9 +7,9 @@ namespace WallpaperPatterns.WP7.Utilities
     /// </summary>
     public sealed class StringProvider
     {
-        private readonly Strings resources = new Strings();
+        private readonly AppResources resources = new AppResources();
 
-        public Strings Resources
+        public AppResources Resources
         {
             get
             {

@@ -2,6 +2,7 @@ using System;
 using System.Windows;
 using Microsoft.Phone.Tasks;
 using WallpaperPatterns.Core.ViewModels;
+using WallpaperPatterns.WP7.Resources;
 
 namespace WallpaperPatterns.WP7
 {
@@ -61,8 +62,8 @@ namespace WallpaperPatterns.WP7
         internal static void ShareViaClipBoard(PatternDetailViewModel model)
         {
             string text = model.Title + "\n" + model.Url;
-            if (MessageBox.Show(text, "Copy to Clipboard?", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
-            {
+            if (MessageBox.Show(text, AppResources.MessageToClipboard, MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+            { 
                 Clipboard.SetText(text);
             }
         }

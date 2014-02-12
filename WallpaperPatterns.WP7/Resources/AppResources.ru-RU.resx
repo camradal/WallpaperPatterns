@@ -118,25 +118,25 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ApplicationButtonFavorite" xml:space="preserve">
-    <value>favorite</value>
+    <value>добавить</value>
   </data>
   <data name="ApplicationButtonUnfavorite" xml:space="preserve">
-    <value>unfavorite</value>
+    <value>убрать</value>
   </data>
   <data name="AppTitle" xml:space="preserve">
-    <value>Wallpaper Patterns</value>
+    <value>Паттерны</value>
   </data>
   <data name="AppTitleCapitalized" xml:space="preserve">
-    <value>WALLPAPER PATTERNS</value>
+    <value>ПАТТЕРНЫ</value>
   </data>
   <data name="Author" xml:space="preserve">
-    <value>by Dapper Panda</value>
+    <value>от Dapper Panda</value>
   </data>
   <data name="ButtonFeedback" xml:space="preserve">
-    <value>Email feedback</value>
+    <value>Послать замечания</value>
   </data>
   <data name="ButtonRate" xml:space="preserve">
-    <value>Rate this app</value>
+    <value>Оставить отзыв</value>
   </data>
   <data name="ContactEmail" xml:space="preserve">
     <value>dapperpanda@gmail.com</value>
@@ -172,28 +172,22 @@
     <value>Hello, I've been using Wallpaper Patterns app and I have the following feedback...</value>
   </data>
   <data name="Loading" xml:space="preserve">
-    <value>Loading...</value>
+    <value>Загрузка...</value>
   </data>
   <data name="MenuItemAbout" xml:space="preserve">
-    <value>about</value>
+    <value>про нас</value>
   </data>
   <data name="MenuItemBuyAdFreeVersion" xml:space="preserve">
-    <value>disable the ads</value>
-  </data>
-  <data name="MenuItemDisableLiveTile" xml:space="preserve">
-    <value>disable live tile</value>
-  </data>
-  <data name="MenuItemEnableLiveTile" xml:space="preserve">
-    <value>enable live tile</value>
+    <value>убрать рекламу</value>
   </data>
   <data name="MenuItemMoreApps" xml:space="preserve">
-    <value>more apps</value>
+    <value>наши приложения</value>
   </data>
   <data name="MenuItemRateThisApp" xml:space="preserve">
-    <value>rate this app</value>
+    <value>оставить рейтинг</value>
   </data>
   <data name="MenuItemSettings" xml:space="preserve">
-    <value>settings</value>
+    <value>настройки</value>
   </data>
   <data name="MessageBoxBuyThisAppSummary" xml:space="preserve">
     <value>Please buy an ad-free version to support the developers. Thank you for using Wallpaper Patterns</value>
@@ -202,90 +196,87 @@
     <value>Ad-free version is available</value>
   </data>
   <data name="MessageBoxRateThisAppSummary" xml:space="preserve">
-    <value>Please take a moment to rate or review this app. We'd love to hear from you.</value>
+    <value>Если вам понравилось наше приложение, пожалуйста, оцените его в магазине</value>
   </data>
   <data name="MessageBoxRateThisAppTitle" xml:space="preserve">
-    <value>Rate or review this app?</value>
+    <value>Оценить или оставить отзыв?</value>
   </data>
   <data name="MessagePatternDownloaded" xml:space="preserve">
-    <value>Downloaded to 'Saved Pictures'</value>
+    <value>"Сохраненные фото" альбом обновлён</value>
   </data>
   <data name="MessagePatternFavorite" xml:space="preserve">
-    <value>Added to favorites</value>
+    <value>Добавлено в избранное</value>
   </data>
   <data name="MessagePatternOnLockscreen" xml:space="preserve">
-    <value>Updated wallpaper</value>
+    <value>Экран блокировки обновлён</value>
   </data>
   <data name="MessagePatternUnfavorite" xml:space="preserve">
-    <value>Removed from favorites</value>
+    <value>Убрано из избранного</value>
   </data>
   <data name="MessagePleaseWait" xml:space="preserve">
-    <value>Please wait while we set up...</value>
+    <value>Установка...</value>
   </data>
   <data name="PageTitleAbout" xml:space="preserve">
-    <value>about</value>
+    <value>про нас</value>
   </data>
   <data name="PageTitleSearch" xml:space="preserve">
-    <value>SEARCH</value>
+    <value>ПОИСК</value>
   </data>
   <data name="PageTitleSettings" xml:space="preserve">
-    <value>settings</value>
+    <value>настройки</value>
   </data>
   <data name="PageTitleShare" xml:space="preserve">
-    <value>SHARE</value>
+    <value>ОТПРАВИТЬ</value>
   </data>
   <data name="Rate" xml:space="preserve">
-    <value>Please rate and comment on this app in Marketplace</value>
-  </data>
-  <data name="SettingBrowserSelection" xml:space="preserve">
-    <value>Browser selection</value>
-  </data>
-  <data name="SettingBuiltInBrowser" xml:space="preserve">
-    <value>built-in browser</value>
-  </data>
-  <data name="SettingFontSize" xml:space="preserve">
-    <value>Font size</value>
-  </data>
-  <data name="SettingFontSizeLarger" xml:space="preserve">
-    <value>large</value>
-  </data>
-  <data name="SettingFontSizeNormal" xml:space="preserve">
-    <value>normal</value>
-  </data>
-  <data name="SettingInternetExplorer" xml:space="preserve">
-    <value>internet explorer</value>
+    <value>Оценить и коментировать в магазине</value>
   </data>
   <data name="SettingLiveTile" xml:space="preserve">
-    <value>Live tile</value>
-  </data>
-  <data name="SettingTileDoNotFlip" xml:space="preserve">
-    <value>do not show</value>
-  </data>
-  <data name="SettingTileOption" xml:space="preserve">
-    <value>Back of the tile</value>
-  </data>
-  <data name="SettingTileShowLogo" xml:space="preserve">
-    <value>show logo</value>
+    <value>Живая плитка</value>
   </data>
   <data name="ShareClipboard" xml:space="preserve">
-    <value>Clipboard</value>
+    <value>Буфер обмена</value>
   </data>
   <data name="ShareEmail" xml:space="preserve">
-    <value>Email</value>
+    <value>Электронная почта</value>
   </data>
   <data name="ShareSocialNetwork" xml:space="preserve">
-    <value>Social networks</value>
+    <value>Социальные сети</value>
   </data>
   <data name="ShareTextMessaging" xml:space="preserve">
-    <value>Text message</value>
+    <value>СМС</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version:</value>
+    <value>Версия:</value>
   </data>
   <data name="Website" xml:space="preserve">
     <value>www.dapperpanda.com</value>
   </data>
   <data name="WebsiteWithHttp" xml:space="preserve">
     <value>http://www.dapperpanda.com</value>
+  </data>
+  <data name="ApplicationButtonDownload" xml:space="preserve">
+    <value>сохранить</value>
+  </data>
+  <data name="ApplicationButtonShare" xml:space="preserve">
+    <value>отправить</value>
+  </data>
+  <data name="ApplicationButtonWallpaper" xml:space="preserve">
+    <value>на экран блокировки</value>
+  </data>
+  <data name="MessageToClipboard" xml:space="preserve">
+    <value>Добавить в буфер?</value>
+  </data>
+  <data name="PivotFavorites" xml:space="preserve">
+    <value>избранные</value>
+  </data>
+  <data name="PivotMenu" xml:space="preserve">
+    <value>меню</value>
+  </data>
+  <data name="PivotNew" xml:space="preserve">
+    <value>новые</value>
+  </data>
+  <data name="PivotTop" xml:space="preserve">
+    <value>топ</value>
   </data>
 </root>

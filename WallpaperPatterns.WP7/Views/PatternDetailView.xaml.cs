@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Media;
 using Windows.Phone.System.UserProfile;
 using WallpaperPatterns.Core.ViewModels;
 using WallpaperPatterns.WP7.Resources;
+using WallpaperPatterns.WP7.Utilities;
 
 namespace WallpaperPatterns.WP7.Views
 {
@@ -22,6 +23,11 @@ namespace WallpaperPatterns.WP7.Views
         public PatternDetailView()
         {
             InitializeComponent();
+            ((ApplicationBarIconButton)ApplicationBar.Buttons[0]).Text = AppResources.ApplicationButtonShare;
+            ((ApplicationBarIconButton)ApplicationBar.Buttons[1]).Text = AppResources.ApplicationButtonDownload;
+            ((ApplicationBarIconButton)ApplicationBar.Buttons[2]).Text = AppResources.ApplicationButtonShare;
+            ((ApplicationBarIconButton)ApplicationBar.Buttons[3]).Text = AppResources.ApplicationButtonFavorite;
+
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -64,7 +70,7 @@ namespace WallpaperPatterns.WP7.Views
             lock (locker)
             {
                 ((PatternDetailViewModel) ViewModel).RemoveFavorite.Execute(null);
-                GlobalLoading.Instance.SetTimedText(Strings.MessagePatternUnfavorite);
+                GlobalLoading.Instance.SetTimedText(AppResources.MessagePatternUnfavorite);
             }
         }
 
@@ -73,7 +79,7 @@ namespace WallpaperPatterns.WP7.Views
             lock (locker)
             {
                 ((PatternDetailViewModel) ViewModel).AddFavorite.Execute(null);
-                GlobalLoading.Instance.SetTimedText(Strings.MessagePatternFavorite);
+                GlobalLoading.Instance.SetTimedText(AppResources.MessagePatternFavorite);
             }
         }
 
@@ -90,7 +96,7 @@ namespace WallpaperPatterns.WP7.Views
 
                 WriteableBitmap writeableBitmap = GetBitmap(uriString, targetWidth, targetHeight);
                 SaveImageToMediaLibrary(writeableBitmap, targetWidth, targetHeight, title);
-                GlobalLoading.Instance.SetTimedText(Strings.MessagePatternDownloaded);
+                GlobalLoading.Instance.SetTimedText(AppResources.MessagePatternDownloaded);
 
                 FlurryWP8SDK.Api.LogEvent("Wallpaper.Download");
             }
@@ -142,7 +148,7 @@ namespace WallpaperPatterns.WP7.Views
             {
                 AddUnfavoriteButton();
             }
-            else if (((ApplicationBarIconButton)ApplicationBar.Buttons[3]).Text == Strings.ApplicationButtonUnfavorite)
+            else if (((ApplicationBarIconButton)ApplicationBar.Buttons[3]).Text == AppResources.ApplicationButtonUnfavorite)
             {
                 AddFavoriteButton();
             }
@@ -153,7 +159,7 @@ namespace WallpaperPatterns.WP7.Views
             var button = new ApplicationBarIconButton
             {
                 IconUri = new Uri("/icons/appbar.favs.addto.rest.png", UriKind.Relative),
-                Text = Strings.ApplicationButtonFavorite,
+                Text = AppResources.ApplicationButtonFavorite,
             };
             button.Click += ApplicationBarIconButton_Click_Favorite;
 
@@ -167,7 +173,7 @@ namespace WallpaperPatterns.WP7.Views
             var button = new ApplicationBarIconButton
             {
                 IconUri = new Uri("/icons/appbar.star.minus.png", UriKind.Relative),
-                Text = Strings.ApplicationButtonUnfavorite
+                Text = AppResources.ApplicationButtonUnfavorite
             };
             button.Click += ApplicationBarIconButton_Click_Unfavorite;
 
@@ -180,7 +186,7 @@ namespace WallpaperPatterns.WP7.Views
         {
             string realPath = "ms-appdata:///local/" + filename;
             LockScreen.SetImageUri(new Uri(realPath, UriKind.Absolute));
-            GlobalLoading.Instance.SetTimedText(Strings.MessagePatternOnLockscreen);
+            GlobalLoading.Instance.SetTimedText(AppResources.MessagePatternOnLockscreen);
             FlurryWP8SDK.Api.LogEvent("Wallpaper.SetLockscreen");
         }
 

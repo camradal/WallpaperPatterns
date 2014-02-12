@@ -22,14 +22,14 @@ namespace WallpaperPatterns.WP7.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Strings {
+    public class AppResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Strings() {
+        internal AppResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace WallpaperPatterns.WP7.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WallpaperPatterns.WP7.Resources.Strings", typeof(Strings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WallpaperPatterns.WP7.Resources.AppResources", typeof(AppResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,6 +61,15 @@ namespace WallpaperPatterns.WP7.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to download.
+        /// </summary>
+        public static string ApplicationButtonDownload {
+            get {
+                return ResourceManager.GetString("ApplicationButtonDownload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to favorite.
         /// </summary>
         public static string ApplicationButtonFavorite {
@@ -70,11 +79,29 @@ namespace WallpaperPatterns.WP7.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to share.
+        /// </summary>
+        public static string ApplicationButtonShare {
+            get {
+                return ResourceManager.GetString("ApplicationButtonShare", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to unfavorite.
         /// </summary>
         public static string ApplicationButtonUnfavorite {
             get {
                 return ResourceManager.GetString("ApplicationButtonUnfavorite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to set wallpaper.
+        /// </summary>
+        public static string ApplicationButtonWallpaper {
+            get {
+                return ResourceManager.GetString("ApplicationButtonWallpaper", resourceCulture);
             }
         }
         
@@ -250,24 +277,6 @@ namespace WallpaperPatterns.WP7.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to disable live tile.
-        /// </summary>
-        public static string MenuItemDisableLiveTile {
-            get {
-                return ResourceManager.GetString("MenuItemDisableLiveTile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to enable live tile.
-        /// </summary>
-        public static string MenuItemEnableLiveTile {
-            get {
-                return ResourceManager.GetString("MenuItemEnableLiveTile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to more apps.
         /// </summary>
         public static string MenuItemMoreApps {
@@ -376,6 +385,15 @@ namespace WallpaperPatterns.WP7.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy to Clipboard.
+        /// </summary>
+        public static string MessageToClipboard {
+            get {
+                return ResourceManager.GetString("MessageToClipboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to about.
         /// </summary>
         public static string PageTitleAbout {
@@ -412,6 +430,42 @@ namespace WallpaperPatterns.WP7.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to favorites.
+        /// </summary>
+        public static string PivotFavorites {
+            get {
+                return ResourceManager.GetString("PivotFavorites", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to menu.
+        /// </summary>
+        public static string PivotMenu {
+            get {
+                return ResourceManager.GetString("PivotMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to new.
+        /// </summary>
+        public static string PivotNew {
+            get {
+                return ResourceManager.GetString("PivotNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to top.
+        /// </summary>
+        public static string PivotTop {
+            get {
+                return ResourceManager.GetString("PivotTop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please rate and comment on this app in Marketplace.
         /// </summary>
         public static string Rate {
@@ -421,92 +475,11 @@ namespace WallpaperPatterns.WP7.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Browser selection.
-        /// </summary>
-        public static string SettingBrowserSelection {
-            get {
-                return ResourceManager.GetString("SettingBrowserSelection", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to built-in browser.
-        /// </summary>
-        public static string SettingBuiltInBrowser {
-            get {
-                return ResourceManager.GetString("SettingBuiltInBrowser", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Font size.
-        /// </summary>
-        public static string SettingFontSize {
-            get {
-                return ResourceManager.GetString("SettingFontSize", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to large.
-        /// </summary>
-        public static string SettingFontSizeLarger {
-            get {
-                return ResourceManager.GetString("SettingFontSizeLarger", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to normal.
-        /// </summary>
-        public static string SettingFontSizeNormal {
-            get {
-                return ResourceManager.GetString("SettingFontSizeNormal", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to internet explorer.
-        /// </summary>
-        public static string SettingInternetExplorer {
-            get {
-                return ResourceManager.GetString("SettingInternetExplorer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Live tile.
         /// </summary>
         public static string SettingLiveTile {
             get {
                 return ResourceManager.GetString("SettingLiveTile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to do not show.
-        /// </summary>
-        public static string SettingTileDoNotFlip {
-            get {
-                return ResourceManager.GetString("SettingTileDoNotFlip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Back of the tile.
-        /// </summary>
-        public static string SettingTileOption {
-            get {
-                return ResourceManager.GetString("SettingTileOption", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to show logo.
-        /// </summary>
-        public static string SettingTileShowLogo {
-            get {
-                return ResourceManager.GetString("SettingTileShowLogo", resourceCulture);
             }
         }
         

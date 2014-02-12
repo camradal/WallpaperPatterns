@@ -54,9 +54,9 @@ namespace WallpaperPatterns.WP7.Views
             try
             {
                 EmailComposeTask task = new EmailComposeTask();
-                task.Subject = Strings.FeedbackOn;
-                task.Body = Strings.FeedbackTemplate;
-                task.To = Strings.ContactEmail;
+                task.Subject = AppResources.FeedbackOn;
+                task.Body = AppResources.FeedbackTemplate;
+                task.To = AppResources.ContactEmail;
                 task.Show();
             }
             catch

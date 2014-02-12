@@ -17,10 +17,10 @@ namespace WallpaperPatterns.WP7.Views
     {
         public List<string> MenuSources = new List<string>
         {
-            //Strings.MenuItemBuyAdFreeVersion,
-            Strings.MenuItemRateThisApp,
-            Strings.MenuItemMoreApps,
-            Strings.MenuItemAbout
+            //AppResources.MenuItemBuyAdFreeVersion,
+            AppResources.MenuItemRateThisApp,
+            AppResources.MenuItemMoreApps,
+            AppResources.MenuItemAbout
         };
 
         public PatternGroupView()
@@ -44,7 +44,7 @@ namespace WallpaperPatterns.WP7.Views
         {
             if (numberOfStarts == 0)
             {
-                GlobalLoading.Instance.SetTimedText(Strings.MessagePleaseWait);
+                GlobalLoading.Instance.SetTimedText(AppResources.MessagePleaseWait);
             }
         }
 
@@ -109,15 +109,15 @@ namespace WallpaperPatterns.WP7.Views
             if (selectedItem == null)
                 return;
 
-            if (selectedItem == Strings.MenuItemBuyAdFreeVersion)
+            if (selectedItem == AppResources.MenuItemBuyAdFreeVersion)
             {
                 // TODO
             }
-            else if (selectedItem == Strings.MenuItemRateThisApp)
+            else if (selectedItem == AppResources.MenuItemRateThisApp)
                 RateThisApp();
-            else if (selectedItem == Strings.MenuItemMoreApps)
+            else if (selectedItem == AppResources.MenuItemMoreApps)
                 MoreApps();
-            else if (selectedItem == Strings.MenuItemAbout)
+            else if (selectedItem == AppResources.MenuItemAbout)
                 ((PatternGroupViewModel) ViewModel).NavigateToAbout.Execute(null);
 
             MenuListBox.SelectedIndex = -1;

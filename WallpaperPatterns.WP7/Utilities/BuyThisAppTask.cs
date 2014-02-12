@@ -28,8 +28,8 @@ namespace WallpaperPatterns.WP7.Utilities
         private MessageBoxResult GetMessageBoxResult()
         {
             return MessageBox.Show(
-                Strings.MessageBoxBuyThisAppSummary,
-                Strings.MessageBoxBuyThisAppTitle,
+                AppResources.MessageBoxBuyThisAppSummary,
+                AppResources.MessageBoxBuyThisAppTitle,
                 MessageBoxButton.OKCancel);
         }
     }
