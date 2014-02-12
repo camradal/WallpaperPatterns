@@ -91,8 +91,9 @@ namespace WallpaperPatterns.WP7.Views
                 string title = viewModel.Title;
                 string uriString = viewModel.ImageUrl;
 
-                int targetWidth = 480;
-                int targetHeight = 800;
+                var size = ResolutionHelper.DisplayResolution;
+                int targetWidth = (int)size.Width;
+                int targetHeight = (int)size.Height;
 
                 WriteableBitmap writeableBitmap = GetBitmap(uriString, targetWidth, targetHeight);
                 SaveImageToMediaLibrary(writeableBitmap, targetWidth, targetHeight, title);
@@ -109,8 +110,9 @@ namespace WallpaperPatterns.WP7.Views
             string uriString = viewModel.ImageUrl;
             string fileName = StripInvalidChars(title) + ".jpeg";
 
-            int targetWidth = 480;
-            int targetHeight = 800;
+            var size = ResolutionHelper.DisplayResolution;
+            int targetWidth = (int)size.Width;
+            int targetHeight = (int)size.Height;
 
             lock (locker)
             {

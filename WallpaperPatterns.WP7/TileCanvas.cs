@@ -31,7 +31,15 @@ namespace WallpaperPatterns.WP7
                 // seems to be visual glitch here
                 self.Opacity = 0;
                 self.Children.Clear();
-                var image = new Image { Source = src };
+                var image = new Image
+                {
+                    Source = src,
+                    RenderTransform = new ScaleTransform
+                    {
+                        ScaleX = 100.0 / Application.Current.Host.Content.ScaleFactor,
+                        ScaleY = 100.0 / Application.Current.Host.Content.ScaleFactor
+                    }
+                };
                 image.ImageOpened += self.ImageOnImageOpened;
                 image.ImageFailed += self.ImageOnImageFailed;
 
@@ -84,9 +92,11 @@ namespace WallpaperPatterns.WP7
 
             // first image element has already been added
             bool first = true;
-            for (int x = 0; x < ActualWidth; x += width)
+            double scale = 100.0 / Application.Current.Host.Content.ScaleFactor;
+
+            for (double x = 0; x < ActualWidth; x += width * scale)
             {
-                for (int y = 0; y < ActualHeight; y += height)
+                for (double y = 0; y < ActualHeight; y += height * scale)
                 {
                     if (first)
                     {
@@ -94,7 +104,15 @@ namespace WallpaperPatterns.WP7
                         continue;
                     }
 
-                    var image = new Image { Source = ImageSource };
+                    var image = new Image
+                    {
+                        Source = ImageSource,
+                        RenderTransform = new ScaleTransform
+                        {
+                            ScaleX = scale,
+                            ScaleY = scale
+                        }
+                    };
                     Canvas.SetLeft(image, x);
                     Canvas.SetTop(image, y);
                     Children.Add(image);
