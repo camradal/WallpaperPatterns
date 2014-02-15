@@ -40,8 +40,8 @@ namespace WallpaperPatterns.Core.Service
             if (toInsert == null)
             {
                 _favorites.Add(pattern);
-                _messenger.Publish(new FavoritesChangedMessage(this));
                 Save();
+                _messenger.Publish(new FavoritesChangedMessage(this));
             }
         }
 
@@ -51,8 +51,8 @@ namespace WallpaperPatterns.Core.Service
             if (toDelete != null)
             {
                 _favorites.Remove(toDelete);
-                _messenger.Publish(new FavoritesChangedMessage(this));
                 Save();
+                _messenger.Publish(new FavoritesChangedMessage(this));
             }
         }
 
