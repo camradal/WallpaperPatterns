@@ -24,7 +24,9 @@ namespace WallpaperPatterns.WP7.Views
                     {
                         Version = "1.1",
                         Description =
+                            "- HD and multi-resolution support\n" + 
                             "- Tap a pattern to view it in fullscreen\n" + 
+                            "- Russian localization\n" + 
                             "- Bug fixes"
                     },
                     new NewItem
