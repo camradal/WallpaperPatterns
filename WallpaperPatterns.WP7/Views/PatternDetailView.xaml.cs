@@ -41,6 +41,13 @@ namespace WallpaperPatterns.WP7.Views
                     EnableDisableFavoriteButton();
                 }
             };
+            viewModel.PropertyChanged += (sender, args) =>
+            {
+                ((ApplicationBarIconButton)ApplicationBar.Buttons[0]).IsEnabled = true;
+                ((ApplicationBarIconButton)ApplicationBar.Buttons[1]).IsEnabled = true;
+                ((ApplicationBarIconButton)ApplicationBar.Buttons[2]).IsEnabled = true;
+                ((ApplicationBarIconButton)ApplicationBar.Buttons[3]).IsEnabled = true;
+            };
         }
 
         private void TileCanvas_Tap(object sender, System.Windows.Input.GestureEventArgs e)
