@@ -13,10 +13,11 @@ namespace WallpaperPatterns.Core.Service
     public class PatternClient : IPatternClient
     {
         private const string PatternsUrl = "http://www.colourlovers.com/api/patterns&format=json";
-        private const string NewestPatternsUrl = "http://www.colourlovers.com/api/patterns/new&format=json";
-        private const string TopPatternsUrl = "http://www.colourlovers.com/api/patterns/top&format=json";
-        private const string RandomPatternsUrl = "http://www.colourlovers.com/api/patterns/random&format=json";
-        private const string SinglePatternUrl = "http://www.colourlovers.com/api/pattern/{0}&format=json";
+        private const string NewestPatternsUrl = "http://www.colourlovers.com/api/patterns/new?format=json";
+        private const string TopPatternsUrl = "http://www.colourlovers.com/api/patterns/top?format=json";
+        private const string RandomPatternsUrl = "http://www.colourlovers.com/api/patterns/random&?ormat=json";
+        private const string SinglePatternUrl = "http://www.colourlovers.com/api/pattern/{0}?format=json";
+        private const string SearchPatternUrl = "http://www.colourlovers.com/api/pattern?keywords={0}&format=json";
 
         public async Task<List<Pattern>> Newest(int offset = 0)
         {
@@ -39,6 +40,12 @@ namespace WallpaperPatterns.Core.Service
             List<Pattern> patterns = await Load(url, 0);
             Pattern pattern = patterns.FirstOrDefault();
             return pattern;
+        }
+
+        public async Task<List<Pattern>> Search(string term, int offset)
+        {
+            string url = string.Format(SearchPatternUrl, term);
+            return await Load(url, offset);
         }
 
         private string BuildUrl(string baseUrl, int offset)

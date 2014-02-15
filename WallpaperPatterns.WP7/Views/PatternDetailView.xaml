@@ -21,7 +21,7 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Margin="0">
-            <wp7:TileCanvas x:Name="TileCanvas" Height="Auto" Width="Auto" Margin="0" ImageSource="{Binding ImageUrl}" Opacity="0">
+            <wp7:TileCanvas x:Name="TileCanvas" Height="Auto" Width="Auto" Margin="0" ImageSource="{Binding ImageUrl}" Opacity="0" Tap="TileCanvas_Tap">
                 <wp7:TileCanvas.Resources>
                     <Storyboard x:Name="FadeIn">
                         <DoubleAnimation Storyboard.TargetName="TileCanvas" Storyboard.TargetProperty="Opacity" From="0.0" To="1.0" Duration="0:0:0.4" />
@@ -32,6 +32,7 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel
+            x:Name="TitlePanel"
             Margin="0"
             VerticalAlignment="Top"
             Background="{StaticResource PhoneBackgroundBrush}"
@@ -43,10 +44,10 @@
 
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True" Opacity="0.8" BackgroundColor="{StaticResource PhoneBackgroundColor}">
-            <shell:ApplicationBarIconButton IconUri="/icons/appbar.share.rest.png" Text="share" Click="ApplicationBarIconButton_Click_Share"/>
-            <shell:ApplicationBarIconButton IconUri="/icons/appbar.download.png" Text="download" Click="ApplicationBarIconButton_Click_Download"/>
-            <shell:ApplicationBarIconButton IconUri="/icons/appbar.lockscreen.png" Text="wallpaper" Click="ApplicationBarIconButton_Click_Wallpaper"/>
-            <shell:ApplicationBarIconButton IconUri="/icons/appbar.favs.addto.rest.png" Text="favorite" Click="ApplicationBarIconButton_Click_Favorite"/>
+            <shell:ApplicationBarIconButton IconUri="/icons/appbar.share.rest.png" Text="share" Click="ApplicationBarIconButton_Click_Share" IsEnabled="False"/>
+            <shell:ApplicationBarIconButton IconUri="/icons/appbar.download.png" Text="download" Click="ApplicationBarIconButton_Click_Download" IsEnabled="False"/>
+            <shell:ApplicationBarIconButton IconUri="/icons/appbar.lockscreen.png" Text="set wallpaper" Click="ApplicationBarIconButton_Click_Wallpaper" IsEnabled="False"/>
+            <shell:ApplicationBarIconButton IconUri="/icons/appbar.favs.addto.rest.png" Text="favorite" Click="ApplicationBarIconButton_Click_Favorite" IsEnabled="False"/>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
 

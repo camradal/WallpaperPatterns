@@ -79,7 +79,7 @@ namespace WallpaperPatterns.WP7
             message = ex.ToString();
 #endif
             MessageBox.Show(message, "Sorry!", MessageBoxButton.OK);
-            FlurryWP8SDK.Api.LogError(message, ex);
+            FlurryWP8SDK.Api.LogError("Handled exception\n" + ex, ex);
         }
 
         // Code to execute when the application is launching (eg, from Start)
@@ -134,6 +134,9 @@ namespace WallpaperPatterns.WP7
                 // An unhandled exception has occurred; break into the debugger
                 System.Diagnostics.Debugger.Break();
             }
+            string message = e.ExceptionObject.Message + "\n" + e.ExceptionObject.StackTrace;
+            Exception ex = e.ExceptionObject;
+            FlurryWP8SDK.Api.LogError("Unhandled exception\n" + ex, ex);
         }
 
         #region Phone application initialization

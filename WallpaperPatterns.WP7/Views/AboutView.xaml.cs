@@ -22,6 +22,15 @@ namespace WallpaperPatterns.WP7.Views
                     },
                     new NewItem
                     {
+                        Version = "1.1",
+                        Description =
+                            "- HD and multi-resolution support\n" + 
+                            "- Tap a pattern to view it in fullscreen\n" + 
+                            "- Russian localization\n" + 
+                            "- Bug fixes"
+                    },
+                    new NewItem
+                    {
                         Version = "1.0",
                         Description =
                             "- Initial release"
@@ -47,9 +56,9 @@ namespace WallpaperPatterns.WP7.Views
             try
             {
                 EmailComposeTask task = new EmailComposeTask();
-                task.Subject = Strings.FeedbackOn;
-                task.Body = Strings.FeedbackTemplate;
-                task.To = Strings.ContactEmail;
+                task.Subject = AppResources.FeedbackOn;
+                task.Body = AppResources.FeedbackTemplate;
+                task.To = AppResources.ContactEmail;
                 task.Show();
             }
             catch
@@ -73,7 +82,7 @@ namespace WallpaperPatterns.WP7.Views
 
         private void ReadVersionFromManifest()
         {
-            versionText.Text = "1.0.0";
+            versionText.Text = "1.1.0";
         }
     }
 }

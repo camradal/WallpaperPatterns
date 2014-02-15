@@ -18,6 +18,7 @@ namespace WallpaperPatterns.Core.ViewModels
         private string _byUserName;
         private string _imageUrl;
         private string _url;
+        private bool _isLoading;
 
         public string Title
         {
@@ -46,6 +47,14 @@ namespace WallpaperPatterns.Core.ViewModels
         public bool IsFavorite
         {
             get { return _favoritesService.Contains(_pattern); }
+        }
+
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
         }
 
         public Pattern Pattern
@@ -79,6 +88,7 @@ namespace WallpaperPatterns.Core.ViewModels
                     ImageUrl = _pattern.ImageUrl;
                     Url = _pattern.Url;
                     RaisePropertyChanged(() => IsFavorite);
+                    RaisePropertyChanged(() => IsLoading);
                 }
                 else
                 {
