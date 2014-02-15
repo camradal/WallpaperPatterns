@@ -9,5 +9,6 @@ namespace WallpaperPatterns.Core.Service
         Task<List<Pattern>> Top(int offset = 0);
         Task<List<Pattern>> Random(int offset = 0);
         Task<Pattern> Get(int id);
+        Task<List<Pattern>> Search(string term, int offset = 0);
     }
 }

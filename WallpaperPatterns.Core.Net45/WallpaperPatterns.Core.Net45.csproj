@@ -107,6 +107,9 @@
     <Compile Include="..\WallpaperPatterns.Core\ViewModels\PatternViewModel.cs">
       <Link>ViewModels\PatternViewModel.cs</Link>
     </Compile>
+    <Compile Include="..\WallpaperPatterns.Core\ViewModels\SearchViewModel.cs">
+      <Link>ViewModels\SearchViewModel.cs</Link>
+    </Compile>
     <Compile Include="..\WallpaperPatterns.Core\ViewModels\ShareViewModel.cs">
       <Link>ViewModels\ShareViewModel.cs</Link>
     </Compile>
