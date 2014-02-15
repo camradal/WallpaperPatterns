@@ -82,7 +82,7 @@ namespace WallpaperPatterns.WP7.Views
 
         private void ReadVersionFromManifest()
         {
-            versionText.Text = "1.0.0";
+            versionText.Text = "1.1.0";
         }
     }
 }
