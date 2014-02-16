@@ -223,8 +223,10 @@
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="AppResLib.dll.0419.mui" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AppResLib.dll" />
     <Content Include="icons\appbar.favs.addto.rest.png" />
     <Content Include="icons\appbar.lockscreen.png" />
     <Content Include="icons\appbar.share.rest.png" />

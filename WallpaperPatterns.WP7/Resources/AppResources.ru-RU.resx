@@ -142,10 +142,10 @@
     <value>dapperpanda@gmail.com</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Download thousands of beautiful patterns for your lock screen from COLOURlovers community.</value>
+    <value>Tысячи красивых паттернов для вашего телефона от COLOURlovers</value>
   </data>
   <data name="Disclaimer" xml:space="preserve">
-    <value>Wallpaper Patterns is an independent app, not affiliated with COLOURlovers.</value>
+    <value>Паттерны не имеют связи с сайтом COLOURlovers</value>
   </data>
   <data name="ErrorCouldNotEnableLiveTileDescription" xml:space="preserve">
     <value>Please check Wallpaper Patterns task under Settings &gt;Applications &gt;Background Tasks  Then restart the app and enable the live tile from the settings page.</value>
@@ -154,22 +154,22 @@
     <value>Could not enable the live tile</value>
   </data>
   <data name="ErrorInternetConnection" xml:space="preserve">
-    <value>Internet connection is not available</value>
+    <value>Сервер недоступен</value>
   </data>
   <data name="ErrorSiteNotAvailableMessage" xml:space="preserve">
-    <value>Please check you internet connectivity or try again later...</value>
+    <value>Проверьте ваш доступ к интернету или попытайтесь опять</value>
   </data>
   <data name="ErrorSiteNotAvailableTitle" xml:space="preserve">
-    <value>Server is not available</value>
+    <value>Сервер недоступен</value>
   </data>
   <data name="Feedback" xml:space="preserve">
-    <value>We would love to hear your comments about Wallpaper Patterns. Send us your thoughts</value>
+    <value>Если у вас есть пожелания или предложения, пошлите нам сообщение. Мы обязательно их прочтем.</value>
   </data>
   <data name="FeedbackOn" xml:space="preserve">
-    <value>Feedback for Wallpaper Patterns</value>
+    <value>Паттерны - Обратная связь</value>
   </data>
   <data name="FeedbackTemplate" xml:space="preserve">
-    <value>Hello, I've been using Wallpaper Patterns app and I have the following feedback...</value>
+    <value />
   </data>
   <data name="Loading" xml:space="preserve">
     <value>Загрузка...</value>
@@ -190,10 +190,10 @@
     <value>настройки</value>
   </data>
   <data name="MessageBoxBuyThisAppSummary" xml:space="preserve">
-    <value>Please buy an ad-free version to support the developers. Thank you for using Wallpaper Patterns</value>
+    <value>Если вам нравятся Паттерны, поддержите разработчиков покупкой платной версии.</value>
   </data>
   <data name="MessageBoxBuyThisAppTitle" xml:space="preserve">
-    <value>Ad-free version is available</value>
+    <value>Выключить рекламу?</value>
   </data>
   <data name="MessageBoxRateThisAppSummary" xml:space="preserve">
     <value>Если вам понравилось наше приложение, пожалуйста, оцените его в магазине</value>
@@ -278,5 +278,11 @@
   </data>
   <data name="PivotTop" xml:space="preserve">
     <value>топ</value>
+  </data>
+  <data name="PageTitleWhatsNew" xml:space="preserve">
+    <value>обновления</value>
+  </data>
+  <data name="TextBlockWeReadEmails" xml:space="preserve">
+    <value>Последние обновления (только на английском)</value>
   </data>
 </root>

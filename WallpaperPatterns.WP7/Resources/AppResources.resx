@@ -279,4 +279,10 @@
   <data name="PivotTop" xml:space="preserve">
     <value>top</value>
   </data>
+  <data name="PageTitleWhatsNew" xml:space="preserve">
+    <value>what's new</value>
+  </data>
+  <data name="TextBlockWeReadEmails" xml:space="preserve">
+    <value>We read all emails, please drop us a line with any suggestions.</value>
+  </data>
 </root>
