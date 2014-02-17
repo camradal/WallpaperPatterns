@@ -32,6 +32,7 @@ namespace WallpaperPatterns.WP7.Views
 
             ShowLoading(numberOfStarts);
             ShowReviewPane();
+            //ShowBuyThisAppPane();
 
             MenuListBox.ItemsSource = MenuSources;
         }
@@ -48,6 +49,12 @@ namespace WallpaperPatterns.WP7.Views
         {
             var rate = new ReviewThisAppTask();
             rate.ShowAfterThreshold();
+        }
+
+        private void ShowBuyThisAppPane()
+        {
+            var buy = new BuyThisAppTask();
+            buy.ShowAfterThreshold();
         }
 
         private void ListBox_OnTap(object sender, System.Windows.Input.GestureEventArgs e)
@@ -106,9 +113,7 @@ namespace WallpaperPatterns.WP7.Views
                 return;
 
             if (selectedItem == AppResources.MenuItemBuyAdFreeVersion)
-            {
-                // TODO
-            }
+                BuyThisApp();
             else if (selectedItem == AppResources.MenuItemRateThisApp)
                 RateThisApp();
             else if (selectedItem == AppResources.MenuItemMoreApps)
@@ -117,6 +122,18 @@ namespace WallpaperPatterns.WP7.Views
                 ((PatternGroupViewModel) ViewModel).NavigateToAbout.Execute(null);
 
             MenuListBox.SelectedIndex = -1;
+        }
+
+        private void BuyThisApp()
+        {
+            try
+            {
+                var task = new MarketplaceDetailTask { ContentIdentifier = "9d4e5f16-2e43-4dac-966b-5d12d1ccf5bb" };
+                task.Show();
+            }
+            catch
+            {
+            }
         }
 
         private void MoreApps()

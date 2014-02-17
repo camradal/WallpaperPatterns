@@ -10,19 +10,18 @@ namespace WallpaperPatterns.WP7.Utilities
 
         public void ShowAfterThreshold()
         {
-            // TODO: fill out
-            //int starts = AppSettings.NumberOfStarts;
-            //if ((starts == numberOfStartsThreshold) && GetMessageBoxResult() == MessageBoxResult.OK)
-            //{
-            //    try
-            //    {
-            //        var task = new MarketplaceDetailTask { ContentIdentifier = "9558e8d2-08b9-4464-9a40-5b27e25a3ced" };
-            //        task.Show();
-            //    }
-            //    catch
-            //    {
-            //    }
-            //}
+            int starts = AppSettings.NumberOfStarts;
+            if ((starts == numberOfStartsThreshold) && GetMessageBoxResult() == MessageBoxResult.OK)
+            {
+                try
+                {
+                    var task = new MarketplaceDetailTask { ContentIdentifier = "9d4e5f16-2e43-4dac-966b-5d12d1ccf5bb" };
+                    task.Show();
+                }
+                catch
+                {
+                }
+            }
         }
 
         private MessageBoxResult GetMessageBoxResult()

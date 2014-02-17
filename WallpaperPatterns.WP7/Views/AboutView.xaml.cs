@@ -18,7 +18,7 @@ namespace WallpaperPatterns.WP7.Views
                     new NewItem
                     {
                         Version = "",
-                        Description = "We read all emails, please drop us a line with any suggestions."
+                        Description = AppResources.TextBlockWeReadEmails
                     },
                     new NewItem
                     {
