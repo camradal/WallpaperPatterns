@@ -42,7 +42,12 @@
             x:Name="MainPivot"
             Grid.Row="0"
             Title="{Binding Source={StaticResource Strings}, Path=Resources.AppTitleCapitalized}">
-            <controls:PivotItem Header="{Binding Source={StaticResource Strings}, Path=Resources.PivotNew}">
+            <phone:Pivot.HeaderTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" FontSize="65"/>
+                </DataTemplate>
+            </phone:Pivot.HeaderTemplate>
+            <controls:PivotItem Header="{Binding Source={StaticResource Strings}, Path=Resources.PivotNew}" Margin="12,12,12,0">
                 <phone:LongListSelector
                     x:Name="NewListBox"
                     DataContext="{Binding Newest}"
@@ -52,7 +57,7 @@
                     Tap="ListBox_OnTap">
                 </phone:LongListSelector>
             </controls:PivotItem>
-            <controls:PivotItem Header="{Binding Source={StaticResource Strings}, Path=Resources.PivotTop}">
+            <controls:PivotItem Header="{Binding Source={StaticResource Strings}, Path=Resources.PivotTop}" Margin="12,12,12,0">
                 <phone:LongListSelector
                     x:Name="TopListBox"
                     DataContext="{Binding Top}"
@@ -62,7 +67,7 @@
                     Tap="ListBox_OnTap">
                 </phone:LongListSelector>
             </controls:PivotItem>
-            <controls:PivotItem Header="{Binding Source={StaticResource Strings}, Path=Resources.PivotFavorites}">
+            <controls:PivotItem Header="{Binding Source={StaticResource Strings}, Path=Resources.PivotFavorites}" Margin="12,12,12,0">
                 <phone:LongListSelector
                     x:Name="FavoritesListBox"
                     DataContext="{Binding Favorites}"
@@ -71,7 +76,7 @@
                     Tap="ListBox_OnTap">
                 </phone:LongListSelector>
             </controls:PivotItem>
-            <controls:PivotItem Header="{Binding Source={StaticResource Strings}, Path=Resources.PivotMenu}">
+            <controls:PivotItem Header="{Binding Source={StaticResource Strings}, Path=Resources.PivotMenu}" Margin="12,12,12,0">
                 <ListBox x:Name="MenuListBox" Margin="0,6,-12,0" ItemsSource="{Binding MenuSources}" SelectionChanged="MenuListBox_OnSelectionChanged">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
